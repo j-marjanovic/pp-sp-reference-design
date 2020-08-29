@@ -1,6 +1,7 @@
 
 *.bak
 *.rpt
+*~
 
 */.qsys_edit/
 

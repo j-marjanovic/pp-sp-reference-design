@@ -89,4 +89,22 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name QSYS_FILE ../qsys/system.qsys
 set_global_assignment -name SYSTEMVERILOG_FILE ../hdl/otma_bringup.sv
 set_global_assignment -name SDC_FILE ../constraints/timing.sdc
+set_location_assignment PIN_AF6 -to CLK_R_REFCLK0
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK0
+set_location_assignment PIN_AF5 -to "CLK_R_REFCLK0(n)"
+set_location_assignment PIN_AD7 -to CLK_R_REFCLK1
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK1
+set_location_assignment PIN_AD6 -to "CLK_R_REFCLK1(n)"
+set_location_assignment PIN_AB6 -to CLK_R_REFCLK2
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK2
+set_location_assignment PIN_AB5 -to "CLK_R_REFCLK2(n)"
+set_location_assignment PIN_Y7 -to CLK_R_REFCLK3
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK3
+set_location_assignment PIN_Y6 -to "CLK_R_REFCLK3(n)"
+set_location_assignment PIN_V6 -to CLK_R_REFCLK4
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK4
+set_location_assignment PIN_V5 -to "CLK_R_REFCLK4(n)"
+set_location_assignment PIN_T7 -to CLK_R_REFCLK5
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK5
+set_location_assignment PIN_T6 -to "CLK_R_REFCLK5(n)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

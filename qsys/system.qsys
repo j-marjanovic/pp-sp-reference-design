@@ -6,7 +6,7 @@
    version="1.0"
    description=""
    tags=""
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element clk_125
@@ -96,7 +96,9 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
- <module name="clock_counter_0" kind="clock_counter" version="1.0" enabled="1" />
+ <module name="clock_counter_0" kind="clock_counter" version="1.0" enabled="1">
+  <parameter name="CLK_FREQ" value="125000000" />
+ </module>
  <module
    name="master_0"
    kind="altera_jtag_avalon_master"
