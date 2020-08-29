@@ -1,6 +1,12 @@
 
 *.bak
+*.rpt
+
+*/.qsys_edit/
 
 /project/db/
 /project/incremental_db/
 /project/output_files/
+
+/qsys/system/
+/qsys/system.sopcinfo
