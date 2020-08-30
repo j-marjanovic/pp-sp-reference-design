@@ -1,4 +1,4 @@
-# Bring-up project for Statix V on OTMA board
+# Bring-up project for Stratix V on OTMA board
 
 ## Software generation
 
