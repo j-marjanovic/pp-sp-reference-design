@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>Aug 30, 2020 4:57:19 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1598799439231</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Sep 5, 2020 4:29:51 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1599316191003</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jan/Projects/FPGA/otma-fpga-bringup/software/otma_bringup_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../qsys/system.sopcinfo</SopcDesignFile>
@@ -734,7 +734,7 @@
                 <SettingName>hal.enable_small_c_library</SettingName>
                 <Identifier>none</Identifier>
                 <Type>Boolean</Type>
-                <Value>0</Value>
+                <Value>1</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>public_mk_define</DestinationFile>
                 <Description>Causes the small newlib (C library) to be used. This reduces code and data footprint at the expense of reduced functionality. Several newlib features are removed such as floating-point support in printf(), stdin input routines, and buffered I/O. The small C library is not compatible with Micrium MicroC/OS-II. If true, adds -msmallc to ALT_LDFLAGS in public.mk.</Description>

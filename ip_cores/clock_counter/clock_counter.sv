@@ -4,21 +4,21 @@ module clock_counter # (
     parameter int CLK_FREQ = 125000000
 ) (
     // Clock and reset
-    input           csi_clk_clk,
-    input           rsi_reset_reset,
+    input               csi_clk_clk,
+    input               rsi_reset_reset,
 
     // slave interface
-    input   [3:0]   avs_ctrl_address,
-    input           avs_ctrl_read,
-    input           avs_ctrl_write,
-    output  [31:0]  avs_ctrl_readdata,
-    input   [31:0]  avs_ctrl_writedata,
+    input       [ 3:0]  avs_ctrl_address,
+    input               avs_ctrl_read,
+    input               avs_ctrl_write,
+    output reg  [31:0]  avs_ctrl_readdata,
+    input       [31:0]  avs_ctrl_writedata,
 
     // measurements inputs
-    input   [ 7:0]  coe_meas,
+    input       [ 7:0]  coe_meas,
 
     // debug led
-    output          coe_led_dbg
+    output              coe_led_dbg
 );
 
 //==============================================================================

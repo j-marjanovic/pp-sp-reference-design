@@ -11,6 +11,9 @@ module otma_bringup (
     input           CLK_R_REFCLK4,
     input           CLK_R_REFCLK5,
 
+    inout           I2C_IDT_SCL,
+    inout           I2C_IDT_SDA,
+
     // LED
     output [7:0]    LEDS
 );
@@ -43,6 +46,15 @@ assign clk_cntr_meas[6] = 1'b0;
 assign clk_cntr_meas[7] = 1'b0;
 
 //==============================================================================
+// I2C
+
+wire i2c_idt_osc_sda_oe;
+wire i2c_idt_osc_scl_oe;
+
+assign I2C_IDT_SDA = i2c_idt_osc_sda_oe ? 1'b0 : 1'bz;
+assign I2C_IDT_SCL = i2c_idt_osc_scl_oe ? 1'b0 : 1'bz;
+
+//==============================================================================
 // qsys
 
 system inst_system (
@@ -50,6 +62,10 @@ system inst_system (
     .clk_cntr_meas          ( clk_cntr_meas             ),
     .clk_cntr_led_dbg       ( LEDS[2]                   ),
     .led_dbg_export         ( LEDS[1:0]                 ),
+    .i2c_idt_osc_sda_in     ( I2C_IDT_SDA               ),
+    .i2c_idt_osc_scl_in     ( I2C_IDT_SCL               ),
+    .i2c_idt_osc_sda_oe     ( i2c_idt_osc_sda_oe        ),
+    .i2c_idt_osc_scl_oe     ( i2c_idt_osc_scl_oe        ),
     .reset_reset_n          ( 1'b1                      )
 );
 

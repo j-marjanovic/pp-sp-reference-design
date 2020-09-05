@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<simPackage>
-<file path="hdl_sim/system_prog_mem.dat" type="DAT" initParamName="INIT_FILE" memoryPath="prog_mem" />
-<file path="system_prog_mem.hex" type="HEX" initParamName="INIT_FILE" memoryPath="prog_mem" />
-</simPackage>

@@ -253,7 +253,7 @@
    kind="altera_avalon_i2c"
    version="16.1"
    enabled="1">
-  <parameter name="FIFO_DEPTH" value="4" />
+  <parameter name="FIFO_DEPTH" value="32" />
   <parameter name="USE_AV_ST" value="0" />
   <parameter name="clockRate" value="125000000" />
  </module>

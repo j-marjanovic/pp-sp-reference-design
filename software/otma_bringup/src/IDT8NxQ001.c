@@ -31,13 +31,6 @@ static struct idt8nxq001_freq_conf
             {.MINT = 24, .MFRAC = 0, .N = 8, .P = 0, .DSM_ENA = 0},
         [IDT8NXQ001_FREQ_312p5M] =
             {.MINT = 25, .MFRAC = 0, .N = 8, .P = 0, .DSM_ENA = 0},
-        // TODO: from DS, check
-        [IDT8NXQ001_FREQ_625M] = {.MINT = 0x15,
-                                  .MFRAC = 0x38023,
-                                  .N = 0x04,
-                                  .P = 0x00,
-                                  .DSM_ENA = 1},
-
 };
 
 static const unsigned int MINT_MAX = (1 << 6) - 1;

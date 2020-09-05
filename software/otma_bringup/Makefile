@@ -142,7 +142,8 @@ ACDS_VERSION := 16.1
 ELF := otma_bringup.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := src/main.c
+C_SRCS += src/main.c
+C_SRCS += src/IDT8NxQ001.c
 CXX_SRCS :=
 ASM_SRCS :=
 

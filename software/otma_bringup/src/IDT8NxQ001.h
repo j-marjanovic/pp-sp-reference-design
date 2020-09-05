@@ -27,7 +27,6 @@ enum IDT8NXQ001_FREQ {
   IDT8NXQ001_FREQ_200M,
   IDT8NXQ001_FREQ_300M,
   IDT8NXQ001_FREQ_312p5M,
-  IDT8NXQ001_FREQ_625M,
   IDT8NXQ001_FREQ_COUNT
 };
 
@@ -41,3 +40,5 @@ void idt8nxq001_conf_print(const struct idt8nxq001_conf *conf);
 
 void idt8nxq001_set_freq(struct idt8nxq001_conf *conf, unsigned int ch_sel,
                          enum IDT8NXQ001_FREQ freq);
+
+void idt8nxq001_set_fsel(struct idt8nxq001_conf *conf, uint8_t fsel);
