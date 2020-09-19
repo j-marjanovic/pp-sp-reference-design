@@ -108,6 +108,7 @@ set_global_assignment -name IP_SEARCH_PATHS ../ip_cores
 set_global_assignment -name QSYS_FILE ../qsys/system.qsys
 set_global_assignment -name SYSTEMVERILOG_FILE ../hdl/otma_bringup.sv
 set_global_assignment -name SDC_FILE ../constraints/timing.sdc
+
 set_location_assignment PIN_N7 -to I2C_IDT_SCL
 set_location_assignment PIN_P7 -to I2C_IDT_SDA
 set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_IDT_SCL
@@ -116,4 +117,23 @@ set_instance_assignment -name SLEW_RATE 0 -to I2C_IDT_SDA
 set_instance_assignment -name SLEW_RATE 0 -to I2C_IDT_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_IDT_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_IDT_SDA
+
+set_location_assignment PIN_AB24 -to I2C_QSFP0_SCL
+set_location_assignment PIN_AC24 -to I2C_QSFP0_SDA
+set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_QSFP0_SCL
+set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_QSFP0_SDA
+set_instance_assignment -name SLEW_RATE 0 -to I2C_QSFP0_SDA
+set_instance_assignment -name SLEW_RATE 0 -to I2C_QSFP0_SCL
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP0_SCL
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP0_SDA
+
+set_location_assignment PIN_AA25 -to I2C_QSFP1_SCL
+set_location_assignment PIN_AB25 -to I2C_QSFP1_SDA
+set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_QSFP1_SCL
+set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_QSFP1_SDA
+set_instance_assignment -name SLEW_RATE 0 -to I2C_QSFP1_SDA
+set_instance_assignment -name SLEW_RATE 0 -to I2C_QSFP1_SCL
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SCL
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SDA
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -11,8 +11,15 @@ module otma_bringup (
     input           CLK_R_REFCLK4,
     input           CLK_R_REFCLK5,
 
+    // I2C
     inout           I2C_IDT_SCL,
     inout           I2C_IDT_SDA,
+
+    inout           I2C_QSFP0_SCL,
+    inout           I2C_QSFP0_SDA,
+
+    inout           I2C_QSFP1_SCL,
+    inout           I2C_QSFP1_SDA,
 
     // LED
     output [7:0]    LEDS
@@ -54,6 +61,18 @@ wire i2c_idt_osc_scl_oe;
 assign I2C_IDT_SDA = i2c_idt_osc_sda_oe ? 1'b0 : 1'bz;
 assign I2C_IDT_SCL = i2c_idt_osc_scl_oe ? 1'b0 : 1'bz;
 
+wire i2c_qsfp_0_sda_oe;
+wire i2c_qsfp_0_scl_oe;
+
+assign I2C_QSFP0_SDA = i2c_qsfp_0_sda_oe ? 1'b0 : 1'bz;
+assign I2C_QSFP0_SCL = i2c_qsfp_0_scl_oe ? 1'b0 : 1'bz;
+
+wire i2c_qsfp_1_sda_oe;
+wire i2c_qsfp_1_scl_oe;
+
+assign I2C_QSFP1_SDA = i2c_qsfp_1_sda_oe ? 1'b0 : 1'bz;
+assign I2C_QSFP1_SCL = i2c_qsfp_1_scl_oe ? 1'b0 : 1'bz;
+
 //==============================================================================
 // qsys
 
@@ -61,11 +80,20 @@ system inst_system (
     .clk_clk                ( CLK_125M                  ),
     .clk_cntr_meas          ( clk_cntr_meas             ),
     .clk_cntr_led_dbg       ( LEDS[2]                   ),
+    .clk_125_clk            ( clk_125_int               ),
     .led_dbg_export         ( LEDS[1:0]                 ),
     .i2c_idt_osc_sda_in     ( I2C_IDT_SDA               ),
     .i2c_idt_osc_scl_in     ( I2C_IDT_SCL               ),
     .i2c_idt_osc_sda_oe     ( i2c_idt_osc_sda_oe        ),
     .i2c_idt_osc_scl_oe     ( i2c_idt_osc_scl_oe        ),
+    .i2c_qsfp_0_sda_in      ( I2C_QSFP0_SDA             ),
+    .i2c_qsfp_0_scl_in      ( I2C_QSFP0_SCL             ),
+    .i2c_qsfp_0_sda_oe      ( i2c_qsfp_0_sda_oe         ),
+    .i2c_qsfp_0_scl_oe      ( i2c_qsfp_0_scl_oe         ),
+    .i2c_qsfp_1_sda_in      ( I2C_QSFP1_SDA             ),
+    .i2c_qsfp_1_scl_in      ( I2C_QSFP1_SCL             ),
+    .i2c_qsfp_1_sda_oe      ( i2c_qsfp_1_sda_oe         ),
+    .i2c_qsfp_1_scl_oe      ( i2c_qsfp_1_scl_oe         ),
     .reset_reset_n          ( 1'b1                      )
 );
 

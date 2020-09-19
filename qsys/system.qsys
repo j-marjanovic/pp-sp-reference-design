@@ -33,11 +33,19 @@
          type = "int";
       }
    }
+   element clk_125_out
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
    element clock_counter_0
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "9";
          type = "int";
       }
    }
@@ -49,11 +57,27 @@
          type = "String";
       }
    }
+   element fortygig_eth_status
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
+   element fortygig_eth_status.s0
+   {
+      datum baseAddress
+      {
+         value = "1073807360";
+         type = "String";
+      }
+   }
    element i2c_idt_osc
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "10";
          type = "int";
       }
    }
@@ -65,11 +89,43 @@
          type = "String";
       }
    }
+   element i2c_qsfp_0
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element i2c_qsfp_0.csr
+   {
+      datum baseAddress
+      {
+         value = "1073782784";
+         type = "String";
+      }
+   }
+   element i2c_qsfp_1
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+   element i2c_qsfp_1.csr
+   {
+      datum baseAddress
+      {
+         value = "1073786880";
+         type = "String";
+      }
+   }
    element jtag_uart_0
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "8";
          type = "int";
       }
    }
@@ -85,7 +141,7 @@
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "2";
          type = "int";
       }
    }
@@ -101,7 +157,7 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
    }
@@ -133,7 +189,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
@@ -145,11 +201,27 @@
          type = "String";
       }
    }
+   element pio_40g_eth_reset
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
+   element pio_40g_eth_reset.s1
+   {
+      datum baseAddress
+      {
+         value = "1073790976";
+         type = "String";
+      }
+   }
    element prog_mem
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "4";
          type = "int";
       }
    }
@@ -165,7 +237,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "5";
          type = "int";
       }
    }
@@ -189,7 +261,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -224,18 +296,43 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_125.clk_in" type="clock" dir="end" />
  <interface
+   name="clk_125"
+   internal="clk_125_out.out_clk"
+   type="clock"
+   dir="start" />
+ <interface
    name="clk_cntr"
    internal="clock_counter_0.conduit_end_0"
    type="conduit"
    dir="end" />
+ <interface
+   name="fortygig_eth_m0"
+   internal="fortygig_eth_status.m0"
+   type="avalon"
+   dir="start" />
  <interface
    name="i2c_idt_osc"
    internal="i2c_idt_osc.i2c_serial"
    type="conduit"
    dir="end" />
  <interface
+   name="i2c_qsfp_0"
+   internal="i2c_qsfp_0.i2c_serial"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="i2c_qsfp_1"
+   internal="i2c_qsfp_1.i2c_serial"
+   type="conduit"
+   dir="end" />
+ <interface
    name="led_dbg"
    internal="pio_0.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="pio_40g_eth_reset"
+   internal="pio_40g_eth_reset.external_connection"
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_125.clk_in_reset" type="reset" dir="end" />
@@ -245,14 +342,51 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module
+   name="clk_125_out"
+   kind="altera_clock_bridge"
+   version="16.1"
+   enabled="1">
+  <parameter name="DERIVED_CLOCK_RATE" value="125000000" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
  <module name="clock_counter_0" kind="clock_counter" version="1.0" enabled="1">
   <parameter name="CLK_FREQ" value="125000000" />
+ </module>
+ <module
+   name="fortygig_eth_status"
+   kind="altera_avalon_mm_bridge"
+   version="16.1"
+   enabled="1">
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="ADDRESS_WIDTH" value="16" />
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="LINEWRAPBURSTS" value="0" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="MAX_PENDING_RESPONSES" value="4" />
+  <parameter name="PIPELINE_COMMAND" value="1" />
+  <parameter name="PIPELINE_RESPONSE" value="1" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="10" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="0" />
+  <parameter name="USE_RESPONSE" value="0" />
  </module>
  <module
    name="i2c_idt_osc"
    kind="altera_avalon_i2c"
    version="16.1"
    enabled="1">
+  <parameter name="FIFO_DEPTH" value="32" />
+  <parameter name="USE_AV_ST" value="0" />
+  <parameter name="clockRate" value="125000000" />
+ </module>
+ <module name="i2c_qsfp_0" kind="altera_avalon_i2c" version="16.1" enabled="1">
+  <parameter name="FIFO_DEPTH" value="32" />
+  <parameter name="USE_AV_ST" value="0" />
+  <parameter name="clockRate" value="125000000" />
+ </module>
+ <module name="i2c_qsfp_1" kind="altera_avalon_i2c" version="16.1" enabled="1">
   <parameter name="FIFO_DEPTH" value="32" />
   <parameter name="USE_AV_ST" value="0" />
   <parameter name="clockRate" value="125000000" />
@@ -314,7 +448,7 @@
   <parameter name="dataAddrWidth" value="31" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='pio_40g_eth_reset.s1' start='0x4000C000' end='0x4000C010' type='altera_avalon_pio.s1' /><slave name='fortygig_eth_status.s0' start='0x40010000' end='0x40020000' type='altera_avalon_mm_bridge.s0' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -360,7 +494,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="259" />
+  <parameter name="internalIrqMaskSystemInfo" value="1795" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -487,6 +621,24 @@
   <parameter name="width" value="2" />
  </module>
  <module
+   name="pio_40g_eth_reset"
+   kind="altera_avalon_pio"
+   version="16.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="125000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="4" />
+ </module>
+ <module
    name="prog_mem"
    kind="altera_avalon_onchip_memory2"
    version="16.1"
@@ -568,6 +720,24 @@
    kind="avalon"
    version="16.1"
    start="nios2_gen2_0.data_master"
+   end="i2c_qsfp_0.csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4000a000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="nios2_gen2_0.data_master"
+   end="i2c_qsfp_1.csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4000b000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="nios2_gen2_0.data_master"
    end="clock_counter_0.ctrl">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x40008000" />
@@ -580,6 +750,15 @@
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x20000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="nios2_gen2_0.data_master"
+   end="fortygig_eth_status.s0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x40010000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -607,6 +786,15 @@
    end="timer_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x40001000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="nios2_gen2_0.data_master"
+   end="pio_40g_eth_reset.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4000c000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -641,13 +829,13 @@
   <parameter name="baseAddress" value="0x40002000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="clock" version="16.1" start="clk_125.clk" end="master_0.clk" />
- <connection kind="clock" version="16.1" start="clk_125.clk" end="pio_0.clk" />
+ <connection kind="clock" version="16.1" start="clk_125.clk" end="jtag_uart_0.clk" />
+ <connection kind="clock" version="16.1" start="clk_125.clk" end="timer_0.clk" />
  <connection
    kind="clock"
    version="16.1"
    start="clk_125.clk"
-   end="clock_counter_0.clk" />
+   end="sysid_qsys_0.clk" />
  <connection
    kind="clock"
    version="16.1"
@@ -657,21 +845,60 @@
    kind="clock"
    version="16.1"
    start="clk_125.clk"
-   end="sysid_qsys_0.clk" />
- <connection kind="clock" version="16.1" start="clk_125.clk" end="timer_0.clk" />
- <connection kind="clock" version="16.1" start="clk_125.clk" end="jtag_uart_0.clk" />
+   end="clock_counter_0.clk" />
+ <connection kind="clock" version="16.1" start="clk_125.clk" end="pio_0.clk" />
+ <connection kind="clock" version="16.1" start="clk_125.clk" end="master_0.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_125.clk"
+   end="fortygig_eth_status.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_125.clk"
+   end="pio_40g_eth_reset.clk" />
  <connection kind="clock" version="16.1" start="clk_125.clk" end="prog_mem.clk1" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_125.clk"
+   end="i2c_qsfp_1.clock" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_125.clk"
+   end="i2c_qsfp_0.clock" />
  <connection
    kind="clock"
    version="16.1"
    start="clk_125.clk"
    end="i2c_idt_osc.clock" />
  <connection
+   kind="clock"
+   version="16.1"
+   start="clk_125.clk"
+   end="clk_125_out.in_clk" />
+ <connection
    kind="interrupt"
    version="16.1"
    start="nios2_gen2_0.irq"
    end="i2c_idt_osc.interrupt_sender">
   <parameter name="irqNumber" value="8" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="16.1"
+   start="nios2_gen2_0.irq"
+   end="i2c_qsfp_0.interrupt_sender">
+  <parameter name="irqNumber" value="9" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="16.1"
+   start="nios2_gen2_0.irq"
+   end="i2c_qsfp_1.interrupt_sender">
+  <parameter name="irqNumber" value="10" />
  </connection>
  <connection
    kind="interrupt"
@@ -726,12 +953,32 @@
    kind="reset"
    version="16.1"
    start="clk_125.clk_reset"
+   end="fortygig_eth_status.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_125.clk_reset"
+   end="pio_40g_eth_reset.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_125.clk_reset"
    end="prog_mem.reset1" />
  <connection
    kind="reset"
    version="16.1"
    start="clk_125.clk_reset"
    end="i2c_idt_osc.reset_sink" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_125.clk_reset"
+   end="i2c_qsfp_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="clk_125.clk_reset"
+   end="i2c_qsfp_1.reset_sink" />
  <connection
    kind="reset"
    version="16.1"
