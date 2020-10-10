@@ -73,6 +73,22 @@
          type = "String";
       }
    }
+   element fortygig_eth_xcvr_reconfig
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
+   element fortygig_eth_xcvr_reconfig.reconfig_mgmt
+   {
+      datum baseAddress
+      {
+         value = "2048";
+         type = "String";
+      }
+   }
    element i2c_idt_osc
    {
       datum _sortIndex
@@ -233,6 +249,14 @@
          type = "String";
       }
    }
+   element reset_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
    element sysid_qsys_0
    {
       datum _sortIndex
@@ -311,6 +335,26 @@
    type="avalon"
    dir="start" />
  <interface
+   name="fortygig_eth_reconf_from"
+   internal="fortygig_eth_xcvr_reconfig.reconfig_from_xcvr"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="fortygig_eth_reconf_reset"
+   internal="reset_bridge_0.in_reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="fortygig_eth_reconf_to"
+   internal="fortygig_eth_xcvr_reconfig.reconfig_to_xcvr"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="fortygig_eth_xcvr_busy"
+   internal="fortygig_eth_xcvr_reconfig.reconfig_busy"
+   type="conduit"
+   dir="end" />
+ <interface
    name="i2c_idt_osc"
    internal="i2c_idt_osc.i2c_serial"
    type="conduit"
@@ -371,6 +415,26 @@
   <parameter name="SYSINFO_ADDR_WIDTH" value="10" />
   <parameter name="USE_AUTO_ADDRESS_WIDTH" value="0" />
   <parameter name="USE_RESPONSE" value="0" />
+ </module>
+ <module
+   name="fortygig_eth_xcvr_reconfig"
+   kind="alt_xcvr_reconfig"
+   version="16.1"
+   enabled="1">
+  <parameter name="ber_en" value="1" />
+  <parameter name="device_family" value="Stratix V" />
+  <parameter name="enable_adce" value="1" />
+  <parameter name="enable_analog" value="1" />
+  <parameter name="enable_dcd" value="0" />
+  <parameter name="enable_dcd_power_up" value="1" />
+  <parameter name="enable_dfe" value="1" />
+  <parameter name="enable_eyemon" value="1" />
+  <parameter name="enable_mif" value="0" />
+  <parameter name="enable_offset" value="1" />
+  <parameter name="gui_cal_status_port" value="false" />
+  <parameter name="gui_enable_pll" value="0" />
+  <parameter name="gui_split_sizes" value="" />
+  <parameter name="number_of_reconfig_interfaces" value="16" />
  </module>
  <module
    name="i2c_idt_osc"
@@ -671,6 +735,17 @@
   <parameter name="writable" value="true" />
  </module>
  <module
+   name="reset_bridge_0"
+   kind="altera_reset_bridge"
+   version="16.1"
+   enabled="1">
+  <parameter name="ACTIVE_LOW_RESET" value="0" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="NUM_RESET_OUTPUTS" value="1" />
+  <parameter name="SYNCHRONOUS_EDGES" value="none" />
+  <parameter name="USE_RESET_REQUEST" value="0" />
+ </module>
+ <module
    name="sysid_qsys_0"
    kind="altera_avalon_sysid_qsys"
    version="16.1"
@@ -824,9 +899,13 @@
   <parameter name="baseAddress" value="0x40008000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="16.1" start="master_0.master" end="pio_0.s1">
+ <connection
+   kind="avalon"
+   version="16.1"
+   start="master_0.master"
+   end="fortygig_eth_xcvr_reconfig.reconfig_mgmt">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x40002000" />
+  <parameter name="baseAddress" value="0x0800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="16.1" start="clk_125.clk" end="jtag_uart_0.clk" />
@@ -879,6 +958,11 @@
    version="16.1"
    start="clk_125.clk"
    end="clk_125_out.in_clk" />
+ <connection
+   kind="clock"
+   version="16.1"
+   start="clk_125.clk"
+   end="fortygig_eth_xcvr_reconfig.mgmt_clk_clk" />
  <connection
    kind="interrupt"
    version="16.1"
@@ -989,6 +1073,11 @@
    version="16.1"
    start="nios2_gen2_0.debug_reset_request"
    end="timer_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="reset_bridge_0.out_reset"
+   end="fortygig_eth_xcvr_reconfig.mgmt_rst_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
