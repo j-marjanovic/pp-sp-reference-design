@@ -1,5 +1,12 @@
 # Bring-up project for Stratix V on OTMA board
 
+## Recompiling the project
+
+### Regenerating the IP variations
+
+Run `generate_ips.sh` script in `scripts` folder to regenerate all IP
+variations.
+
 ## Software generation
 
 Here are the commands which were used to generate software project. Maybe this
