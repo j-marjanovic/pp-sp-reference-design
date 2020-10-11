@@ -434,7 +434,7 @@
   <parameter name="gui_cal_status_port" value="false" />
   <parameter name="gui_enable_pll" value="0" />
   <parameter name="gui_split_sizes" value="" />
-  <parameter name="number_of_reconfig_interfaces" value="16" />
+  <parameter name="number_of_reconfig_interfaces" value="8" />
  </module>
  <module
    name="i2c_idt_osc"

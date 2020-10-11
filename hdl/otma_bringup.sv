@@ -295,12 +295,6 @@ assign XCVR_QSFP0_TX = forty_gig_mac_tx_serial;
 assign forty_gig_mac_rx_serial = XCVR_QSFP0_RX;
 
 //==============================================================================
-// 40G Eth, QSFP1
-
-wire [367:0] fortygig_eth1_reconfig_from_xcvr;    // reconfig_from_xcvr.reconfig_from_xcvr
-wire [559:0] fortygig_eth1_reconfig_to_xcvr;      //   reconfig_to_xcvr.reconfig_to_xcvr
-
-//==============================================================================
 // qsys
 
 system inst_system (
@@ -333,10 +327,10 @@ system inst_system (
     .fortygig_eth_m0_byteenable    ( ),
     .fortygig_eth_m0_debugaccess   ( ),
     .pio_40g_eth_reset_export      ( fortygig_eth_reset ),
-    .fortygig_eth_reconf_to_reconfig_to_xcvr     ( {fortygig_eth1_reconfig_to_xcvr, forty_gig_mac_reconfig_to_xcvr}      ),
-    .fortygig_eth_reconf_from_reconfig_from_xcvr ( {fortygig_eth1_reconfig_from_xcvr, forty_gig_mac_reconfig_from_xcvr}  ),
-    .fortygig_eth_xcvr_busy_reconfig_busy        ( LEDS[5]                                                               ),
-    .fortygig_eth_reconf_reset_reset             ( forty_gig_mac_pma_arst_ST                                             )
+    .fortygig_eth_reconf_to_reconfig_to_xcvr     ( forty_gig_mac_reconfig_to_xcvr   ),
+    .fortygig_eth_reconf_from_reconfig_from_xcvr ( forty_gig_mac_reconfig_from_xcvr ),
+    .fortygig_eth_xcvr_busy_reconfig_busy        ( LEDS[5]                          ),
+    .fortygig_eth_reconf_reset_reset             ( forty_gig_mac_pma_arst_ST        )
 );
 
 endmodule
