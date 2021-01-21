@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE 5SGSMD5K1F40C1
 set_global_assignment -name TOP_LEVEL_ENTITY otma_bringup
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:04:51  AUGUST 29, 2020"
-set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Standard Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Standard Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -51,7 +51,7 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_M23 -to CLK_125M
-set_instance_assignment -name IO_STANDARD "2.5 V" -to CLK_125M
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to CLK_125M
 set_location_assignment PIN_A8 -to LEDS[7]
 set_location_assignment PIN_B8 -to LEDS[6]
 set_location_assignment PIN_C8 -to LEDS[5]
@@ -199,601 +199,553 @@ set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[0]
 # set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP1_TX[0]
 
 
-set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE ../signal_tap/forty_gig.stp
-set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=128" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=128" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "fortygig_eth_mac:inst_fortygig_eth_mac|clk_rxmac" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[100]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[101]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[102]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[103]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[104]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[105]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[106]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[107]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[108]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[109]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[110]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[111]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[112]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[113]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[114]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[115]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[116]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[117]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[118]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[119]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[120]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[121]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[122]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[123]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[124]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[125]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[126]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[127]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[128]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[129]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[130]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[131]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[132]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[133]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[134]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[135]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[136]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[137]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[138]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[139]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[140]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[141]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[142]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[143]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[144]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[145]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[51] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[146]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[52] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[147]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[53] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[148]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[54] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[149]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[55] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[56] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[150]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[57] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[151]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[58] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[152]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[59] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[153]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[60] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[154]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[61] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[155]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[62] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[156]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[63] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[157]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[64] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[158]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[65] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[159]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[66] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[67] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[160]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[68] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[161]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[69] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[162]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[70] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[163]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[71] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[164]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[72] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[165]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[73] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[166]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[74] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[167]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[75] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[168]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[76] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[169]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[77] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[16]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[78] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[170]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[79] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[171]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[80] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[172]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[81] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[173]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[82] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[174]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[83] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[175]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[84] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[176]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[85] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[177]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[86] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[178]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[87] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[179]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[88] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[17]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[89] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[180]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[90] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[181]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[91] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[182]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[92] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[183]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[93] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[184]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[94] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[185]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[95] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[186]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[96] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[187]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[97] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[188]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[98] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[189]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[99] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[18]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[100] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[190]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[101] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[191]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[102] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[192]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[103] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[193]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[104] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[194]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[105] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[195]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[106] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[196]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[107] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[197]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[108] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[198]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[109] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[199]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[110] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[19]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[111] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[112] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[200]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[113] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[201]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[114] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[202]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[115] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[203]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[116] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[204]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[117] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[205]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[118] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[206]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[119] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[207]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[120] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[208]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[121] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[209]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[122] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[20]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[123] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[210]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[124] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[211]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[125] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[212]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[126] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[213]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[127] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[214]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[128] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[215]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[129] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[216]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[130] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[217]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[131] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[218]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[132] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[219]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[133] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[21]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[134] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[220]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[135] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[221]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[136] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[222]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[137] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[223]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[138] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[224]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[139] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[225]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[140] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[226]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[141] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[227]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[142] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[228]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[143] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[229]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[144] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[22]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[145] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[230]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[146] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[231]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[147] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[232]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[148] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[233]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[149] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[234]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[150] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[235]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[151] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[236]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[152] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[237]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[153] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[238]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[154] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[239]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[155] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[23]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[156] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[240]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[157] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[241]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[158] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[242]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[159] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[243]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[160] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[244]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[161] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[245]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[162] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[246]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[163] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[247]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[164] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[248]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[165] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[249]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[166] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[24]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[167] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[250]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[168] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[251]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[169] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[252]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[170] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[253]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[171] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[254]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[172] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[255]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[173] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[25]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[174] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[26]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[175] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[27]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[176] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[28]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[177] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[29]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[178] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[179] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[30]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[180] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[31]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[181] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[32]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[182] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[33]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[183] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[34]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[184] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[35]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[185] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[36]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[186] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[37]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[187] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[38]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[188] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[39]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[189] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[190] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[40]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[191] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[41]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[192] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[42]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[193] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[43]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[194] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[44]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[195] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[45]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[196] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[46]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[197] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[47]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[198] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[48]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[199] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[49]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[200] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[201] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[50]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[202] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[51]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[203] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[52]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[204] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[53]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[205] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[54]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[206] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[55]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[207] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[56]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[208] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[57]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[209] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[58]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[210] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[59]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[211] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[212] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[60]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[213] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[61]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[214] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[62]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[215] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[63]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[216] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[64]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[217] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[65]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[218] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[66]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[219] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[67]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[220] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[68]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[221] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[69]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[222] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[223] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[70]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[224] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[71]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[225] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[72]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[226] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[73]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[227] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[74]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[228] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[75]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[229] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[76]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[230] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[77]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[231] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[78]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[232] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[79]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[233] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[234] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[80]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[235] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[81]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[236] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[82]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[237] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[83]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[238] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[84]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[239] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[85]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[240] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[86]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[241] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[87]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[242] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[88]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[243] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[89]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[244] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[245] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[90]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[246] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[91]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[247] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[92]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[248] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[93]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[249] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[94]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[250] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[95]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[251] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[96]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[252] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[97]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[253] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[98]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[254] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[99]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[255] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[256] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[257] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[258] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[259] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[260] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[261] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_endofpacket" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[262] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_error" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[263] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_fcs_error" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[264] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_fcs_valid" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[265] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_startofpacket" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[266] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_valid" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[100]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[101]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[102]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[103]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[104]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[105]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[106]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[107]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[108]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[109]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[110]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[111]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[112]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[113]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[114]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[115]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[116]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[117]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[118]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[119]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[120]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[121]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[122]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[123]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[124]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[125]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[126]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[127]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[128]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[129]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[130]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[131]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[132]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[133]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[134]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[135]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[136]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[137]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[138]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[139]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[140]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[141]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[142]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[143]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[144]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[145]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[51] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[146]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[52] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[147]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[53] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[148]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[54] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[149]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[55] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[56] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[150]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[57] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[151]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[58] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[152]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[59] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[153]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[60] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[154]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[61] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[155]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[62] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[156]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[63] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[157]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[64] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[158]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[65] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[159]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[66] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[67] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[160]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[68] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[161]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[69] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[162]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[70] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[163]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[71] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[164]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[72] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[165]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[73] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[166]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[74] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[167]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[75] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[168]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[76] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[169]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[77] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[16]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[78] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[170]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[79] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[171]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[80] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[172]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[81] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[173]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[82] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[174]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[83] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[175]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[84] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[176]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[85] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[177]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[86] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[178]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[87] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[179]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[88] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[17]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[89] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[180]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[90] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[181]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[91] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[182]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[92] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[183]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[93] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[184]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[94] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[185]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[95] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[186]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[96] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[187]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[97] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[188]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[98] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[189]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[99] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[18]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[100] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[190]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[101] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[191]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[102] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[192]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[103] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[193]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[104] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[194]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[105] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[195]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[106] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[196]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[107] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[197]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[108] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[198]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[109] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[199]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[110] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[19]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[111] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[112] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[200]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[113] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[201]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[114] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[202]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[115] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[203]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[116] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[204]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[117] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[205]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[118] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[206]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[119] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[207]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[120] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[208]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[121] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[209]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[122] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[20]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[123] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[210]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[124] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[211]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[125] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[212]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[126] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[213]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[127] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[214]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[128] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[215]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[129] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[216]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[130] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[217]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[131] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[218]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[132] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[219]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[133] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[21]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[134] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[220]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[135] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[221]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[136] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[222]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[137] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[223]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[138] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[224]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[139] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[225]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[140] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[226]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[141] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[227]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[142] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[228]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[143] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[229]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[144] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[22]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[145] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[230]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[146] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[231]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[147] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[232]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[148] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[233]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[149] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[234]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[150] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[235]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[151] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[236]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[152] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[237]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[153] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[238]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[154] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[239]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[155] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[23]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[156] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[240]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[157] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[241]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[158] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[242]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[159] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[243]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[160] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[244]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[161] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[245]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[162] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[246]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[163] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[247]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[164] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[248]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[165] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[249]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[166] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[24]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[167] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[250]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[168] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[251]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[169] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[252]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[170] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[253]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[171] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[254]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[172] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[255]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[173] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[25]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[174] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[26]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[175] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[27]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[176] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[28]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[177] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[29]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[178] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[179] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[30]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[180] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[31]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[181] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[32]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[182] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[33]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[183] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[34]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[184] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[35]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[185] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[36]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[186] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[37]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[187] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[38]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[188] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[39]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[189] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[190] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[40]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[191] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[41]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[192] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[42]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[193] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[43]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[194] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[44]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[195] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[45]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[196] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[46]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[197] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[47]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[198] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[48]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[199] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[49]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[200] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[201] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[50]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[202] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[51]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[203] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[52]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[204] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[53]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[205] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[54]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[206] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[55]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[207] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[56]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[208] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[57]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[209] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[58]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[210] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[59]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[211] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[212] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[60]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[213] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[61]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[214] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[62]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[215] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[63]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[216] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[64]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[217] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[65]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[218] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[66]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[219] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[67]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[220] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[68]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[221] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[69]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[222] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[223] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[70]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[224] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[71]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[225] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[72]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[226] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[73]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[227] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[74]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[228] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[75]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[229] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[76]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[230] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[77]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[231] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[78]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[232] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[79]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[233] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[234] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[80]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[235] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[81]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[236] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[82]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[237] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[83]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[238] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[84]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[239] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[85]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[240] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[86]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[241] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[87]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[242] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[88]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[243] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[89]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[244] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[245] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[90]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[246] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[91]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[247] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[92]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[248] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[93]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[249] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[94]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[250] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[95]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[251] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[96]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[252] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[97]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[253] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[98]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[254] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[99]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[255] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_data[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[256] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[257] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[258] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[259] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[260] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_empty[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[261] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_endofpacket" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[262] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_error" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[263] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_fcs_error" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[264] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_fcs_valid" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[265] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_startofpacket" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[266] -to "fortygig_eth_mac:inst_fortygig_eth_mac|l4_rx_valid" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=267" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=267" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=267" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=822" -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_global_assignment -name SLD_FILE db/forty_gig_auto_stripped.stp
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to oct_rzqin -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[15] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[15] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[15] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[16] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[16] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[16] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[17] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[17] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[17] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[18] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[18] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[18] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[19] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[19] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[19] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[20] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[20] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[20] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[21] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[21] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[21] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[22] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[22] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[22] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[23] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[23] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[23] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[24] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[24] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[24] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[25] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[25] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[25] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[26] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[26] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[26] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[27] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[27] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[27] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[28] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[28] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[28] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[29] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[29] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[29] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[30] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[30] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[30] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[31] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[31] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[31] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[32] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[32] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[32] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[33] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[33] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[33] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[34] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[34] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[34] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[35] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[35] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[35] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[36] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[36] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[36] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[37] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[37] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[37] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[38] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[38] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[38] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[39] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[39] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[39] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[40] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[40] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[40] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[41] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[41] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[41] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[42] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[42] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[42] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[43] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[43] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[43] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[44] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[44] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[44] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[45] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[45] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[45] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[46] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[46] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[46] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[47] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[47] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[47] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[48] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[48] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[48] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[49] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[49] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[49] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[50] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[50] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[50] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[51] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[51] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[51] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[52] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[52] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[52] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[53] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[53] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[53] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[54] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[54] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[54] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[55] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[55] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[55] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[56] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[56] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[56] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[57] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[57] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[57] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[58] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[58] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[58] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[59] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[59] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[59] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[60] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[60] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[60] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[61] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[61] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[61] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[62] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[62] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[62] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[63] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[63] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[63] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[64] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[64] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[64] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[65] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[65] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[65] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[66] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[66] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[66] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[67] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[67] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[67] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[68] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[68] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[68] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[69] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[69] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[69] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[70] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[70] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[70] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[71] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[71] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dq[71] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_dqs_n[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dqs_n[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_ck[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_ck[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.35-V SSTL" -to memory_mem_ck_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_ck_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_a[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_a[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_ba[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_ba[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_ba[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_ba[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_ba[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_ba[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_cs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_cs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_we_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_we_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_ras_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_ras_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_cas_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_cas_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_cke[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_cke[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_odt[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to memory_mem_odt[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name BOARD_MODEL_FAR_PULLUP_R OPEN -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name BOARD_MODEL_NEAR_PULLUP_R OPEN -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name BOARD_MODEL_FAR_PULLDOWN_R OPEN -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name BOARD_MODEL_NEAR_PULLDOWN_R OPEN -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dm[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITH CALIBRATION" -to memory_mem_dm[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[15] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[16] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[17] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[18] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[19] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[20] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[21] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[22] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[23] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[24] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[25] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[26] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[27] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[28] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[29] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[30] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[31] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[32] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[33] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[34] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[35] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[36] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[37] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[38] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[39] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[40] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[41] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[42] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[43] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[44] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[45] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[46] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[47] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[48] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[49] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[50] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[51] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[52] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[53] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[54] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[55] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[56] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[57] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[58] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[59] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[60] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[61] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[62] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[63] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[64] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[65] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[66] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[67] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[68] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[69] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[70] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dq[71] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dm[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_dqs_n[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[10] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[11] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[12] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[13] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[14] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_a[9] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_ba[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_ba[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_ba[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_cs_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_we_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_ras_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_cas_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_cke[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_odt[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_ck[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to memory_mem_ck_n[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL "DUAL-REGIONAL CLOCK" -to inst_system|ddr3_mem|pll0|pll_avl_clk -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL "DUAL-REGIONAL CLOCK" -to inst_system|ddr3_mem|pll0|pll_config_clk -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL "GLOBAL CLOCK" -to inst_system|ddr3_mem|pll0|afi_clk -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL "DUAL-REGIONAL CLOCK" -to inst_system|ddr3_mem|pll0|pll_hr_clk -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL "GLOBAL CLOCK" -to inst_system|ddr3_mem|pll0|pll_p2c_read_clk -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|ureset|phy_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|s0|sequencer_rw_mgr_inst|rw_mgr_inst|rw_mgr_core_inst|rw_soft_reset_n -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|rst_controller|alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|if_csr_m0|rst_controller|alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[0] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[1] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[2] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[3] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[4] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[5] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[6] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[7] -tag __system_ddr3_mem_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to inst_system|ddr3_mem|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[8] -tag __system_ddr3_mem_p0
+set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to inst_system|ddr3_mem -tag __system_ddr3_mem_p0
+set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to inst_system|ddr3_mem|pll0|fbout -tag __system_ddr3_mem_p0
+set_instance_assignment -name MAX_FANOUT 4 -to inst_system|ddr3_mem|p0|umemphy|uio_pads|wrdata_en_qr_to_hr|dataout_r[*][*] -tag __system_ddr3_mem_p0
+set_instance_assignment -name FORM_DDR_CLUSTERING_CLIQUE ON -to inst_system|ddr3_mem|p0|umemphy|*qr_to_hr* -tag __system_ddr3_mem_p0
+set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
+set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
+set_global_assignment -name UNIPHY_TEMP_VER_CODE 1671073000
+set_global_assignment -name ECO_REGENERATE_REPORT ON
+set_location_assignment PIN_J28 -to memory_mem_ba[0]
+set_location_assignment PIN_K21 -to memory_mem_ba[1]
+set_location_assignment PIN_L26 -to memory_mem_ba[2]
+set_location_assignment PIN_J27 -to memory_mem_a[0]
+set_location_assignment PIN_J21 -to memory_mem_a[1]
+set_location_assignment PIN_J29 -to memory_mem_a[2]
+set_location_assignment PIN_L28 -to memory_mem_a[3]
+set_location_assignment PIN_P26 -to memory_mem_a[4]
+set_location_assignment PIN_M26 -to memory_mem_a[5]
+set_location_assignment PIN_N25 -to memory_mem_a[6]
+set_location_assignment PIN_P25 -to memory_mem_a[7]
+set_location_assignment PIN_N22 -to memory_mem_a[8]
+set_location_assignment PIN_N26 -to memory_mem_a[9]
+set_location_assignment PIN_K27 -to memory_mem_a[10]
+set_location_assignment PIN_L27 -to memory_mem_a[11]
+set_location_assignment PIN_N27 -to memory_mem_a[12]
+set_location_assignment PIN_L24 -to memory_mem_cas_n[0]
+set_location_assignment PIN_J23 -to memory_mem_ck[0]
+set_location_assignment PIN_J24 -to memory_mem_ck_n[0]
+set_location_assignment PIN_K24 -to memory_mem_cke[0]
+set_location_assignment PIN_N23 -to memory_mem_cs_n[0]
+set_location_assignment PIN_N33 -to memory_mem_dm[0]
+set_location_assignment PIN_D21 -to memory_mem_dm[1]
+set_location_assignment PIN_D22 -to memory_mem_dm[2]
+set_location_assignment PIN_D25 -to memory_mem_dm[3]
+set_location_assignment PIN_E27 -to memory_mem_dm[4]
+set_location_assignment PIN_D28 -to memory_mem_dm[5]
+set_location_assignment PIN_E30 -to memory_mem_dm[6]
+set_location_assignment PIN_C34 -to memory_mem_dm[7]
+set_location_assignment PIN_H34 -to memory_mem_dm[8]
+set_location_assignment PIN_B34 -to oct_rzqin
+set_location_assignment PIN_M21 -to memory_mem_odt[0]
+set_location_assignment PIN_L21 -to memory_mem_ras_n[0]
+set_location_assignment PIN_L20 -to memory_mem_reset_n
+set_location_assignment PIN_P23 -to memory_mem_we_n[0]
+set_location_assignment PIN_N32 -to memory_mem_dqs[0]
+set_location_assignment PIN_M32 -to memory_mem_dqs_n[0]
+set_location_assignment PIN_M27 -to memory_mem_a[13]
+set_location_assignment PIN_N21 -to memory_mem_a[14]
+set_location_assignment PIN_R32 -to memory_mem_dq[0]
+set_location_assignment PIN_P32 -to memory_mem_dq[1]
+set_location_assignment PIN_M33 -to memory_mem_dq[2]
+set_location_assignment PIN_T31 -to memory_mem_dq[3]
+set_location_assignment PIN_N34 -to memory_mem_dq[4]
+set_location_assignment PIN_P34 -to memory_mem_dq[5]
+set_location_assignment PIN_L34 -to memory_mem_dq[6]
+set_location_assignment PIN_L33 -to memory_mem_dq[7]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

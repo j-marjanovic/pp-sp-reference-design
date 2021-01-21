@@ -16,9 +16,27 @@ module otma_bringup (
     inout           I2C_QSFP1_SCL,
     inout           I2C_QSFP1_SDA,
 
+    // DDR3
+    output [14:0]   memory_mem_a,
+    output [2:0]    memory_mem_ba,
+    output [0:0]    memory_mem_ck,
+    output [0:0]    memory_mem_ck_n,
+    output [0:0]    memory_mem_cke,
+    output [0:0]    memory_mem_cs_n,
+    output [8:0]    memory_mem_dm,
+    output [0:0]    memory_mem_ras_n,
+    output [0:0]    memory_mem_cas_n,
+    output [0:0]    memory_mem_we_n,
+    output          memory_mem_reset_n,
+    inout  [7:0]    memory_mem_dq,
+    inout  [0:0]    memory_mem_dqs,
+    inout  [0:0]    memory_mem_dqs_n,
+    output [0:0]    memory_mem_odt,
+    input           oct_rzqin,
+
     // QSFP0
-    input  [3:0]    XCVR_QSFP0_RX,
-    output [3:0]    XCVR_QSFP0_TX,
+    // input  [3:0]    XCVR_QSFP0_RX,
+    // output [3:0]    XCVR_QSFP0_TX,
 
     // QSFP1
     // input  [3:0]    XCVR_QSFP1_RX,
@@ -51,8 +69,7 @@ always_ff @(posedge CLK_125M) begin: proc_cntr
     cntr <= cntr + 1'd1;
 end
 
-assign LEDS[7] = cntr[27];
-assign LEDS[6:6] = 'd0;
+assign LEDS[7] = cntr[26];
 
 
 //==============================================================================
@@ -81,256 +98,58 @@ wire i2c_qsfp_1_scl_oe;
 assign I2C_QSFP1_SDA = i2c_qsfp_1_sda_oe ? 1'b0 : 1'bz;
 assign I2C_QSFP1_SCL = i2c_qsfp_1_scl_oe ? 1'b0 : 1'bz;
 
-
 //==============================================================================
-// 40G Eth, QSFP0
+// DDR3
 
-wire [3:0] fortygig_eth_reset;
+wire ddr3_mem_status_local_init_done;
+wire ddr3_mem_status_local_cal_success;
+wire ddr3_mem_status_local_cal_fail;
 
-wire         forty_gig_mac_clk_ref;               //             clk_ref.clk
-wire         forty_gig_mac_pma_arst_ST;           //         pma_arst_ST.pma_arst_ST
-wire         forty_gig_mac_pcs_rx_arst_ST;        //      pcs_rx_arst_ST.pcs_rx_arst_ST
-wire         forty_gig_mac_pcs_tx_arst_ST;        //      pcs_tx_arst_ST.pcs_tx_arst_ST
-wire [367:0] forty_gig_mac_reconfig_from_xcvr;    //  reconfig_from_xcvr.reconfig_from_xcvr
-wire [559:0] forty_gig_mac_reconfig_to_xcvr;      //    reconfig_to_xcvr.reconfig_to_xcvr
-wire         forty_gig_mac_clk_status;            //              status.clk
-wire [15:0]  forty_gig_mac_status_addr;           //                    .address
-wire         forty_gig_mac_status_read;           //                    .read
-wire         forty_gig_mac_status_write;          //                    .write
-wire [31:0]  forty_gig_mac_status_writedata;      //                    .writedata
-wire [31:0]  forty_gig_mac_status_readdata;       //                    .readdata
-wire         forty_gig_mac_status_readdata_valid; //                    .readdatavalid
-wire         forty_gig_mac_rx_inc_runt;           //              rx_inc.rx_inc_runt
-wire         forty_gig_mac_rx_inc_64;             //                    .rx_inc_64
-wire         forty_gig_mac_rx_inc_127;            //                    .rx_inc_127
-wire         forty_gig_mac_rx_inc_255;            //                    .rx_inc_255
-wire         forty_gig_mac_rx_inc_511;            //                    .rx_inc_511
-wire         forty_gig_mac_rx_inc_1023;           //                    .rx_inc_1023
-wire         forty_gig_mac_rx_inc_1518;           //                    .rx_inc_1518
-wire         forty_gig_mac_rx_inc_max;            //                    .rx_inc_max
-wire         forty_gig_mac_rx_inc_over;           //                    .rx_inc_over
-wire         forty_gig_mac_rx_inc_mcast_data_err; //                    .rx_inc_mcast_data_err
-wire         forty_gig_mac_rx_inc_mcast_data_ok;  //                    .rx_inc_mcast_data_ok
-wire         forty_gig_mac_rx_inc_bcast_data_err; //                    .rx_inc_bcast_data_err
-wire         forty_gig_mac_rx_inc_bcast_data_ok;  //                    .rx_inc_bcast_data_ok
-wire         forty_gig_mac_rx_inc_ucast_data_err; //                    .rx_inc_ucast_data_err
-wire         forty_gig_mac_rx_inc_ucast_data_ok;  //                    .rx_inc_ucast_data_ok
-wire         forty_gig_mac_rx_inc_mcast_ctrl;     //                    .rx_inc_mcast_ctrl
-wire         forty_gig_mac_rx_inc_bcast_ctrl;     //                    .rx_inc_bcast_ctrl
-wire         forty_gig_mac_rx_inc_ucast_ctrl;     //                    .rx_inc_ucast_ctrl
-wire         forty_gig_mac_rx_inc_pause;          //                    .rx_inc_pause
-wire         forty_gig_mac_rx_inc_fcs_err;        //                    .rx_inc_fcs_err
-wire         forty_gig_mac_rx_inc_fragment;       //                    .rx_inc_fragment
-wire         forty_gig_mac_rx_inc_jabber;         //                    .rx_inc_jabber
-wire         forty_gig_mac_rx_inc_sizeok_fcserr;  //                    .rx_inc_sizeok_fcserr
-wire         forty_gig_mac_tx_inc_64;             //              tx_inc.tx_inc_64
-wire         forty_gig_mac_tx_inc_127;            //                    .tx_inc_127
-wire         forty_gig_mac_tx_inc_255;            //                    .tx_inc_255
-wire         forty_gig_mac_tx_inc_511;            //                    .tx_inc_511
-wire         forty_gig_mac_tx_inc_1023;           //                    .tx_inc_1023
-wire         forty_gig_mac_tx_inc_1518;           //                    .tx_inc_1518
-wire         forty_gig_mac_tx_inc_max;            //                    .tx_inc_max
-wire         forty_gig_mac_tx_inc_over;           //                    .tx_inc_over
-wire         forty_gig_mac_tx_inc_mcast_data_err; //                    .tx_inc_mcast_data_err
-wire         forty_gig_mac_tx_inc_mcast_data_ok;  //                    .tx_inc_mcast_data_ok
-wire         forty_gig_mac_tx_inc_bcast_data_err; //                    .tx_inc_bcast_data_err
-wire         forty_gig_mac_tx_inc_bcast_data_ok;  //                    .tx_inc_bcast_data_ok
-wire         forty_gig_mac_tx_inc_ucast_data_err; //                    .tx_inc_ucast_data_err
-wire         forty_gig_mac_tx_inc_ucast_data_ok;  //                    .tx_inc_ucast_data_ok
-wire         forty_gig_mac_tx_inc_mcast_ctrl;     //                    .tx_inc_mcast_ctrl
-wire         forty_gig_mac_tx_inc_bcast_ctrl;     //                    .tx_inc_bcast_ctrl
-wire         forty_gig_mac_tx_inc_ucast_ctrl;     //                    .tx_inc_ucast_ctrl
-wire         forty_gig_mac_tx_inc_pause;          //                    .tx_inc_pause
-wire         forty_gig_mac_tx_inc_fcs_err;        //                    .tx_inc_fcs_err
-wire         forty_gig_mac_tx_inc_fragment;       //                    .tx_inc_fragment
-wire         forty_gig_mac_tx_inc_jabber;         //                    .tx_inc_jabber
-wire         forty_gig_mac_tx_inc_sizeok_fcserr;  //                    .tx_inc_sizeok_fcserr
-wire         forty_gig_mac_pause_insert_tx;       //               pause.pause_insert_tx
-wire [15:0]  forty_gig_mac_pause_insert_time;     //                    .pause_insert_time
-wire         forty_gig_mac_pause_insert_mcast;    //                    .pause_insert_mcast
-wire [47:0]  forty_gig_mac_pause_insert_dst;      //                    .pause_insert_dst
-wire [47:0]  forty_gig_mac_pause_insert_src;      //                    .pause_insert_src
-wire         forty_gig_mac_remote_fault_status;   // remote_fault_status.remote_fault_status
-wire         forty_gig_mac_local_fault_status;    //  local_fault_status.local_fault_status
-wire         forty_gig_mac_clk_rxmac;             //           clk_rxmac.clk_rxmac
-wire         forty_gig_mac_clk_txmac;             //           clk_txmac.clk_txmac
-wire         forty_gig_mac_mac_rx_arst_ST;        //      mac_rx_arst_ST.mac_rx_arst_ST
-wire         forty_gig_mac_mac_tx_arst_ST;        //      mac_tx_arst_ST.mac_tx_arst_ST
-wire [255:0] forty_gig_mac_l4_rx_data;            //               l4_rx.l4_rx_data
-wire [4:0]   forty_gig_mac_l4_rx_empty;           //                    .l4_rx_empty
-wire         forty_gig_mac_l4_rx_startofpacket;   //                    .l4_rx_startofpacket
-wire         forty_gig_mac_l4_rx_endofpacket;     //                    .l4_rx_endofpacket
-wire         forty_gig_mac_l4_rx_error;           //                    .l4_rx_error
-wire         forty_gig_mac_l4_rx_valid;           //                    .l4_rx_valid
-wire         forty_gig_mac_l4_rx_fcs_valid;       //                    .l4_rx_fcs_valid
-wire         forty_gig_mac_l4_rx_fcs_error;       //                    .l4_rx_fcs_error
-wire [255:0] forty_gig_mac_l4_tx_data;            //               l4_tx.l4_tx_data
-wire [4:0]   forty_gig_mac_l4_tx_empty;           //                    .l4_tx_empty
-wire         forty_gig_mac_l4_tx_startofpacket;   //                    .l4_tx_startofpacket
-wire         forty_gig_mac_l4_tx_endofpacket;     //                    .l4_tx_endofpacket
-wire         forty_gig_mac_l4_tx_ready;           //                    .l4_tx_ready
-wire         forty_gig_mac_l4_tx_valid;           //                    .l4_tx_valid
-wire [3:0]   forty_gig_mac_tx_serial;             //           tx_serial.tx_serial
-wire [3:0]   forty_gig_mac_rx_serial;             //           rx_serial.rx_serial
-wire         forty_gig_mac_lanes_deskewed;        //      lanes_deskewed.lanes_deskewed
-wire         forty_gig_mac_tx_lanes_stable;       //     tx_lanes_stable.tx_lanes_stable
-
-fortygig_eth_mac inst_fortygig_eth_mac (
-    .clk_ref               ( forty_gig_mac_clk_ref               ),
-    .pma_arst_ST           ( forty_gig_mac_pma_arst_ST           ),
-    .pcs_rx_arst_ST        ( forty_gig_mac_pcs_rx_arst_ST        ),
-    .pcs_tx_arst_ST        ( forty_gig_mac_pcs_tx_arst_ST        ),
-    .reconfig_from_xcvr    ( forty_gig_mac_reconfig_from_xcvr    ),
-    .reconfig_to_xcvr      ( forty_gig_mac_reconfig_to_xcvr      ),
-    .clk_status            ( forty_gig_mac_clk_status            ),
-    .status_addr           ( {2'b00, forty_gig_mac_status_addr[15:2]} ),
-    .status_read           ( forty_gig_mac_status_read           ),
-    .status_write          ( forty_gig_mac_status_write          ),
-    .status_writedata      ( forty_gig_mac_status_writedata      ),
-    .status_readdata       ( forty_gig_mac_status_readdata       ),
-    .status_readdata_valid ( forty_gig_mac_status_readdata_valid ),
-    .rx_inc_runt           ( forty_gig_mac_rx_inc_runt           ),
-    .rx_inc_64             ( forty_gig_mac_rx_inc_64             ),
-    .rx_inc_127            ( forty_gig_mac_rx_inc_127            ),
-    .rx_inc_255            ( forty_gig_mac_rx_inc_255            ),
-    .rx_inc_511            ( forty_gig_mac_rx_inc_511            ),
-    .rx_inc_1023           ( forty_gig_mac_rx_inc_1023           ),
-    .rx_inc_1518           ( forty_gig_mac_rx_inc_1518           ),
-    .rx_inc_max            ( forty_gig_mac_rx_inc_max            ),
-    .rx_inc_over           ( forty_gig_mac_rx_inc_over           ),
-    .rx_inc_mcast_data_err ( forty_gig_mac_rx_inc_mcast_data_err ),
-    .rx_inc_mcast_data_ok  ( forty_gig_mac_rx_inc_mcast_data_ok  ),
-    .rx_inc_bcast_data_err ( forty_gig_mac_rx_inc_bcast_data_err ),
-    .rx_inc_bcast_data_ok  ( forty_gig_mac_rx_inc_bcast_data_ok  ),
-    .rx_inc_ucast_data_err ( forty_gig_mac_rx_inc_ucast_data_err ),
-    .rx_inc_ucast_data_ok  ( forty_gig_mac_rx_inc_ucast_data_ok  ),
-    .rx_inc_mcast_ctrl     ( forty_gig_mac_rx_inc_mcast_ctrl     ),
-    .rx_inc_bcast_ctrl     ( forty_gig_mac_rx_inc_bcast_ctrl     ),
-    .rx_inc_ucast_ctrl     ( forty_gig_mac_rx_inc_ucast_ctrl     ),
-    .rx_inc_pause          ( forty_gig_mac_rx_inc_pause          ),
-    .rx_inc_fcs_err        ( forty_gig_mac_rx_inc_fcs_err        ),
-    .rx_inc_fragment       ( forty_gig_mac_rx_inc_fragment       ),
-    .rx_inc_jabber         ( forty_gig_mac_rx_inc_jabber         ),
-    .rx_inc_sizeok_fcserr  ( forty_gig_mac_rx_inc_sizeok_fcserr  ),
-    .tx_inc_64             ( forty_gig_mac_tx_inc_64             ),
-    .tx_inc_127            ( forty_gig_mac_tx_inc_127            ),
-    .tx_inc_255            ( forty_gig_mac_tx_inc_255            ),
-    .tx_inc_511            ( forty_gig_mac_tx_inc_511            ),
-    .tx_inc_1023           ( forty_gig_mac_tx_inc_1023           ),
-    .tx_inc_1518           ( forty_gig_mac_tx_inc_1518           ),
-    .tx_inc_max            ( forty_gig_mac_tx_inc_max            ),
-    .tx_inc_over           ( forty_gig_mac_tx_inc_over           ),
-    .tx_inc_mcast_data_err ( forty_gig_mac_tx_inc_mcast_data_err ),
-    .tx_inc_mcast_data_ok  ( forty_gig_mac_tx_inc_mcast_data_ok  ),
-    .tx_inc_bcast_data_err ( forty_gig_mac_tx_inc_bcast_data_err ),
-    .tx_inc_bcast_data_ok  ( forty_gig_mac_tx_inc_bcast_data_ok  ),
-    .tx_inc_ucast_data_err ( forty_gig_mac_tx_inc_ucast_data_err ),
-    .tx_inc_ucast_data_ok  ( forty_gig_mac_tx_inc_ucast_data_ok  ),
-    .tx_inc_mcast_ctrl     ( forty_gig_mac_tx_inc_mcast_ctrl     ),
-    .tx_inc_bcast_ctrl     ( forty_gig_mac_tx_inc_bcast_ctrl     ),
-    .tx_inc_ucast_ctrl     ( forty_gig_mac_tx_inc_ucast_ctrl     ),
-    .tx_inc_pause          ( forty_gig_mac_tx_inc_pause          ),
-    .tx_inc_fcs_err        ( forty_gig_mac_tx_inc_fcs_err        ),
-    .tx_inc_fragment       ( forty_gig_mac_tx_inc_fragment       ),
-    .tx_inc_jabber         ( forty_gig_mac_tx_inc_jabber         ),
-    .tx_inc_sizeok_fcserr  ( forty_gig_mac_tx_inc_sizeok_fcserr  ),
-    .pause_insert_tx       ( forty_gig_mac_pause_insert_tx       ),
-    .pause_insert_time     ( forty_gig_mac_pause_insert_time     ),
-    .pause_insert_mcast    ( forty_gig_mac_pause_insert_mcast    ),
-    .pause_insert_dst      ( forty_gig_mac_pause_insert_dst      ),
-    .pause_insert_src      ( forty_gig_mac_pause_insert_src      ),
-    .remote_fault_status   ( forty_gig_mac_remote_fault_status   ),
-    .local_fault_status    ( forty_gig_mac_local_fault_status    ),
-    .clk_rxmac             ( forty_gig_mac_clk_rxmac             ),
-    .clk_txmac             ( forty_gig_mac_clk_txmac             ),
-    .mac_rx_arst_ST        ( forty_gig_mac_mac_rx_arst_ST        ),
-    .mac_tx_arst_ST        ( forty_gig_mac_mac_tx_arst_ST        ),
-    .l4_rx_data            ( forty_gig_mac_l4_rx_data            ),
-    .l4_rx_empty           ( forty_gig_mac_l4_rx_empty           ),
-    .l4_rx_startofpacket   ( forty_gig_mac_l4_rx_startofpacket   ),
-    .l4_rx_endofpacket     ( forty_gig_mac_l4_rx_endofpacket     ),
-    .l4_rx_error           ( forty_gig_mac_l4_rx_error           ),
-    .l4_rx_valid           ( forty_gig_mac_l4_rx_valid           ),
-    .l4_rx_fcs_valid       ( forty_gig_mac_l4_rx_fcs_valid       ),
-    .l4_rx_fcs_error       ( forty_gig_mac_l4_rx_fcs_error       ),
-    .l4_tx_data            ( forty_gig_mac_l4_tx_data            ),
-    .l4_tx_empty           ( forty_gig_mac_l4_tx_empty           ),
-    .l4_tx_startofpacket   ( forty_gig_mac_l4_tx_startofpacket   ),
-    .l4_tx_endofpacket     ( forty_gig_mac_l4_tx_endofpacket     ),
-    .l4_tx_ready           ( forty_gig_mac_l4_tx_ready           ),
-    .l4_tx_valid           ( forty_gig_mac_l4_tx_valid           ),
-    .tx_serial             ( forty_gig_mac_tx_serial             ),
-    .rx_serial             ( forty_gig_mac_rx_serial             ),
-    .lanes_deskewed        ( forty_gig_mac_lanes_deskewed        ),
-    .tx_lanes_stable       ( forty_gig_mac_tx_lanes_stable       )
-);
-
-assign forty_gig_mac_clk_ref = CLK_R_REFCLK5;
-
-assign forty_gig_mac_pma_arst_ST = fortygig_eth_reset[0];
-assign forty_gig_mac_pcs_rx_arst_ST = fortygig_eth_reset[1];
-assign forty_gig_mac_pcs_tx_arst_ST = fortygig_eth_reset[2];
-assign forty_gig_mac_mac_rx_arst_ST = fortygig_eth_reset[1];
-assign forty_gig_mac_mac_tx_arst_ST = fortygig_eth_reset[2];
-
-assign forty_gig_mac_clk_status = clk_125_int;
-
-assign forty_gig_mac_pause_insert_tx    = 'd0;
-assign forty_gig_mac_pause_insert_time  = 'd0;
-assign forty_gig_mac_pause_insert_mcast = 'd0;
-assign forty_gig_mac_pause_insert_dst   = 'd0;
-assign forty_gig_mac_pause_insert_src   = 'd0;
-
-assign forty_gig_mac_clk_rxmac = clk_312;
-assign forty_gig_mac_clk_txmac = clk_312;
-
-assign forty_gig_mac_l4_tx_data = 'd0;
-assign forty_gig_mac_l4_tx_empty = 'd0;
-assign forty_gig_mac_l4_tx_startofpacket = 'd0;
-assign forty_gig_mac_l4_tx_endofpacket = 'd0;
-assign forty_gig_mac_l4_tx_ready = 'd0;
-assign forty_gig_mac_l4_tx_valid = 'd0;
-
-assign XCVR_QSFP0_TX = forty_gig_mac_tx_serial;
-assign forty_gig_mac_rx_serial = XCVR_QSFP0_RX;
+assign LEDS[6] = ddr3_mem_status_local_init_done;
+assign LEDS[5] = ddr3_mem_status_local_cal_success;
+assign LEDS[4] = ddr3_mem_status_local_cal_fail;
 
 //==============================================================================
 // qsys
 
 system inst_system (
-    .clk_clk                ( CLK_125M                  ),
-    .reset_reset_n          ( 1'b1                      ),
-    .clk_cntr_meas          ( clk_cntr_meas             ),
-    .clk_cntr_led_dbg       ( LEDS[2]                   ),
-    .clk_125_clk            ( clk_125_int               ),
-    .led_dbg_export         ( LEDS[1:0]                 ),
-    .i2c_idt_osc_sda_in     ( I2C_IDT_SDA               ),
-    .i2c_idt_osc_scl_in     ( I2C_IDT_SCL               ),
-    .i2c_idt_osc_sda_oe     ( i2c_idt_osc_sda_oe        ),
-    .i2c_idt_osc_scl_oe     ( i2c_idt_osc_scl_oe        ),
-    .i2c_qsfp_0_sda_in      ( I2C_QSFP0_SDA             ),
-    .i2c_qsfp_0_scl_in      ( I2C_QSFP0_SCL             ),
-    .i2c_qsfp_0_sda_oe      ( i2c_qsfp_0_sda_oe         ),
-    .i2c_qsfp_0_scl_oe      ( i2c_qsfp_0_scl_oe         ),
-    .i2c_qsfp_1_sda_in      ( I2C_QSFP1_SDA             ),
-    .i2c_qsfp_1_scl_in      ( I2C_QSFP1_SCL             ),
-    .i2c_qsfp_1_sda_oe      ( i2c_qsfp_1_sda_oe         ),
-    .i2c_qsfp_1_scl_oe      ( i2c_qsfp_1_scl_oe         ),
-    .fortygig_eth_m0_waitrequest   (  ),
-    .fortygig_eth_m0_readdata      ( forty_gig_mac_status_readdata ),
-    .fortygig_eth_m0_readdatavalid ( forty_gig_mac_status_readdata_valid ),
-    .fortygig_eth_m0_burstcount    (  ),
-    .fortygig_eth_m0_writedata     ( forty_gig_mac_status_writedata ),
-    .fortygig_eth_m0_address       ( forty_gig_mac_status_addr ),
-    .fortygig_eth_m0_write         ( forty_gig_mac_status_write ),
-    .fortygig_eth_m0_read          ( forty_gig_mac_status_read ),
-    .fortygig_eth_m0_byteenable    ( ),
-    .fortygig_eth_m0_debugaccess   ( ),
-    .pio_40g_eth_reset_export      ( fortygig_eth_reset ),
-    .fortygig_eth_reconf_to_reconfig_to_xcvr     ( forty_gig_mac_reconfig_to_xcvr   ),
-    .fortygig_eth_reconf_from_reconfig_from_xcvr ( forty_gig_mac_reconfig_from_xcvr ),
-    .fortygig_eth_xcvr_busy_reconfig_busy        ( LEDS[5]                          ),
-    .fortygig_eth_reconf_reset_reset             ( forty_gig_mac_pma_arst_ST        )
+    .clk_clk                            ( CLK_125M                              ),
+    .reset_reset_n                      ( 1'b1                                  ),
+    .clk_cntr_meas                      ( clk_cntr_meas                         ),
+    .clk_cntr_led_dbg                   ( LEDS[2]                               ),
+    .clk_125_clk                        ( clk_125_int                           ),
+    .led_dbg_export                     ( LEDS[1:0]                             ),
+    .i2c_idt_osc_sda_in                 ( I2C_IDT_SDA                           ),
+    .i2c_idt_osc_scl_in                 ( I2C_IDT_SCL                           ),
+    .i2c_idt_osc_sda_oe                 ( i2c_idt_osc_sda_oe                    ),
+    .i2c_idt_osc_scl_oe                 ( i2c_idt_osc_scl_oe                    ),
+    .i2c_qsfp_0_sda_in                  ( I2C_QSFP0_SDA                         ),
+    .i2c_qsfp_0_scl_in                  ( I2C_QSFP0_SCL                         ),
+    .i2c_qsfp_0_sda_oe                  ( i2c_qsfp_0_sda_oe                     ),
+    .i2c_qsfp_0_scl_oe                  ( i2c_qsfp_0_scl_oe                     ),
+    .i2c_qsfp_1_sda_in                  ( I2C_QSFP1_SDA                         ),
+    .i2c_qsfp_1_scl_in                  ( I2C_QSFP1_SCL                         ),
+    .i2c_qsfp_1_sda_oe                  ( i2c_qsfp_1_sda_oe                     ),
+    .i2c_qsfp_1_scl_oe                  ( i2c_qsfp_1_scl_oe                     ),
+    .ddr3_mem_status_local_init_done    ( ddr3_mem_status_local_init_done       ),
+    .ddr3_mem_status_local_cal_success  ( ddr3_mem_status_local_cal_success     ),
+    .ddr3_mem_status_local_cal_fail     ( ddr3_mem_status_local_cal_fail        ),
+    .memory_mem_a                       ( memory_mem_a                          ),
+    .memory_mem_ba                      ( memory_mem_ba                         ),
+    .memory_mem_ck                      ( memory_mem_ck                         ),
+    .memory_mem_ck_n                    ( memory_mem_ck_n                       ),
+    .memory_mem_cke                     ( memory_mem_cke                        ),
+    .memory_mem_cs_n                    ( memory_mem_cs_n                       ),
+    .memory_mem_dm                      ( memory_mem_dm                         ),
+    .memory_mem_ras_n                   ( memory_mem_ras_n                      ),
+    .memory_mem_cas_n                   ( memory_mem_cas_n                      ),
+    .memory_mem_we_n                    ( memory_mem_we_n                       ),
+    .memory_mem_reset_n                 ( memory_mem_reset_n                    ),
+    .memory_mem_dq                      ( memory_mem_dq                         ),
+    .memory_mem_dqs                     ( memory_mem_dqs                        ),
+    .memory_mem_dqs_n                   ( memory_mem_dqs_n                      ),
+    .memory_mem_odt                     ( memory_mem_odt                        ),
+    .oct_rzqin                          ( oct_rzqin                             )
 );
 
 endmodule
