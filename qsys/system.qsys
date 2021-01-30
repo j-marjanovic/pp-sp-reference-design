@@ -65,6 +65,19 @@
          type = "int";
       }
    }
+   element ddr3_mem.avl
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
    element i2c_idt_osc
    {
       datum _sortIndex
@@ -151,6 +164,22 @@
       {
          value = "14";
          type = "int";
+      }
+   }
+   element mm_clock_crossing_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
+   element mm_clock_crossing_bridge_0.s0
+   {
+      datum baseAddress
+      {
+         value = "2147483648";
+         type = "String";
       }
    }
    element nios2_gen2_0
@@ -366,7 +395,7 @@
   <parameter name="CALIBRATION_MODE" value="Quick" />
   <parameter name="CALIB_REG_WIDTH" value="8" />
   <parameter name="CFG_DATA_REORDERING_TYPE" value="INTER_BANK" />
-  <parameter name="CFG_REORDER_DATA" value="true" />
+  <parameter name="CFG_REORDER_DATA" value="false" />
   <parameter name="CFG_TCCD_NS" value="2.5" />
   <parameter name="COMMAND_PHASE" value="0.0" />
   <parameter name="CONTROLLER_LATENCY" value="5" />
@@ -435,7 +464,7 @@
   <parameter name="INCLUDE_MULTIRANK_BOARD_DELAY_MODEL" value="false" />
   <parameter name="IS_ES_DEVICE" value="false" />
   <parameter name="LOCAL_ID_WIDTH" value="8" />
-  <parameter name="LRDIMM_EXTENDED_CONFIG">0x000000000000000000</parameter>
+  <parameter name="LRDIMM_EXTENDED_CONFIG" value="0x0" />
   <parameter name="MARGIN_VARIATION_TEST" value="false" />
   <parameter name="MAX_PENDING_RD_CMD" value="32" />
   <parameter name="MAX_PENDING_WR_CMD" value="16" />
@@ -455,7 +484,7 @@
   <parameter name="MEM_DEVICE" value="MISSING_MODEL" />
   <parameter name="MEM_DLL_EN" value="true" />
   <parameter name="MEM_DQ_PER_DQS" value="8" />
-  <parameter name="MEM_DQ_WIDTH" value="8" />
+  <parameter name="MEM_DQ_WIDTH" value="32" />
   <parameter name="MEM_DRV_STR" value="RZQ/6" />
   <parameter name="MEM_FORMAT" value="DISCRETE" />
   <parameter name="MEM_GUARANTEED_WRITE_INIT" value="false" />
@@ -472,22 +501,22 @@
   <parameter name="MEM_PD" value="DLL off" />
   <parameter name="MEM_RANK_MULTIPLICATION_FACTOR" value="1" />
   <parameter name="MEM_ROW_ADDR_WIDTH" value="15" />
-  <parameter name="MEM_RTT_NOM" value="RZQ/6" />
+  <parameter name="MEM_RTT_NOM" value="RZQ/4" />
   <parameter name="MEM_RTT_WR" value="RZQ/2" />
   <parameter name="MEM_SRT" value="Normal" />
   <parameter name="MEM_TCL" value="11" />
-  <parameter name="MEM_TFAW_NS" value="37.5" />
-  <parameter name="MEM_TINIT_US" value="499" />
-  <parameter name="MEM_TMRD_CK" value="3" />
-  <parameter name="MEM_TRAS_NS" value="40.0" />
+  <parameter name="MEM_TFAW_NS" value="30.0" />
+  <parameter name="MEM_TINIT_US" value="500" />
+  <parameter name="MEM_TMRD_CK" value="4" />
+  <parameter name="MEM_TRAS_NS" value="37.5" />
   <parameter name="MEM_TRCD_NS" value="13.75" />
-  <parameter name="MEM_TREFI_US" value="7.0" />
-  <parameter name="MEM_TRFC_NS" value="75.0" />
-  <parameter name="MEM_TRP_NS" value="15.0" />
-  <parameter name="MEM_TRRD_NS" value="7.5" />
+  <parameter name="MEM_TREFI_US" value="7.8" />
+  <parameter name="MEM_TRFC_NS" value="260.0" />
+  <parameter name="MEM_TRP_NS" value="13.75" />
+  <parameter name="MEM_TRRD_NS" value="6.25" />
   <parameter name="MEM_TRTP_NS" value="7.5" />
   <parameter name="MEM_TWR_NS" value="15.0" />
-  <parameter name="MEM_TWTR" value="2" />
+  <parameter name="MEM_TWTR" value="6" />
   <parameter name="MEM_USER_LEVELING_MODE" value="Leveling" />
   <parameter name="MEM_VENDOR" value="Hynix" />
   <parameter name="MEM_VERBOSE" value="true" />
@@ -589,7 +618,7 @@
   <parameter name="POWER_OF_TWO_BUS" value="false" />
   <parameter name="PRIORITY_PORT" value="1,1,1,1,1,1" />
   <parameter name="RATE" value="Quarter" />
-  <parameter name="RDIMM_CONFIG" value="0000000000000000" />
+  <parameter name="RDIMM_CONFIG" value="0" />
   <parameter name="READ_DQ_DQS_CLOCK_SOURCE" value="INVERTED_DQS_BUS" />
   <parameter name="READ_FIFO_SIZE" value="8" />
   <parameter name="REFRESH_BURST_VALIDATION" value="false" />
@@ -631,20 +660,20 @@
   <parameter name="TIMING_BOARD_TDS" value="0.0" />
   <parameter name="TIMING_BOARD_TIH" value="0.0" />
   <parameter name="TIMING_BOARD_TIS" value="0.0" />
-  <parameter name="TIMING_TDH" value="125" />
-  <parameter name="TIMING_TDQSCK" value="400" />
+  <parameter name="TIMING_TDH" value="110" />
+  <parameter name="TIMING_TDQSCK" value="225" />
   <parameter name="TIMING_TDQSCKDL" value="1200" />
   <parameter name="TIMING_TDQSCKDM" value="900" />
   <parameter name="TIMING_TDQSCKDS" value="450" />
-  <parameter name="TIMING_TDQSQ" value="120" />
+  <parameter name="TIMING_TDQSQ" value="150" />
   <parameter name="TIMING_TDQSS" value="0.25" />
-  <parameter name="TIMING_TDS" value="50" />
+  <parameter name="TIMING_TDS" value="40" />
   <parameter name="TIMING_TDSH" value="0.2" />
   <parameter name="TIMING_TDSS" value="0.2" />
-  <parameter name="TIMING_TIH" value="250" />
-  <parameter name="TIMING_TIS" value="175" />
+  <parameter name="TIMING_TIH" value="210" />
+  <parameter name="TIMING_TIS" value="140" />
   <parameter name="TIMING_TQH" value="0.38" />
-  <parameter name="TIMING_TQSH" value="0.38" />
+  <parameter name="TIMING_TQSH" value="0.4" />
   <parameter name="TRACKING_ERROR_TEST" value="false" />
   <parameter name="TRACKING_WATCH_TEST" value="false" />
   <parameter name="TREFI" value="35100" />
@@ -725,6 +754,23 @@
   <parameter name="USE_PLI" value="0" />
  </module>
  <module
+   name="mm_clock_crossing_bridge_0"
+   kind="altera_avalon_mm_clock_crossing_bridge"
+   version="19.1"
+   enabled="1">
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="COMMAND_FIFO_DEPTH" value="4" />
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="MASTER_SYNC_DEPTH" value="2" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="RESPONSE_FIFO_DEPTH" value="4" />
+  <parameter name="SLAVE_SYNC_DEPTH" value="2" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="30" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
+ </module>
+ <module
    name="nios2_gen2_0"
    kind="altera_nios2_gen2"
    version="19.1"
@@ -745,10 +791,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="31" />
+  <parameter name="dataAddrWidth" value="32" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='ddr3_mem.avl' start='0x80000000' end='0xC0000000' type='altera_mem_if_ddr3_emif.avl' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1038,6 +1084,15 @@
    kind="avalon"
    version="19.1"
    start="nios2_gen2_0.data_master"
+   end="mm_clock_crossing_bridge_0.s0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x80000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
+   start="nios2_gen2_0.data_master"
    end="prog_mem.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x10000000" />
@@ -1082,6 +1137,15 @@
  <connection
    kind="avalon"
    version="19.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="ddr3_mem.avl">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
    start="master_1.master"
    end="ddr3_mem.avl">
   <parameter name="arbitrationPriority" value="1" />
@@ -1102,6 +1166,11 @@
    version="19.1"
    start="ddr3_mem.afi_clk"
    end="master_1.clk" />
+ <connection
+   kind="clock"
+   version="19.1"
+   start="ddr3_mem.afi_clk"
+   end="mm_clock_crossing_bridge_0.m0_clk" />
  <connection kind="clock" version="19.1" start="clk_125.clk" end="jtag_uart_0.clk" />
  <connection kind="clock" version="19.1" start="clk_125.clk" end="timer_0.clk" />
  <connection
@@ -1148,6 +1217,11 @@
    start="clk_125.clk"
    end="ddr3_mem.pll_ref_clk" />
  <connection
+   kind="clock"
+   version="19.1"
+   start="clk_125.clk"
+   end="mm_clock_crossing_bridge_0.s0_clk" />
+ <connection
    kind="interrupt"
    version="19.1"
    start="nios2_gen2_0.irq"
@@ -1187,6 +1261,11 @@
    version="19.1"
    start="ddr3_mem.afi_reset"
    end="master_1.clk_reset" />
+ <connection
+   kind="reset"
+   version="19.1"
+   start="ddr3_mem.afi_reset"
+   end="mm_clock_crossing_bridge_0.m0_reset" />
  <connection
    kind="reset"
    version="19.1"
@@ -1251,6 +1330,11 @@
    kind="reset"
    version="19.1"
    start="clk_125.clk_reset"
+   end="mm_clock_crossing_bridge_0.s0_reset" />
+ <connection
+   kind="reset"
+   version="19.1"
+   start="clk_125.clk_reset"
    end="ddr3_mem.soft_reset" />
  <connection
    kind="reset"
@@ -1264,6 +1348,11 @@
    end="timer_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableInstrumentation" value="TRUE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+ <interconnectRequirement
+   for="ddr3_mem.avl"
+   name="qsys_mm.insertPerformanceMonitor"
+   value="FALSE" />
 </system>
