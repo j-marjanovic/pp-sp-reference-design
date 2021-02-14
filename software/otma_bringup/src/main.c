@@ -12,6 +12,7 @@
 
 #define IDT8NxQ001_I2C_ADDR (0x6e)
 
+/*
 void clock_counter_get_info(uint32_t base, uint32_t *ident_reg,
                             uint32_t *version) {
   if (ident_reg) {
@@ -95,10 +96,20 @@ void blink_loop_error() {
     usleep(1e5);
   }
 }
+*/
+
+void memtest() {
+
+}
 
 int main() {
   // set LED GPIO as output
   IOWR_ALTERA_AVALON_PIO_DIRECTION(PIO_0_BASE, 0x3);
+
+
+  while (1) {
+	  memtest();
+  }
 
   // read clock counter ID and version
   uint32_t cc_ident_reg, cc_version;

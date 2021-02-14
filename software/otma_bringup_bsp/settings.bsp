@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
-        <BspVersion>16.1</BspVersion>
-        <BspGeneratedTimeStamp>Sep 26, 2020 6:09:24 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1601136564763</BspGeneratedUnixTimeStamp>
+        <BspVersion>19.1</BspVersion>
+        <BspGeneratedTimeStamp>Jan 22, 2021 8:41:49 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1611344509444</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jan/Projects/FPGA/otma-fpga-bringup/software/otma_bringup_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../qsys/system.sopcinfo</SopcDesignFile>
@@ -953,16 +953,10 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_40g_eth_reset</slaveDescriptor>
-                <addressRange>0x4000C000 - 0x4000C00F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>fortygig_eth_status</slaveDescriptor>
-                <addressRange>0x40010000 - 0x4001FFFF</addressRange>
-                <addressSpan>65536</addressSpan>
-                <attributes/>
+                <slaveDescriptor>ddr3_mem</slaveDescriptor>
+                <addressRange>0x80000000 - 0x8FFFFFFF</addressRange>
+                <addressSpan>268435456</addressSpan>
+                <attributes>memory</attributes>
         </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>
