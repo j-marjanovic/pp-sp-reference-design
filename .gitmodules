@@ -1,3 +1,0 @@
-[submodule "software/otma_bringup/src/linenoise-baremetal"]
-	path = software/otma_bringup/src/linenoise-baremetal
-	url = git@github.com:j-marjanovic/linenoise-baremetal.git
