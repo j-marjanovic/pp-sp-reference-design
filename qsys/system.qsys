@@ -286,6 +286,38 @@
          type = "String";
       }
    }
+   element system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Stratix V";
+         type = "String";
+      }
+   }
+   element system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Stratix V";
+         type = "String";
+      }
+   }
+   element system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Stratix V";
+         type = "String";
+      }
+   }
+   element system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Stratix V";
+         type = "String";
+      }
+   }
    element timer_0
    {
       datum _sortIndex
@@ -405,13 +437,13 @@
   <parameter name="AUTO_PD_CYCLES" value="0" />
   <parameter name="AUTO_POWERDN_EN" value="false" />
   <parameter name="AVL_DATA_WIDTH_PORT" value="32,32,32,32,32,32" />
-  <parameter name="AVL_MAX_SIZE" value="64" />
-  <parameter name="BYTE_ENABLE" value="true" />
+  <parameter name="AVL_MAX_SIZE" value="128" />
+  <parameter name="BYTE_ENABLE" value="false" />
   <parameter name="C2P_WRITE_CLOCK_ADD_PHASE" value="0.0" />
   <parameter name="CALIBRATION_MODE" value="Quick" />
   <parameter name="CALIB_REG_WIDTH" value="8" />
   <parameter name="CFG_DATA_REORDERING_TYPE" value="INTER_BANK" />
-  <parameter name="CFG_REORDER_DATA" value="false" />
+  <parameter name="CFG_REORDER_DATA" value="true" />
   <parameter name="CFG_TCCD_NS" value="2.5" />
   <parameter name="COMMAND_PHASE" value="0.0" />
   <parameter name="CONTROLLER_LATENCY" value="5" />
@@ -631,7 +663,7 @@
   <parameter name="PLL_WRITE_CLK_MULT_PARAM" value="0" />
   <parameter name="PLL_WRITE_CLK_PHASE_PS_PARAM" value="0" />
   <parameter name="PLL_WRITE_CLK_PHASE_PS_SIM_STR_PARAM" value="" />
-  <parameter name="POWER_OF_TWO_BUS" value="false" />
+  <parameter name="POWER_OF_TWO_BUS" value="true" />
   <parameter name="PRIORITY_PORT" value="1,1,1,1,1,1" />
   <parameter name="RATE" value="Quarter" />
   <parameter name="RDIMM_CONFIG" value="0" />
@@ -1356,7 +1388,7 @@
    end="mem_checker_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
- <interconnectRequirement for="$system" name="qsys_mm.enableInstrumentation" value="TRUE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableInstrumentation" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
  <interconnectRequirement
