@@ -437,13 +437,13 @@
   <parameter name="AUTO_PD_CYCLES" value="0" />
   <parameter name="AUTO_POWERDN_EN" value="false" />
   <parameter name="AVL_DATA_WIDTH_PORT" value="32,32,32,32,32,32" />
-  <parameter name="AVL_MAX_SIZE" value="128" />
+  <parameter name="AVL_MAX_SIZE" value="64" />
   <parameter name="BYTE_ENABLE" value="false" />
   <parameter name="C2P_WRITE_CLOCK_ADD_PHASE" value="0.0" />
   <parameter name="CALIBRATION_MODE" value="Quick" />
   <parameter name="CALIB_REG_WIDTH" value="8" />
   <parameter name="CFG_DATA_REORDERING_TYPE" value="INTER_BANK" />
-  <parameter name="CFG_REORDER_DATA" value="true" />
+  <parameter name="CFG_REORDER_DATA" value="false" />
   <parameter name="CFG_TCCD_NS" value="2.5" />
   <parameter name="COMMAND_PHASE" value="0.0" />
   <parameter name="CONTROLLER_LATENCY" value="5" />
