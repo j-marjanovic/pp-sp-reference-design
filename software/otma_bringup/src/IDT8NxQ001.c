@@ -135,56 +135,56 @@ void idt8nxq001_encode_conf(const struct idt8nxq001_conf *conf,
 
 void idt8nxq001_conf_print(const struct idt8nxq001_conf *conf) {
 
-  printf("IDT8NXQ001 config:\n");
+  alt_printf("IDT8NXQ001 config:\n");
 
-  printf("  MINT     :");
+  alt_printf("  MINT     :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %02d", conf->MINT[i]);
+    alt_printf(" %02d", conf->MINT[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
-  printf("  MFRAC    :");
+  alt_printf("  MFRAC    :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %06d", conf->MFRAC[i]);
+    alt_printf(" %06lu", conf->MFRAC[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
-  printf("  N        :");
+  alt_printf("  N        :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %02d", conf->N[i]);
+    alt_printf(" %02d", conf->N[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
-  printf("  P        :");
+  alt_printf("  P        :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %02d", conf->P[i]);
+    alt_printf(" %02d", conf->P[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
   // DG not printed
   // DSM not printed
 
-  printf("  DSM_ENA  :");
+  alt_printf("  DSM_ENA  :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %d", conf->DSM_ENA[i]);
+    alt_printf(" %d", conf->DSM_ENA[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
-  printf("  LF       :");
+  alt_printf("  LF       :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %d", conf->LF[i]);
+    alt_printf(" %d", conf->LF[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
-  printf("  CP       :");
+  alt_printf("  CP       :");
   for (int i = 0; i < NR_CH; i++) {
-    printf(" %d", conf->CP[i]);
+    alt_printf(" %d", conf->CP[i]);
   }
-  printf("\n");
+  alt_printf("\n");
 
-  printf("  FSEL     : %d\n", conf->FSEL);
-  printf("  nPLL_BYP : %d\n", conf->nPLL_BYP);
-  printf("  ADC_ENA  : %d\n", conf->ADC_ENA);
+  alt_printf("  FSEL     : %d\n", conf->FSEL);
+  alt_printf("  nPLL_BYP : %d\n", conf->nPLL_BYP);
+  alt_printf("  ADC_ENA  : %d\n", conf->ADC_ENA);
 }
 
 void idt8nxq001_set_freq(struct idt8nxq001_conf *conf, unsigned int ch_sel,

@@ -20,35 +20,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-#include <stdio.h>
-#include <unistd.h>
+#pragma once
 
-#include "altera_avalon_i2c.h"
-
-#include "mini_i2cdetect.h"
-
-void mini_i2cdetect(ALT_AVALON_I2C_DEV_t *i2c_dev, uint16_t start_addr,
-                    uint16_t stop_addr) {
-  uint8_t rx_buf[1];
-  alt_printf(" %04x | ", 0);
-  for (int i = 0; i < (start_addr % 16); i++) {
-    alt_printf("   ");
-  }
-
-  for (int addr = start_addr; addr < stop_addr; addr++) {
-    if ((addr % 16) == 0) {
-      alt_printf("\n %04x | ", addr);
-    }
-
-    alt_avalon_i2c_master_target_set(i2c_dev, addr);
-    ALT_AVALON_I2C_STATUS_CODE rc = alt_avalon_i2c_master_receive(
-        i2c_dev, rx_buf, 1, ALT_AVALON_I2C_NO_RESTART, ALT_AVALON_I2C_STOP);
-    if (rc == ALT_AVALON_I2C_SUCCESS) {
-      alt_printf("%02x ", addr);
-    } else {
-      alt_printf("-- ");
-    }
-    usleep(1000);
-  }
-  alt_printf("\n");
-}
+void cli(void);
