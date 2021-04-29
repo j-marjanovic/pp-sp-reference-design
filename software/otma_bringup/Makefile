@@ -146,6 +146,8 @@ C_SRCS += src/main.c
 C_SRCS += src/IDT8NxQ001.c
 C_SRCS += src/mini_i2cdetect.c
 C_SRCS += src/cli.c
+C_SRCS += src/devices.c
+C_SRCS += src/cli_commands.c
 CXX_SRCS :=
 ASM_SRCS :=
 

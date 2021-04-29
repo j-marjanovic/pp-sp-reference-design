@@ -27,60 +27,12 @@ SOFTWARE.
 #include "sys/alt_stdio.h"
 #include "system.h"
 
-#include "clock_counter.h"
+#include "cli_commands.h"
 
 #define CLI_PROMPT ("pp_sp_example > ")
 #define CLI_BUFFER_SIZE (32)
 
-typedef void (*cli_func_ptr)(char *, char *, char *);
-
-struct cmd {
-  const char *cmd;
-  const char *help;
-  cli_func_ptr func;
-};
-
-void cmd_hello(char *cmd, char *arg1, char *arg2);
-void cmd_help(char *cmd, char *arg1, char *arg2);
-void cmd_i2cdetect(char *cmd, char *arg1, char *arg2);
-void cmd_clock_counter(char *cmd, char *arg1, char *arg2);
-
-struct cmd cmds[] = {
-    {"hello", "Says hello", cmd_hello},
-    {"help", "Prints help", cmd_help},
-    {"i2cdetect", "Scans I2C bus", cmd_i2cdetect},
-    {"clk_counter", "Print clock frequencies", cmd_clock_counter},
-};
-
-void cmd_hello(char *cmd, char *arg1, char *arg2) { alt_printf("hello\n"); }
-
-void cmd_help(char *cmd, char *arg1, char *arg2) {
-  alt_printf("Available commands:\n");
-  for (int i = 0; i < sizeof(cmds) / sizeof(cmds[0]); i++) {
-    alt_printf("  %s - %s\n", cmds[i].cmd, cmds[i].help);
-  }
-}
-
-void cmd_i2cdetect(char *cmd, char *arg1, char *arg2) {
-  // TODO: logic
-  alt_printf("I2C arg1 = %s\n", arg1);
-  alt_printf("I2C arg2 = %s\n", arg2);
-}
-
-void cmd_clock_counter(char *cmd, char *arg1, char *arg2) {
-  // read clock counter ID and version
-  uint32_t cc_ident_reg, cc_version;
-  clock_counter_get_info(CLOCK_COUNTER_0_BASE, &cc_ident_reg, &cc_version);
-  alt_printf("Clock counter: ident = 0x%x, version = 0x%x\n", cc_ident_reg,
-             cc_version);
-
-  for (int i = 0; i < 8; i++) {
-    uint32_t clk_freq = clock_counter_get_freq(CLOCK_COUNTER_0_BASE, i);
-    alt_printf("Clock frequency [%x]: 0x%x Hz\n", i, clk_freq);
-  }
-}
-
-void simple_sscanf(char *cmd_args, char *cmd, char *arg1, char *arg2) {
+static void simple_sscanf(char *cmd_args, char *cmd, char *arg1, char *arg2) {
   char *dests[] = {cmd, arg1, arg2};
   int dest_sel = 0;
 
@@ -123,7 +75,7 @@ void cli(void) {
 
       // traverse all commands
       bool matched = false;
-      for (int i = 0; i < sizeof(cmds) / sizeof(cmds[0]); i++) {
+      for (int i = 0; i < cmd_len; i++) {
         if (strcmp(cmd, cmds[i].cmd) == 0) {
           matched = true;
 
@@ -131,7 +83,7 @@ void cli(void) {
         }
       }
 
-      // user command did not match any command in the command array
+      // user command did not match any command in the command list
       if (!matched) {
         alt_printf("unknown command: %s\n", cmd_buf);
       }

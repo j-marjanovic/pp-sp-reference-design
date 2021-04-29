@@ -20,13 +20,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-#pragma once
+#include "devices.h"
 
-#include <stdint.h>
-
-#include "altera_avalon_i2c.h"
-
-void mini_i2cdetect(ALT_AVALON_I2C_DEV_t *i2c_dev, uint16_t start_addr,
-                    uint16_t stop_addr);
-
-void mini_i2cdump(ALT_AVALON_I2C_DEV_t *i2c_dev, uint8_t addr);
+struct devices devices;

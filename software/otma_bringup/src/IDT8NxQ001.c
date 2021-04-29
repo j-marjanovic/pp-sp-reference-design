@@ -1,3 +1,24 @@
+/*
+Copyright (c) 2021 Jan Marjanovic
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ */
 
 #include <assert.h>
 #include <stdbool.h>
@@ -139,25 +160,25 @@ void idt8nxq001_conf_print(const struct idt8nxq001_conf *conf) {
 
   alt_printf("  MINT     :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %02d", conf->MINT[i]);
+    alt_printf(" %x", conf->MINT[i]);
   }
   alt_printf("\n");
 
   alt_printf("  MFRAC    :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %06lu", conf->MFRAC[i]);
+    alt_printf(" %x", conf->MFRAC[i]);
   }
   alt_printf("\n");
 
   alt_printf("  N        :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %02d", conf->N[i]);
+    alt_printf(" %x", conf->N[i]);
   }
   alt_printf("\n");
 
   alt_printf("  P        :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %02d", conf->P[i]);
+    alt_printf(" %x", conf->P[i]);
   }
   alt_printf("\n");
 
@@ -166,25 +187,25 @@ void idt8nxq001_conf_print(const struct idt8nxq001_conf *conf) {
 
   alt_printf("  DSM_ENA  :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %d", conf->DSM_ENA[i]);
+    alt_printf(" %x", conf->DSM_ENA[i]);
   }
   alt_printf("\n");
 
   alt_printf("  LF       :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %d", conf->LF[i]);
+    alt_printf(" %x", conf->LF[i]);
   }
   alt_printf("\n");
 
   alt_printf("  CP       :");
   for (int i = 0; i < NR_CH; i++) {
-    alt_printf(" %d", conf->CP[i]);
+    alt_printf(" %x", conf->CP[i]);
   }
   alt_printf("\n");
 
-  alt_printf("  FSEL     : %d\n", conf->FSEL);
-  alt_printf("  nPLL_BYP : %d\n", conf->nPLL_BYP);
-  alt_printf("  ADC_ENA  : %d\n", conf->ADC_ENA);
+  alt_printf("  FSEL     : %x\n", conf->FSEL);
+  alt_printf("  nPLL_BYP : %x\n", conf->nPLL_BYP);
+  alt_printf("  ADC_ENA  : %x\n", conf->ADC_ENA);
 }
 
 void idt8nxq001_set_freq(struct idt8nxq001_conf *conf, unsigned int ch_sel,

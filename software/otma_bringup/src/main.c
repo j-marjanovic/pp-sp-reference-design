@@ -31,33 +31,8 @@ SOFTWARE.
 #include "sys/alt_stdio.h"
 #include "system.h"
 
-#include "IDT8NxQ001.h"
 #include "cli.h"
-#include "clock_counter.h"
-
-#define IDT8NxQ001_I2C_ADDR (0x6e)
-
-/*
-
-void qsfp_dump_config(ALT_AVALON_I2C_DEV_t *i2c_dev) {
-          // read IDT oscillator config
-          uint8_t tx_buf[1] = {0};
-          uint8_t rx_buf[16] = {0};
-          ALT_AVALON_I2C_STATUS_CODE rc;
-
-          alt_avalon_i2c_master_target_set(i2c_dev, 0x50);
-          for (int i = 0; i < 16; i++) {
-                  tx_buf[0] = i*16;
-                  rc = alt_avalon_i2c_master_tx_rx(
-                                  i2c_dev, tx_buf, 1, rx_buf, 16, 1);
-                  printf("rc = %d | ", rc);
-                  for (int i = 0; i < 16; i++) {
-                          printf("%02x ", rx_buf[i]);
-                  }
-                  printf("\n");
-          }
-}
-
+#include "devices.h"
 
 void blink_loop_error() {
   while (1) {
@@ -67,42 +42,47 @@ void blink_loop_error() {
     usleep(1e5);
   }
 }
-*/
 
 void init_leds() {
   // set LED GPIO as output
   IOWR_ALTERA_AVALON_PIO_DIRECTION(PIO_0_BASE, 0x3);
 }
 
-void init_i2cs(ALT_AVALON_I2C_DEV_t **i2c_dev_idt,
-               ALT_AVALON_I2C_DEV_t **i2c_dev_qsfp0) {
-  *i2c_dev_idt = alt_avalon_i2c_open(I2C_IDT_OSC_NAME);
+void init_i2c_single(ALT_AVALON_I2C_DEV_t **i2c_dev, const char *name) {
+  int rc;
+
+  *i2c_dev = alt_avalon_i2c_open(name);
+  if (*i2c_dev == NULL) {
+    alt_printf("init_i2c_single: error - could not open device %s\n", name);
+    blink_loop_error();
+  }
+
   ALT_AVALON_I2C_MASTER_CONFIG_t i2c_idt_cfg = {
       .addr_mode = ALT_AVALON_I2C_ADDR_MODE_7_BIT,
       .speed_mode = ALT_AVALON_I2C_SPEED_STANDARD,
   };
-  alt_avalon_i2c_master_config_speed_set(*i2c_dev_idt, &i2c_idt_cfg, 400000);
-  alt_avalon_i2c_master_config_set(*i2c_dev_idt, &i2c_idt_cfg);
 
-  IRQ_DATA_t irq_data_idt;
-  alt_avalon_i2c_register_optional_irq_handler(*i2c_dev_idt, &irq_data_idt);
+  rc = alt_avalon_i2c_master_config_speed_set(*i2c_dev, &i2c_idt_cfg, 400000);
+  if (rc != ALT_AVALON_I2C_SUCCESS) {
+    alt_printf("init_i2c_single: error - config speed set failed\n");
+    blink_loop_error();
+  }
+  alt_avalon_i2c_master_config_set(*i2c_dev, &i2c_idt_cfg);
+}
 
-  // QSFP
-  *i2c_dev_qsfp0 = alt_avalon_i2c_open(I2C_QSFP_1_NAME);
-  ALT_AVALON_I2C_MASTER_CONFIG_t i2c_qsfp0_cfg = {
-      .addr_mode = ALT_AVALON_I2C_ADDR_MODE_7_BIT,
-      .speed_mode = ALT_AVALON_I2C_SPEED_STANDARD,
-  };
-  alt_avalon_i2c_master_config_speed_set(*i2c_dev_qsfp0, &i2c_qsfp0_cfg,
-                                         400000);
-  alt_avalon_i2c_master_config_set(*i2c_dev_qsfp0, &i2c_qsfp0_cfg);
+void init_i2cs(ALT_AVALON_I2C_DEV_t **i2c_dev_idt,
+               ALT_AVALON_I2C_DEV_t **i2c_dev_qsfp0,
+               ALT_AVALON_I2C_DEV_t **i2c_dev_qsfp1) {
+
+  init_i2c_single(i2c_dev_idt, I2C_IDT_OSC_NAME);
+  init_i2c_single(i2c_dev_qsfp0, I2C_QSFP_0_NAME);
+  init_i2c_single(i2c_dev_qsfp1, I2C_QSFP_1_NAME);
 }
 
 int main() {
-  ALT_AVALON_I2C_DEV_t *i2c_dev_idt, *i2c_dev_qsfp0;
-
   init_leds();
-  init_i2cs(&i2c_dev_idt, &i2c_dev_qsfp0);
+  init_i2cs(&devices.i2c_dev_idt, &devices.i2c_dev_qsfp0,
+            &devices.i2c_dev_qsfp1);
 
   while (true) {
     cli();

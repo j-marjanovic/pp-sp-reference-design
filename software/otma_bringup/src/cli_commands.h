@@ -24,9 +24,21 @@ SOFTWARE.
 
 #include <stdint.h>
 
-#include "altera_avalon_i2c.h"
+typedef void (*cli_func_ptr)(char *, char *, char *);
 
-void mini_i2cdetect(ALT_AVALON_I2C_DEV_t *i2c_dev, uint16_t start_addr,
-                    uint16_t stop_addr);
+struct cmd {
+  const char *cmd;
+  const char *help;
+  cli_func_ptr func;
+};
 
-void mini_i2cdump(ALT_AVALON_I2C_DEV_t *i2c_dev, uint8_t addr);
+extern struct cmd cmds[];
+extern size_t cmd_len;
+
+void cmd_clks(char *cmd, char *arg1, char *arg2);
+void cmd_eeprom(char *cmd, char *arg1, char *arg2);
+void cmd_hello(char *cmd, char *arg1, char *arg2);
+void cmd_help(char *cmd, char *arg1, char *arg2);
+void cmd_i2cdetect(char *cmd, char *arg1, char *arg2);
+void cmd_idt(char *cmd, char *arg1, char *arg2);
+void cmd_mem_test(char *cmd, char *arg1, char *arg2);
