@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>19.1</BspVersion>
-        <BspGeneratedTimeStamp>Apr 29, 2021 5:40:20 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1619710820554</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 30, 2021 10:39:25 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1619815165545</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jan/Projects/FPGA/otma-fpga-bringup_DDR3/software/otma_bringup_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../qsys/system.sopcinfo</SopcDesignFile>
@@ -954,8 +954,20 @@
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>mem_checker_0</slaveDescriptor>
-                <addressRange>0xC0000000 - 0xC00000FF</addressRange>
+                <addressRange>0x60000000 - 0x600000FF</addressRange>
                 <addressSpan>256</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>address_span_extender_0_cntl</slaveDescriptor>
+                <addressRange>0x60001000 - 0x60001007</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>address_span_extender_0_windowed_slave</slaveDescriptor>
+                <addressRange>0x70000000 - 0x7FFFFFFF</addressRange>
+                <addressSpan>268435456</addressSpan>
                 <attributes/>
         </MemoryMap>
         <LinkerSection>

@@ -9,6 +9,30 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element address_span_extender_0
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
+   element address_span_extender_0.cntl
+   {
+      datum baseAddress
+      {
+         value = "4096";
+         type = "String";
+      }
+   }
+   element address_span_extender_0.windowed_slave
+   {
+      datum baseAddress
+      {
+         value = "268435456";
+         type = "String";
+      }
+   }
    element clk_125
    {
       datum _sortIndex
@@ -61,7 +85,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "16";
          type = "int";
       }
    }
@@ -170,7 +194,7 @@
    {
       datum baseAddress
       {
-         value = "1073741824";
+         value = "0";
          type = "String";
       }
    }
@@ -178,7 +202,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "13";
          type = "int";
       }
    }
@@ -186,7 +210,7 @@
    {
       datum baseAddress
       {
-         value = "2147483648";
+         value = "1610612736";
          type = "String";
       }
    }
@@ -394,6 +418,20 @@
  <interface name="memory" internal="ddr3_mem.memory" type="conduit" dir="end" />
  <interface name="oct" internal="ddr3_mem.oct" type="conduit" dir="end" />
  <interface name="reset" internal="clk_125.clk_in_reset" type="reset" dir="end" />
+ <module
+   name="address_span_extender_0"
+   kind="altera_address_span_extender"
+   version="19.1"
+   enabled="1">
+  <parameter name="BURSTCOUNT_WIDTH" value="1" />
+  <parameter name="DATA_WIDTH" value="512" />
+  <parameter name="ENABLE_SLAVE_PORT" value="true" />
+  <parameter name="MASTER_ADDRESS_DEF" value="0" />
+  <parameter name="MASTER_ADDRESS_WIDTH" value="32" />
+  <parameter name="MAX_PENDING_READS" value="1" />
+  <parameter name="SLAVE_ADDRESS_WIDTH" value="22" />
+  <parameter name="SUB_WINDOW_COUNT" value="1" />
+ </module>
  <module name="clk_125" kind="clock_source" version="19.1" enabled="1">
   <parameter name="clockFrequency" value="125000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -794,7 +832,7 @@
    version="19.1"
    enabled="1">
   <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
-  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="ADDRESS_WIDTH" value="29" />
   <parameter name="COMMAND_FIFO_DEPTH" value="4" />
   <parameter name="DATA_WIDTH" value="32" />
   <parameter name="MASTER_SYNC_DEPTH" value="2" />
@@ -802,8 +840,8 @@
   <parameter name="RESPONSE_FIFO_DEPTH" value="4" />
   <parameter name="SLAVE_SYNC_DEPTH" value="2" />
   <parameter name="SYMBOL_WIDTH" value="8" />
-  <parameter name="SYSINFO_ADDR_WIDTH" value="31" />
-  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="29" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="0" />
  </module>
  <module
    name="nios2_gen2_0"
@@ -826,10 +864,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="32" />
+  <parameter name="dataAddrWidth" value="31" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='mem_checker_0.ctrl' start='0xC0000000' end='0xC0000100' type='mem_checker.ctrl' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='mem_checker_0.ctrl' start='0x60000000' end='0x60000100' type='mem_checker.ctrl' /><slave name='address_span_extender_0.cntl' start='0x60001000' end='0x60001008' type='altera_address_span_extender.cntl' /><slave name='address_span_extender_0.windowed_slave' start='0x70000000' end='0x80000000' type='altera_address_span_extender.windowed_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1121,7 +1159,7 @@
    start="nios2_gen2_0.data_master"
    end="mm_clock_crossing_bridge_0.s0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x80000000" />
+  <parameter name="baseAddress" value="0x60000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1154,6 +1192,15 @@
  <connection
    kind="avalon"
    version="19.1"
+   start="address_span_extender_0.expanded_master"
+   end="ddr3_mem.avl">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
    start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -1173,9 +1220,27 @@
    kind="avalon"
    version="19.1"
    start="mm_clock_crossing_bridge_0.m0"
+   end="address_span_extender_0.cntl">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x1000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
+   start="mm_clock_crossing_bridge_0.m0"
    end="mem_checker_0.ctrl">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x40000000" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="address_span_extender_0.windowed_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x10000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1201,6 +1266,11 @@
    version="19.1"
    start="ddr3_mem.afi_clk"
    end="mem_checker_0.clock" />
+ <connection
+   kind="clock"
+   version="19.1"
+   start="ddr3_mem.afi_clk"
+   end="address_span_extender_0.clock" />
  <connection
    kind="clock"
    version="19.1"
@@ -1301,6 +1371,11 @@
    version="19.1"
    start="ddr3_mem.afi_reset"
    end="mem_checker_0.reset" />
+ <connection
+   kind="reset"
+   version="19.1"
+   start="ddr3_mem.afi_reset"
+   end="address_span_extender_0.reset" />
  <connection
    kind="reset"
    version="19.1"
