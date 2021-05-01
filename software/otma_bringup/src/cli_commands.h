@@ -33,7 +33,7 @@ struct cmd {
 };
 
 extern struct cmd cmds[];
-extern size_t cmd_len;
+extern size_t cmds_len;
 
 void cmd_clks(char *cmd, char *arg1, char *arg2);
 void cmd_eeprom(char *cmd, char *arg1, char *arg2);
@@ -42,3 +42,4 @@ void cmd_help(char *cmd, char *arg1, char *arg2);
 void cmd_i2cdetect(char *cmd, char *arg1, char *arg2);
 void cmd_idt(char *cmd, char *arg1, char *arg2);
 void cmd_mem_test(char *cmd, char *arg1, char *arg2);
+void cmd_sys_id(char *cmd, char *arg1, char *arg2);

@@ -28,6 +28,7 @@ struct devices {
   ALT_AVALON_I2C_DEV_t *i2c_dev_idt;
   ALT_AVALON_I2C_DEV_t *i2c_dev_qsfp0;
   ALT_AVALON_I2C_DEV_t *i2c_dev_qsfp1;
+  ALT_AVALON_I2C_DEV_t *i2c_dev_mon;
 };
 
 extern struct devices devices;

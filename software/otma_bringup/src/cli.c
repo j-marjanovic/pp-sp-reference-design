@@ -75,7 +75,7 @@ void cli(void) {
 
       // traverse all commands
       bool matched = false;
-      for (int i = 0; i < cmd_len; i++) {
+      for (int i = 0; i < cmds_len; i++) {
         if (strcmp(cmd, cmds[i].cmd) == 0) {
           matched = true;
 

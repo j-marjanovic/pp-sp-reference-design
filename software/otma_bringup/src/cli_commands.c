@@ -26,6 +26,7 @@ SOFTWARE.
 #include "system.h"
 
 #include "IDT8NxQ001.h"
+#include "altera_avalon_sysid_qsys_regs.h"
 #include "cli_commands.h"
 #include "clock_counter.h"
 #include "devices.h"
@@ -40,9 +41,10 @@ struct cmd cmds[] = {
     {"i2cdetect", "Scans I2C bus", cmd_i2cdetect},
     {"idt", "Manage IDT oscillator", cmd_idt},
     {"mem_test", "Performs the DDR3 memory test", cmd_mem_test},
+    {"sys_id", "Shows system ID", cmd_sys_id},
 };
 
-size_t cmd_len = sizeof(cmds) / sizeof(cmds[0]);
+size_t cmds_len = sizeof(cmds) / sizeof(cmds[0]);
 
 void cmd_clks(char *cmd, char *arg1, char *arg2) {
   uint32_t cc_ident_reg, cc_version;
@@ -55,11 +57,21 @@ void cmd_clks(char *cmd, char *arg1, char *arg2) {
     alt_printf("Clock frequency [%x] = ", i);
 
     // poor man's %f - alt_printf does not have it
-    for (int scale = 100000000; scale > 1000; scale /= 10) {
+    bool first_non_zero = false;
+    for (int scale = 1000000000; scale >= 1000; scale /= 10) {
       uint32_t digit = clk_freq / scale;
       clk_freq -= digit * scale;
 
-      alt_putchar(digit + '0');
+      if ((digit != 0) || (scale == 1000000)) {
+        first_non_zero = true;
+      }
+
+      if (first_non_zero) {
+        alt_putchar(digit + '0');
+      } else {
+        alt_putchar(' ');
+      }
+
       if (scale == 1000000) {
         alt_putchar('.');
       }
@@ -145,4 +157,12 @@ void cmd_idt(char *cmd, char *arg1, char *arg2) {
 
 void cmd_mem_test(char *cmd, char *arg1, char *arg2) {
   mem_check(MEM_CHECKER_0_BASE, 0, 4294967040);
+}
+
+void cmd_sys_id(char *cmd, char *arg1, char *arg2) {
+  uint32_t sys_id = IORD_ALTERA_AVALON_SYSID_QSYS_ID(SYSID_QSYS_0_BASE);
+  uint32_t timestamp =
+      IORD_ALTERA_AVALON_SYSID_QSYS_TIMESTAMP(SYSID_QSYS_0_BASE);
+  alt_printf("system id = 0x%x\n", sys_id);
+  alt_printf("timestamp = 0x%x\n", timestamp);
 }
