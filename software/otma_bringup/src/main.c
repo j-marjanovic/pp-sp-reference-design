@@ -70,20 +70,19 @@ void init_i2c_single(ALT_AVALON_I2C_DEV_t **i2c_dev, const char *name) {
   alt_avalon_i2c_master_config_set(*i2c_dev, &i2c_idt_cfg);
 }
 
-void init_i2cs(ALT_AVALON_I2C_DEV_t **i2c_dev_idt,
-               ALT_AVALON_I2C_DEV_t **i2c_dev_qsfp0,
-               ALT_AVALON_I2C_DEV_t **i2c_dev_qsfp1) {
+void init_i2cs(void) {
 
-  init_i2c_single(i2c_dev_idt, I2C_IDT_OSC_NAME);
-  init_i2c_single(i2c_dev_qsfp0, I2C_QSFP_0_NAME);
-  init_i2c_single(i2c_dev_qsfp1, I2C_QSFP_1_NAME);
+  init_i2c_single(&devices.i2c_dev_idt, I2C_IDT_OSC_NAME);
+  init_i2c_single(&devices.i2c_dev_qsfp0, I2C_QSFP_0_NAME);
+  init_i2c_single(&devices.i2c_dev_qsfp1, I2C_QSFP_1_NAME);
+  init_i2c_single(&devices.i2c_dev_mon, I2C_MON_NAME);
 }
 
 int main() {
   init_leds();
-  init_i2cs(&devices.i2c_dev_idt, &devices.i2c_dev_qsfp0,
-            &devices.i2c_dev_qsfp1);
+  init_i2cs();
 
+  alt_printf("\n");
   while (true) {
     cli();
   }

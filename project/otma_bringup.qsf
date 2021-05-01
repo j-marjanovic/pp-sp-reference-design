@@ -121,6 +121,18 @@ set_instance_assignment -name SLEW_RATE 0 -to I2C_QSFP1_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SDA
 
+# Remote and Local Temperature Sensor I2C
+set_location_assignment PIN_AW26 -to I2C_MON_SCL
+set_location_assignment PIN_AV26 -to I2C_MON_SDA
+set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_MON_SCL
+set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_MON_SDA
+set_instance_assignment -name SLEW_RATE 0 -to I2C_MON_SCL
+set_instance_assignment -name SLEW_RATE 0 -to I2C_MON_SDA
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_MON_SCL
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_MON_SDA
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to I2C_MON_SCL
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to I2C_MON_SDA
+
 # QSFP 0
 # set_location_assignment PIN_U4 -to XCVR_QSFP0_TX[0]
 # set_location_assignment PIN_R4 -to XCVR_QSFP0_TX[1]
@@ -131,6 +143,7 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SDA
 # set_location_assignment PIN_P2 -to XCVR_QSFP0_RX[2]
 # set_location_assignment PIN_M2 -to XCVR_QSFP0_RX[3]
 
+# set_location_assignment PIN_M1 -to "XCVR_QSFP0_RX[3](n)"
 # set_location_assignment PIN_P1 -to "XCVR_QSFP0_RX[2](n)"
 # set_location_assignment PIN_T1 -to "XCVR_QSFP0_RX[1](n)"
 # set_location_assignment PIN_V1 -to "XCVR_QSFP0_RX[0](n)"

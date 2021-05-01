@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "16";
          type = "int";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "17";
          type = "int";
       }
    }
@@ -115,6 +115,22 @@
       datum baseAddress
       {
          value = "1073778688";
+         type = "String";
+      }
+   }
+   element i2c_mon
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
+   element i2c_mon.csr
+   {
+      datum baseAddress
+      {
+         value = "1073790976";
          type = "String";
       }
    }
@@ -186,7 +202,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "15";
          type = "int";
       }
    }
@@ -202,7 +218,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "14";
          type = "int";
       }
    }
@@ -400,6 +416,7 @@
    internal="i2c_idt_osc.i2c_serial"
    type="conduit"
    dir="end" />
+ <interface name="i2c_mon" internal="i2c_mon.i2c_serial" type="conduit" dir="end" />
  <interface
    name="i2c_qsfp_0"
    internal="i2c_qsfp_0.i2c_serial"
@@ -782,6 +799,11 @@
   <parameter name="USE_AV_ST" value="0" />
   <parameter name="clockRate" value="125000000" />
  </module>
+ <module name="i2c_mon" kind="altera_avalon_i2c" version="19.1" enabled="1">
+  <parameter name="FIFO_DEPTH" value="32" />
+  <parameter name="USE_AV_ST" value="0" />
+  <parameter name="clockRate" value="125000000" />
+ </module>
  <module name="i2c_qsfp_0" kind="altera_avalon_i2c" version="19.1" enabled="1">
   <parameter name="FIFO_DEPTH" value="32" />
   <parameter name="USE_AV_ST" value="0" />
@@ -867,7 +889,7 @@
   <parameter name="dataAddrWidth" value="31" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='mem_checker_0.ctrl' start='0x60000000' end='0x60000100' type='mem_checker.ctrl' /><slave name='address_span_extender_0.cntl' start='0x60001000' end='0x60001008' type='altera_address_span_extender.cntl' /><slave name='address_span_extender_0.windowed_slave' start='0x70000000' end='0x80000000' type='altera_address_span_extender.windowed_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10010000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='i2c_mon.csr' start='0x4000C000' end='0x4000C040' type='altera_avalon_i2c.csr' /><slave name='mem_checker_0.ctrl' start='0x60000000' end='0x60000100' type='mem_checker.ctrl' /><slave name='address_span_extender_0.cntl' start='0x60001000' end='0x60001008' type='altera_address_span_extender.cntl' /><slave name='address_span_extender_0.windowed_slave' start='0x70000000' end='0x80000000' type='altera_address_span_extender.windowed_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -913,7 +935,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="1795" />
+  <parameter name="internalIrqMaskSystemInfo" value="3843" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -1139,6 +1161,15 @@
    kind="avalon"
    version="19.1"
    start="nios2_gen2_0.data_master"
+   end="i2c_mon.csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4000c000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
+   start="nios2_gen2_0.data_master"
    end="clock_counter_0.ctrl">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x40008000" />
@@ -1311,6 +1342,7 @@
    version="19.1"
    start="clk_125.clk"
    end="i2c_idt_osc.clock" />
+ <connection kind="clock" version="19.1" start="clk_125.clk" end="i2c_mon.clock" />
  <connection
    kind="clock"
    version="19.1"
@@ -1346,6 +1378,13 @@
    start="nios2_gen2_0.irq"
    end="i2c_qsfp_1.interrupt_sender">
   <parameter name="irqNumber" value="10" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="19.1"
+   start="nios2_gen2_0.irq"
+   end="i2c_mon.interrupt_sender">
+  <parameter name="irqNumber" value="11" />
  </connection>
  <connection
    kind="interrupt"
@@ -1436,6 +1475,11 @@
    version="19.1"
    start="clk_125.clk_reset"
    end="i2c_qsfp_1.reset_sink" />
+ <connection
+   kind="reset"
+   version="19.1"
+   start="clk_125.clk_reset"
+   end="i2c_mon.reset_sink" />
  <connection
    kind="reset"
    version="19.1"

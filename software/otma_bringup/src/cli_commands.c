@@ -85,9 +85,11 @@ void cmd_eeprom(char *cmd, char *arg1, char *arg2) {
     mini_i2cdump(devices.i2c_dev_qsfp0, 0x50);
   } else if (strcmp(arg1, "qsfp1") == 0) {
     mini_i2cdump(devices.i2c_dev_qsfp1, 0x50);
+  } else if (strcmp(arg1, "fru") == 0) {
+    mini_i2cdump(devices.i2c_dev_mon, 0x51);
   } else {
     if (strlen(arg1) == 0) {
-      alt_printf("eeprom (qsfp0|qsfp1)\n");
+      alt_printf("eeprom (qsfp0|qsfp1|fru)\n");
     } else {
       alt_printf("Error: unknown i2c channel (%s)\n", arg1);
     }
@@ -112,11 +114,11 @@ void cmd_i2cdetect(char *cmd, char *arg1, char *arg2) {
     mini_i2cdetect(devices.i2c_dev_qsfp0, 0x8, 0x78);
   } else if (strcmp(arg1, "qsfp1") == 0) {
     mini_i2cdetect(devices.i2c_dev_qsfp1, 0x8, 0x78);
-  } else if (strcmp(arg1, "smbus") == 0) {
-    alt_printf("SMBUS i2c not yet implemented\n"); // TODO
+  } else if (strcmp(arg1, "mon") == 0) {
+    mini_i2cdetect(devices.i2c_dev_mon, 0x8, 0x78);
   } else {
     if (strlen(arg1) == 0) {
-      alt_printf("i2cdetect (idt|qsfp0|qsfp1|smbus)\n");
+      alt_printf("i2cdetect (idt|qsfp0|qsfp1|mon)\n");
     } else {
       alt_printf("Error: unknown i2c channel (%s)\n", arg1);
     }

@@ -18,6 +18,9 @@ module otma_bringup (
     inout           I2C_QSFP1_SCL,
     inout           I2C_QSFP1_SDA,
 
+    inout           I2C_MON_SCL,
+    inout           I2C_MON_SDA,
+
     // DDR3
     output [15:0]   memory_mem_a,
     output [ 2:0]   memory_mem_ba,
@@ -85,17 +88,24 @@ wire i2c_idt_osc_scl_oe;
 assign I2C_IDT_SDA = i2c_idt_osc_sda_oe ? 1'b0 : 1'bz;
 assign I2C_IDT_SCL = i2c_idt_osc_scl_oe ? 1'b0 : 1'bz;
 
-wire i2c_qsfp_0_sda_oe;
-wire i2c_qsfp_0_scl_oe;
+wire i2c_qsfp0_sda_oe;
+wire i2c_qsfp0_scl_oe;
 
-assign I2C_QSFP0_SDA = i2c_qsfp_0_sda_oe ? 1'b0 : 1'bz;
-assign I2C_QSFP0_SCL = i2c_qsfp_0_scl_oe ? 1'b0 : 1'bz;
+assign I2C_QSFP0_SDA = i2c_qsfp0_sda_oe ? 1'b0 : 1'bz;
+assign I2C_QSFP0_SCL = i2c_qsfp0_scl_oe ? 1'b0 : 1'bz;
 
-wire i2c_qsfp_1_sda_oe;
-wire i2c_qsfp_1_scl_oe;
+wire i2c_qsfp1_sda_oe;
+wire i2c_qsfp1_scl_oe;
 
-assign I2C_QSFP1_SDA = i2c_qsfp_1_sda_oe ? 1'b0 : 1'bz;
-assign I2C_QSFP1_SCL = i2c_qsfp_1_scl_oe ? 1'b0 : 1'bz;
+assign I2C_QSFP1_SDA = i2c_qsfp1_sda_oe ? 1'b0 : 1'bz;
+assign I2C_QSFP1_SCL = i2c_qsfp1_scl_oe ? 1'b0 : 1'bz;
+
+wire i2c_mon_sda_oe;
+wire i2c_mon_scl_oe;
+
+assign I2C_MON_SDA = i2c_mon_sda_oe ? 1'b0 : 1'bz;
+assign I2C_MON_SCL = i2c_mon_scl_oe ? 1'b0 : 1'bz;
+
 
 //==============================================================================
 // DDR3
@@ -124,12 +134,16 @@ system inst_system (
     .i2c_idt_osc_scl_oe                 ( i2c_idt_osc_scl_oe                    ),
     .i2c_qsfp_0_sda_in                  ( I2C_QSFP0_SDA                         ),
     .i2c_qsfp_0_scl_in                  ( I2C_QSFP0_SCL                         ),
-    .i2c_qsfp_0_sda_oe                  ( i2c_qsfp_0_sda_oe                     ),
-    .i2c_qsfp_0_scl_oe                  ( i2c_qsfp_0_scl_oe                     ),
+    .i2c_qsfp_0_sda_oe                  ( i2c_qsfp0_sda_oe                      ),
+    .i2c_qsfp_0_scl_oe                  ( i2c_qsfp0_scl_oe                      ),
     .i2c_qsfp_1_sda_in                  ( I2C_QSFP1_SDA                         ),
     .i2c_qsfp_1_scl_in                  ( I2C_QSFP1_SCL                         ),
-    .i2c_qsfp_1_sda_oe                  ( i2c_qsfp_1_sda_oe                     ),
-    .i2c_qsfp_1_scl_oe                  ( i2c_qsfp_1_scl_oe                     ),
+    .i2c_qsfp_1_sda_oe                  ( i2c_qsfp1_sda_oe                      ),
+    .i2c_qsfp_1_scl_oe                  ( i2c_qsfp1_scl_oe                      ),
+    .i2c_mon_sda_in                     ( I2C_MON_SDA                           ),
+    .i2c_mon_scl_in                     ( I2C_MON_SCL                           ),
+    .i2c_mon_sda_oe                     ( i2c_mon_sda_oe                        ),
+    .i2c_mon_scl_oe                     ( i2c_mon_scl_oe                        ),
     .ddr3_mem_status_local_init_done    ( ddr3_mem_status_local_init_done       ),
     .ddr3_mem_status_local_cal_success  ( ddr3_mem_status_local_cal_success     ),
     .ddr3_mem_status_local_cal_fail     ( ddr3_mem_status_local_cal_fail        ),
