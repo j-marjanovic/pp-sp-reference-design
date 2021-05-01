@@ -50,8 +50,30 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name IP_SEARCH_PATHS ../ip_cores
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+
+
+################################################################################
+# pin assignments
+
+# clocks
 set_location_assignment PIN_M23 -to CLK_125M
+set_location_assignment PIN_AF34 -to CLK_PCIE1
+set_location_assignment PIN_AF35 -to "CLK_PCIE1(n)"
+set_location_assignment PIN_AF6 -to CLK_PCIE2
+set_location_assignment PIN_AF5 -to "CLK_PCIE2(n)"
+set_location_assignment PIN_T7 -to CLK_QSFP_OSC
+set_location_assignment PIN_T6 -to "CLK_QSFP_OSC(n)"
+
 set_instance_assignment -name IO_STANDARD "SSTL-135" -to CLK_125M
+set_instance_assignment -name IO_STANDARD HCSL -to CLK_PCIE1
+set_instance_assignment -name IO_STANDARD HCSL -to CLK_PCIE2
+set_instance_assignment -name IO_STANDARD LVDS -to CLK_QSFP_OSC
+
+# LEDSs
 set_location_assignment PIN_A8 -to LEDS[7]
 set_location_assignment PIN_B8 -to LEDS[6]
 set_location_assignment PIN_C8 -to LEDS[5]
@@ -68,45 +90,8 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDS[3]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDS[2]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDS[1]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDS[0]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[6]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[5]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[4]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[3]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[2]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[1]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[0]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to LEDS[7]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[0]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[1]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[2]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[3]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[4]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[5]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[6]
-set_instance_assignment -name SLEW_RATE 0 -to LEDS[7]
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_location_assignment PIN_AF6 -to CLK_R_REFCLK0
-set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK0
-set_location_assignment PIN_AF5 -to "CLK_R_REFCLK0(n)"
-set_location_assignment PIN_AD7 -to CLK_R_REFCLK1
-set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK1
-set_location_assignment PIN_AD6 -to "CLK_R_REFCLK1(n)"
-set_location_assignment PIN_AB6 -to CLK_R_REFCLK2
-set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK2
-set_location_assignment PIN_AB5 -to "CLK_R_REFCLK2(n)"
-set_location_assignment PIN_Y7 -to CLK_R_REFCLK3
-set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK3
-set_location_assignment PIN_Y6 -to "CLK_R_REFCLK3(n)"
-set_location_assignment PIN_V6 -to CLK_R_REFCLK4
-set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK4
-set_location_assignment PIN_V5 -to "CLK_R_REFCLK4(n)"
-set_location_assignment PIN_T7 -to CLK_R_REFCLK5
-set_instance_assignment -name IO_STANDARD LVDS -to CLK_R_REFCLK5
-set_location_assignment PIN_T6 -to "CLK_R_REFCLK5(n)"
 
-set_global_assignment -name IP_SEARCH_PATHS ../ip_cores
-
+# I2C (IDT)
 set_location_assignment PIN_N7 -to I2C_IDT_SCL
 set_location_assignment PIN_P7 -to I2C_IDT_SDA
 set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_IDT_SCL
@@ -116,6 +101,7 @@ set_instance_assignment -name SLEW_RATE 0 -to I2C_IDT_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_IDT_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_IDT_SDA
 
+# I2C (QSFP0)
 set_location_assignment PIN_AB24 -to I2C_QSFP0_SCL
 set_location_assignment PIN_AC24 -to I2C_QSFP0_SDA
 set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_QSFP0_SCL
@@ -125,6 +111,7 @@ set_instance_assignment -name SLEW_RATE 0 -to I2C_QSFP0_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP0_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP0_SDA
 
+# I2C (QSFP1)
 set_location_assignment PIN_AA25 -to I2C_QSFP1_SCL
 set_location_assignment PIN_AB25 -to I2C_QSFP1_SDA
 set_instance_assignment -name IO_STANDARD "2.5 V" -to I2C_QSFP1_SCL
@@ -135,35 +122,33 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to I2C_QSFP1_SDA
 
 # QSFP 0
+# set_location_assignment PIN_U4 -to XCVR_QSFP0_TX[0]
+# set_location_assignment PIN_R4 -to XCVR_QSFP0_TX[1]
+# set_location_assignment PIN_N4 -to XCVR_QSFP0_TX[2]
+# set_location_assignment PIN_L4 -to XCVR_QSFP0_TX[3]
+# set_location_assignment PIN_V2 -to XCVR_QSFP0_RX[0]
+# set_location_assignment PIN_T2 -to XCVR_QSFP0_RX[1]
+# set_location_assignment PIN_P2 -to XCVR_QSFP0_RX[2]
+# set_location_assignment PIN_M2 -to XCVR_QSFP0_RX[3]
 
-set_location_assignment PIN_U4 -to XCVR_QSFP0_TX[0]
-set_location_assignment PIN_R4 -to XCVR_QSFP0_TX[1]
-set_location_assignment PIN_N4 -to XCVR_QSFP0_TX[2]
-set_location_assignment PIN_L4 -to XCVR_QSFP0_TX[3]
-set_location_assignment PIN_V2 -to XCVR_QSFP0_RX[0]
-set_location_assignment PIN_T2 -to XCVR_QSFP0_RX[1]
-set_location_assignment PIN_P2 -to XCVR_QSFP0_RX[2]
-set_location_assignment PIN_M2 -to XCVR_QSFP0_RX[3]
+# set_location_assignment PIN_P1 -to "XCVR_QSFP0_RX[2](n)"
+# set_location_assignment PIN_T1 -to "XCVR_QSFP0_RX[1](n)"
+# set_location_assignment PIN_V1 -to "XCVR_QSFP0_RX[0](n)"
+# set_location_assignment PIN_L3 -to "XCVR_QSFP0_TX[3](n)"
+# set_location_assignment PIN_N3 -to "XCVR_QSFP0_TX[2](n)"
+# set_location_assignment PIN_R3 -to "XCVR_QSFP0_TX[1](n)"
+# set_location_assignment PIN_U3 -to "XCVR_QSFP0_TX[0](n)"
 
-set_location_assignment PIN_P1 -to "XCVR_QSFP0_RX[2](n)"
-set_location_assignment PIN_T1 -to "XCVR_QSFP0_RX[1](n)"
-set_location_assignment PIN_V1 -to "XCVR_QSFP0_RX[0](n)"
-set_location_assignment PIN_L3 -to "XCVR_QSFP0_TX[3](n)"
-set_location_assignment PIN_N3 -to "XCVR_QSFP0_TX[2](n)"
-set_location_assignment PIN_R3 -to "XCVR_QSFP0_TX[1](n)"
-set_location_assignment PIN_U3 -to "XCVR_QSFP0_TX[0](n)"
-
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[3]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[2]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[1]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[0]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[3]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[2]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[1]
-set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[0]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[3]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[2]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[1]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_RX[0]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[3]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[2]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[1]
+# set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[0]
 
 # QSFP 1
-
 # set_location_assignment PIN_J4 -to XCVR_QSFP1_TX[0]
 # set_location_assignment PIN_G4 -to XCVR_QSFP1_TX[1]
 # set_location_assignment PIN_E4 -to XCVR_QSFP1_TX[2]
@@ -192,7 +177,9 @@ set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP0_TX[0]
 # set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP1_TX[0]
 
 
-set_global_assignment -name ENABLE_SIGNALTAP OFF
+################################################################################
+# DDR3 memory
+
 set_instance_assignment -name IO_STANDARD "SSTL-135" -to oct_rzqin -tag __system_ddr3_mem_p0
 set_instance_assignment -name IO_STANDARD "SSTL-135" -to memory_mem_dq[0] -tag __system_ddr3_mem_p0
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 40 OHM WITH CALIBRATION" -to memory_mem_dq[0] -tag __system_ddr3_mem_p0
@@ -695,7 +682,6 @@ set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
 set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
 set_global_assignment -name UNIPHY_TEMP_VER_CODE 1671073000
-set_global_assignment -name ECO_REGENERATE_REPORT ON
 set_location_assignment PIN_J28 -to memory_mem_ba[0]
 set_location_assignment PIN_K21 -to memory_mem_ba[1]
 set_location_assignment PIN_L26 -to memory_mem_ba[2]
@@ -769,12 +755,6 @@ set_location_assignment PIN_F30 -to memory_mem_dq[27]
 set_location_assignment PIN_E31 -to memory_mem_dq[26]
 set_location_assignment PIN_H31 -to memory_mem_dq[25]
 set_location_assignment PIN_G31 -to memory_mem_dq[24]
-set_global_assignment -name QIP_FILE ../qsys/system/synthesis/system.qip
-set_global_assignment -name SDC_FILE ../constraints/timing.sdc
-set_global_assignment -name SYSTEMVERILOG_FILE ../hdl/otma_bringup.sv
-set_global_assignment -name SIGNALTAP_FILE ../signal_tap/mem_checker.stp
-set_global_assignment -name SIGNALTAP_FILE ../signal_tap/axi.stp
-set_global_assignment -name SIGNALTAP_FILE ../signal_tap/avalon.stp
 set_location_assignment PIN_D28 -to memory_mem_dm[4]
 set_location_assignment PIN_H29 -to memory_mem_dqs[4]
 set_location_assignment PIN_G29 -to memory_mem_dqs_n[4]
@@ -830,4 +810,12 @@ set_location_assignment PIN_C21 -to memory_mem_dq[68]
 set_location_assignment PIN_E21 -to memory_mem_dq[69]
 set_location_assignment PIN_B20 -to memory_mem_dq[70]
 set_location_assignment PIN_A20 -to memory_mem_dq[71]
+
+################################################################################
+
+set_global_assignment -name QIP_FILE ../qsys/system/synthesis/system.qip
+set_global_assignment -name SDC_FILE ../constraints/timing.sdc
+set_global_assignment -name SYSTEMVERILOG_FILE ../hdl/otma_bringup.sv
+
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
