@@ -493,7 +493,7 @@
   <parameter name="AUTO_POWERDN_EN" value="false" />
   <parameter name="AVL_DATA_WIDTH_PORT" value="32,32,32,32,32,32" />
   <parameter name="AVL_MAX_SIZE" value="64" />
-  <parameter name="BYTE_ENABLE" value="false" />
+  <parameter name="BYTE_ENABLE" value="true" />
   <parameter name="C2P_WRITE_CLOCK_ADD_PHASE" value="0.0" />
   <parameter name="CALIBRATION_MODE" value="Quick" />
   <parameter name="CALIB_REG_WIDTH" value="8" />
