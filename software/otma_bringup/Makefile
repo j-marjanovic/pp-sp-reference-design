@@ -148,6 +148,7 @@ C_SRCS += src/mini_i2cdetect.c
 C_SRCS += src/cli.c
 C_SRCS += src/devices.c
 C_SRCS += src/cli_commands.c
+C_SRCS += src/mem_sw_check.c
 CXX_SRCS :=
 ASM_SRCS :=
 

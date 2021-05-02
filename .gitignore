@@ -11,3 +11,19 @@
 
 /qsys/system/
 /qsys/system.sopcinfo
+
+/software/*_bsp/alt_sys_init.c
+/software/*_bsp/drivers/
+/software/*_bsp/HAL/
+/software/*_bsp/linker.h
+/software/*_bsp/linker.x
+/software/*_bsp/mem_init.mk
+/software/*_bsp/memory.gdb
+/software/*_bsp/public.mk
+/software/*_bsp/summary.html
+/software/*_bsp/system.h
+/software/**/*.a
+/software/**/*.elf
+/software/**/*.objdump
+/software/**/obj/
+/software/.metadata/

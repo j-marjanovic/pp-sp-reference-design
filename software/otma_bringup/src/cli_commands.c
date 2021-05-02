@@ -31,6 +31,7 @@ SOFTWARE.
 #include "clock_counter.h"
 #include "devices.h"
 #include "mem_checker.h"
+#include "mem_sw_check.h"
 #include "mini_i2cdetect.h"
 
 struct cmd cmds[] = {
@@ -157,8 +158,56 @@ void cmd_idt(char *cmd, char *arg1, char *arg2) {
   }
 }
 
+static bool get_user_ok(const char *arg2, const char *msg) {
+
+  bool confirm = strcmp(arg2, "-y") == 0;
+
+  if (!confirm) {
+    alt_printf("%s. Continue [yN]?\n", msg);
+
+    char c;
+    do {
+      c = alt_getchar();
+      // very simple, it works as long as user does not reply "nay"
+      if (c == 'y' || c == 'Y') {
+        confirm = true;
+      }
+    } while (c != '\n');
+  }
+
+  return confirm;
+}
+
 void cmd_mem_test(char *cmd, char *arg1, char *arg2) {
-  mem_check(MEM_CHECKER_0_BASE, 0, 4294967040);
+  if (strlen(arg1) == 0) {
+    mem_check_full(MEM_CHECKER_0_BASE, 0, 4294967040);
+  } else if (strcmp("sw_check", arg1) == 0) {
+    bool confirm =
+        get_user_ok(arg2, "SW-based memory test takes a lot of time");
+    if (!confirm) {
+      alt_printf("aborted by the user\n");
+      return;
+    }
+    mem_check_write(MEM_CHECKER_0_BASE, 0, 4294967040, MEM_CHECK_MODE_CNTR_128);
+    mem_sw_check_128b_cntr(4294967040);
+  } else if (strcmp("sw_write", arg1) == 0) {
+    bool confirm =
+        get_user_ok(arg2, "SW-based memory test takes a lot of time");
+    if (!confirm) {
+      alt_printf("aborted by the user\n");
+      return;
+    }
+    mem_sw_write_32b_cntr(4294967040);
+    mem_check_read_and_check(MEM_CHECKER_0_BASE, 0, 4294967040,
+                             MEM_CHECK_MODE_CNTR_32);
+  } else if (strcmp("inj_err", arg1) == 0) {
+    mem_check_write(MEM_CHECKER_0_BASE, 0, 4294967040, MEM_CHECK_MODE_CNTR_8);
+    mem_sw_inj_err();
+    mem_check_read_and_check(MEM_CHECKER_0_BASE, 0, 4294967040,
+                             MEM_CHECK_MODE_CNTR_8);
+  } else {
+    alt_printf("mem_test: unknown command (%s)\n", arg1);
+  }
 }
 
 void cmd_sys_id(char *cmd, char *arg1, char *arg2) {
