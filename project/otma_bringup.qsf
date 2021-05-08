@@ -189,6 +189,63 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to I2C_MON_SDA
 # set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP1_TX[1]
 # set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to XCVR_QSFP1_TX[0]
 
+# PCIe
+
+set_location_assignment PIN_AB28 -to PCIE1_PERSTN
+set_instance_assignment -name IO_STANDARD "2.5 V" -to PCIE1_PERSTN
+
+set_location_assignment PIN_AV38 -to PCIE1_SERIAL_RX[0]
+set_location_assignment PIN_AT38 -to PCIE1_SERIAL_RX[1]
+set_location_assignment PIN_AP38 -to PCIE1_SERIAL_RX[2]
+set_location_assignment PIN_AM38 -to PCIE1_SERIAL_RX[3]
+set_location_assignment PIN_AH38 -to PCIE1_SERIAL_RX[4]
+set_location_assignment PIN_AF38 -to PCIE1_SERIAL_RX[5]
+set_location_assignment PIN_AD38 -to PCIE1_SERIAL_RX[6]
+set_location_assignment PIN_AB38 -to PCIE1_SERIAL_RX[7]
+
+set_location_assignment PIN_AV39 -to "PCIE1_SERIAL_RX[0](n)"
+set_location_assignment PIN_AT39 -to "PCIE1_SERIAL_RX[1](n)"
+set_location_assignment PIN_AP39 -to "PCIE1_SERIAL_RX[2](n)"
+set_location_assignment PIN_AM39 -to "PCIE1_SERIAL_RX[3](n)"
+set_location_assignment PIN_AH39 -to "PCIE1_SERIAL_RX[4](n)"
+set_location_assignment PIN_AD39 -to "PCIE1_SERIAL_RX[6](n)"
+set_location_assignment PIN_AB39 -to "PCIE1_SERIAL_RX[7](n)"
+
+set_location_assignment PIN_AU36 -to PCIE1_SERIAL_TX[0]
+set_location_assignment PIN_AR36 -to PCIE1_SERIAL_TX[1]
+set_location_assignment PIN_AN36 -to PCIE1_SERIAL_TX[2]
+set_location_assignment PIN_AL36 -to PCIE1_SERIAL_TX[3]
+set_location_assignment PIN_AG36 -to PCIE1_SERIAL_TX[4]
+set_location_assignment PIN_AE36 -to PCIE1_SERIAL_TX[5]
+set_location_assignment PIN_AC36 -to PCIE1_SERIAL_TX[6]
+set_location_assignment PIN_AA36 -to PCIE1_SERIAL_TX[7]
+
+set_location_assignment PIN_AU37 -to "PCIE1_SERIAL_TX[0](n)"
+set_location_assignment PIN_AR37 -to "PCIE1_SERIAL_TX[1](n)"
+set_location_assignment PIN_AN37 -to "PCIE1_SERIAL_TX[2](n)"
+set_location_assignment PIN_AL37 -to "PCIE1_SERIAL_TX[3](n)"
+set_location_assignment PIN_AG37 -to "PCIE1_SERIAL_TX[4](n)"
+set_location_assignment PIN_AE37 -to "PCIE1_SERIAL_TX[5](n)"
+set_location_assignment PIN_AC37 -to "PCIE1_SERIAL_TX[6](n)"
+set_location_assignment PIN_AA37 -to "PCIE1_SERIAL_TX[7](n)"
+
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[0]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[1]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[2]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[3]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[4]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[5]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[6]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_RX[7]
+
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[0]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[1]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[2]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[3]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[4]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[5]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[6]
+set_instance_assignment -name IO_STANDARD "1.5-V PCML" -to PCIE1_SERIAL_TX[7]
 
 ################################################################################
 # DDR3 memory
