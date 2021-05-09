@@ -36,16 +36,16 @@ SOFTWARE.
 
 void blink_loop_error() {
   while (1) {
-    IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, 1);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_LED_BASE, 1);
     usleep(1e5);
-    IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, 0);
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_LED_BASE, 0);
     usleep(1e5);
   }
 }
 
 void init_leds() {
   // set LED GPIO as output
-  IOWR_ALTERA_AVALON_PIO_DIRECTION(PIO_0_BASE, 0x3);
+  IOWR_ALTERA_AVALON_PIO_DIRECTION(PIO_LED_BASE, 0x3);
 }
 
 void init_i2c_single(ALT_AVALON_I2C_DEV_t **i2c_dev, const char *name) {
@@ -82,7 +82,7 @@ int main() {
   init_leds();
   init_i2cs();
 
-  alt_printf("\n");
+  alt_printf("init done\n");
   while (true) {
     cli();
   }

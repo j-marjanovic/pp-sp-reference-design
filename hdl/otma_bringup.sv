@@ -128,6 +128,7 @@ assign pcie1_test_in[4:1] = 4'b1000;
 assign pcie1_test_in[5] = 1'b0;
 assign pcie1_test_in[31:6] = 26'h2;
 
+wire pcie1_cpu_npor;
 
 //==============================================================================
 // qsys
@@ -140,6 +141,7 @@ system inst_system (
     .clk_125_clk                        ( clk_125_int                           ),
     .led_dbg_export                     ( LEDS[1:0]                             ),
     .led_pcie_dbg_export                ( LEDS[3]                               ),
+    .cpu_pcie_npor_export               ( pcie1_cpu_npor                        ),
     .i2c_idt_osc_sda_in                 ( I2C_IDT_SDA                           ),
     .i2c_idt_osc_scl_in                 ( I2C_IDT_SCL                           ),
     .i2c_idt_osc_sda_oe                 ( i2c_idt_osc_sda_oe                    ),
@@ -193,7 +195,7 @@ system inst_system (
     .pcie1_hip_serial_tx_out5           ( PCIE1_SERIAL_TX[5]                    ),
     .pcie1_hip_serial_tx_out6           ( PCIE1_SERIAL_TX[6]                    ),
     .pcie1_hip_serial_tx_out7           ( PCIE1_SERIAL_TX[7]                    ),
-    .pcie1_npor_npor                    ( 1'b1                                  ),
+    .pcie1_npor_npor                    ( pcie1_cpu_npor                        ),
     .pcie1_npor_pin_perst               ( PCIE1_PERSTN                          ),
     .pcie1_refclk_clk                   ( CLK_PCIE1                             ),
 );

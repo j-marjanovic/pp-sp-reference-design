@@ -140,8 +140,6 @@ void mem_sw_write_32b_cntr(uint32_t size_bytes) {
 }
 
 void mem_sw_inj_err(void) {
-  uint32_t cntr = 0;
-
   alt_printf("inj err: [");
   for (int i = 0; i < mem_sw_check_get_nr_pages(); i++) {
     mem_sw_check_set_page(i);

@@ -21,7 +21,9 @@ SOFTWARE.
  */
 
 #include <string.h>
+#include <unistd.h>
 
+#include "altera_avalon_pio_regs.h"
 #include "sys/alt_stdio.h"
 #include "system.h"
 
@@ -213,18 +215,30 @@ void cmd_mem_test(char *cmd, char *arg1, char *arg2) {
 }
 
 void cmd_pcie(char *cmd, char *arg1, char *arg2) {
-  uint32_t id_reg, version;
-  pcie_status_id_version(PCIE_STATUS_AMM_0_BASE, &id_reg, &version);
+  if (strcmp("status", arg1) == 0) {
 
-  struct pcie_status status = pcie_status_get(PCIE_STATUS_AMM_0_BASE);
+    uint32_t id_reg, version;
+    pcie_status_id_version(PCIE_STATUS_AMM_0_BASE, &id_reg, &version);
 
-  alt_printf("pcie:\n");
-  alt_printf("  id = %x\n", id_reg);
-  alt_printf("  version = %x\n", version);
-  alt_printf("  status.cur speed   = %x\n", status.currentspeed);
-  alt_printf("  status.LTTSM state = %x\n", status.ltssmstate);
-  alt_printf("  status.lane act    = %x\n", status.lane_act);
-  alt_printf("  status.DL up       = %x\n", status.dlup);
+    struct pcie_status status = pcie_status_get(PCIE_STATUS_AMM_0_BASE);
+
+    alt_printf("pcie:\n");
+    alt_printf("  id = %x\n", id_reg);
+    alt_printf("  version = %x\n", version);
+    alt_printf("  status.cur speed   = %x\n", status.currentspeed);
+    alt_printf("  status.LTTSM state = %x\n", status.ltssmstate);
+    alt_printf("  status.lane act    = %x\n", status.lane_act);
+    alt_printf("  status.DL up       = %x\n", status.dlup);
+  } else if (strcmp("reset", arg1) == 0) {
+    alt_printf("pcie: asserting reset...\n");
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_PCIE_NPOR_BASE, 0);
+    usleep(100000);
+    alt_printf("pcie: deasserted reset...\n");
+    IOWR_ALTERA_AVALON_PIO_DATA(PIO_PCIE_NPOR_BASE, 1);
+    alt_printf("pcie: reset deasserted\n");
+  } else {
+    alt_printf("pcie: unknown command (%s), try 'status' or 'reset'\n", arg1);
+  }
 }
 
 void cmd_sys_id(char *cmd, char *arg1, char *arg2) {

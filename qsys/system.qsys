@@ -190,22 +190,6 @@
          type = "String";
       }
    }
-   element master_0
-   {
-      datum _sortIndex
-      {
-         value = "2";
-         type = "int";
-      }
-   }
-   element master_0.master
-   {
-      datum color
-      {
-         value = "-13395712";
-         type = "int";
-      }
-   }
    element mem_checker_0
    {
       datum _sortIndex
@@ -242,7 +226,7 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "2";
          type = "int";
       }
    }
@@ -282,7 +266,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "22";
          type = "int";
       }
    }
@@ -294,15 +278,15 @@
          type = "String";
       }
    }
-   element pio_0
+   element pio_led
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
    }
-   element pio_0.s1
+   element pio_led.s1
    {
       datum baseAddress
       {
@@ -318,11 +302,27 @@
          type = "int";
       }
    }
+   element pio_pcie_npor
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element pio_pcie_npor.s1
+   {
+      datum baseAddress
+      {
+         value = "1073750080";
+         type = "String";
+      }
+   }
    element prog_mem
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "3";
          type = "int";
       }
    }
@@ -338,7 +338,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "4";
          type = "int";
       }
    }
@@ -347,6 +347,22 @@
       datum baseAddress
       {
          value = "1073741824";
+         type = "String";
+      }
+   }
+   element sysid_qsys_1
+   {
+      datum _sortIndex
+      {
+         value = "21";
+         type = "int";
+      }
+   }
+   element sysid_qsys_1.control_slave
+   {
+      datum baseAddress
+      {
+         value = "1048576";
          type = "String";
       }
    }
@@ -426,7 +442,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
    }
@@ -471,6 +487,11 @@
    type="conduit"
    dir="end" />
  <interface
+   name="cpu_pcie_npor"
+   internal="pio_pcie_npor.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="ddr3_mem_status"
    internal="ddr3_mem.status"
    type="conduit"
@@ -493,7 +514,7 @@
    dir="end" />
  <interface
    name="led_dbg"
-   internal="pio_0.external_connection"
+   internal="pio_led.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -934,20 +955,6 @@
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
  </module>
- <module
-   name="master_0"
-   kind="altera_jtag_avalon_master"
-   version="19.1"
-   enabled="1">
-  <parameter name="AUTO_DEVICE" value="5SGSMD5K1F40C1" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Stratix V" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1_H1" />
-  <parameter name="COMPONENT_CLOCK" value="0" />
-  <parameter name="FAST_VER" value="0" />
-  <parameter name="FIFO_DEPTHS" value="2" />
-  <parameter name="PLI_PORT" value="50000" />
-  <parameter name="USE_PLI" value="0" />
- </module>
  <module name="mem_checker_0" kind="mem_checker" version="1.0" enabled="1" />
  <module
    name="mm_clock_crossing_bridge_0"
@@ -990,7 +997,7 @@
   <parameter name="dataAddrWidth" value="31" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10018000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_0.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='i2c_mon.csr' start='0x4000C000' end='0x4000C040' type='altera_avalon_i2c.csr' /><slave name='pcie_status_amm_0.ctrl' start='0x4000D000' end='0x4000D040' type='pcie_status_amm.ctrl' /><slave name='mem_checker_0.ctrl' start='0x60000000' end='0x60000100' type='mem_checker.ctrl' /><slave name='address_span_extender_0.cntl' start='0x60001000' end='0x60001008' type='altera_address_span_extender.cntl' /><slave name='address_span_extender_0.windowed_slave' start='0x70000000' end='0x80000000' type='altera_address_span_extender.windowed_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='prog_mem.s1' start='0x10000000' end='0x10018000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x20000000' end='0x20000800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sysid_qsys_0.control_slave' start='0x40000000' end='0x40000008' type='altera_avalon_sysid_qsys.control_slave' /><slave name='timer_0.s1' start='0x40001000' end='0x40001020' type='altera_avalon_timer.s1' /><slave name='pio_led.s1' start='0x40002000' end='0x40002010' type='altera_avalon_pio.s1' /><slave name='pio_pcie_npor.s1' start='0x40002040' end='0x40002050' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x40003000' end='0x40003008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='clock_counter_0.ctrl' start='0x40008000' end='0x40008800' type='clock_counter.ctrl' /><slave name='i2c_idt_osc.csr' start='0x40009000' end='0x40009040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_0.csr' start='0x4000A000' end='0x4000A040' type='altera_avalon_i2c.csr' /><slave name='i2c_qsfp_1.csr' start='0x4000B000' end='0x4000B040' type='altera_avalon_i2c.csr' /><slave name='i2c_mon.csr' start='0x4000C000' end='0x4000C040' type='altera_avalon_i2c.csr' /><slave name='pcie_status_amm_0.ctrl' start='0x4000D000' end='0x4000D040' type='pcie_status_amm.ctrl' /><slave name='mem_checker_0.ctrl' start='0x60000000' end='0x60000100' type='mem_checker.ctrl' /><slave name='address_span_extender_0.cntl' start='0x60001000' end='0x60001008' type='altera_address_span_extender.cntl' /><slave name='address_span_extender_0.windowed_slave' start='0x70000000' end='0x80000000' type='altera_address_span_extender.windowed_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1220,7 +1227,7 @@
   <parameter name="PCIeAddress63_32">0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000\,0x00000000</parameter>
   <parameter name="RXM_BEN_WIDTH" value="8" />
   <parameter name="RXM_DATA_WIDTH" value="64" />
-  <parameter name="SLAVE_ADDRESS_MAP_0" value="4" />
+  <parameter name="SLAVE_ADDRESS_MAP_0" value="21" />
   <parameter name="SLAVE_ADDRESS_MAP_1" value="0" />
   <parameter name="SLAVE_ADDRESS_MAP_2" value="0" />
   <parameter name="SLAVE_ADDRESS_MAP_3" value="0" />
@@ -1391,7 +1398,7 @@
    kind="pcie_status_amm"
    version="1.0"
    enabled="1" />
- <module name="pio_0" kind="altera_avalon_pio" version="19.1" enabled="1">
+ <module name="pio_led" kind="altera_avalon_pio" version="19.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -1415,6 +1422,24 @@
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
   <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module
+   name="pio_pcie_npor"
+   kind="altera_avalon_pio"
+   version="19.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="125000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="1" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
@@ -1458,6 +1483,13 @@
    enabled="1">
   <parameter name="id" value="121286663" />
  </module>
+ <module
+   name="sysid_qsys_1"
+   kind="altera_avalon_sysid_qsys"
+   version="19.1"
+   enabled="1">
+  <parameter name="id" value="27394049" />
+ </module>
  <module name="timer_0" kind="altera_avalon_timer" version="19.1" enabled="1">
   <parameter name="alwaysRun" value="false" />
   <parameter name="counterSize" value="32" />
@@ -1470,6 +1502,15 @@
   <parameter name="timeoutPulseOutput" value="false" />
   <parameter name="watchdogPulse" value="2" />
  </module>
+ <connection
+   kind="avalon"
+   version="19.1"
+   start="pcie1.Rxm_BAR0"
+   end="sysid_qsys_1.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00100000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection kind="avalon" version="19.1" start="pcie1.Rxm_BAR0" end="pio_pcie.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
@@ -1578,7 +1619,7 @@
    kind="avalon"
    version="19.1"
    start="nios2_gen2_0.data_master"
-   end="pio_0.s1">
+   end="pio_led.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x40002000" />
   <parameter name="defaultConnection" value="false" />
@@ -1590,6 +1631,15 @@
    end="timer_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x40001000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="19.1"
+   start="nios2_gen2_0.data_master"
+   end="pio_pcie_npor.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x40002040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1649,15 +1699,6 @@
  <connection
    kind="avalon"
    version="19.1"
-   start="master_0.master"
-   end="clock_counter_0.ctrl">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x40008000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="19.1"
    start="mem_checker_0.mem"
    end="ddr3_mem.avl">
   <parameter name="arbitrationPriority" value="1" />
@@ -1696,8 +1737,12 @@
    version="19.1"
    start="clk_125.clk"
    end="clock_counter_0.clk" />
- <connection kind="clock" version="19.1" start="clk_125.clk" end="pio_0.clk" />
- <connection kind="clock" version="19.1" start="clk_125.clk" end="master_0.clk" />
+ <connection kind="clock" version="19.1" start="clk_125.clk" end="pio_led.clk" />
+ <connection
+   kind="clock"
+   version="19.1"
+   start="clk_125.clk"
+   end="pio_pcie_npor.clk" />
  <connection kind="clock" version="19.1" start="clk_125.clk" end="prog_mem.clk1" />
  <connection
    kind="clock"
@@ -1745,6 +1790,11 @@
    version="19.1"
    start="pcie1.coreclkout"
    end="pio_pcie.clk" />
+ <connection
+   kind="clock"
+   version="19.1"
+   start="pcie1.coreclkout"
+   end="sysid_qsys_1.clk" />
  <connection
    kind="conduit"
    version="19.1"
@@ -1850,11 +1900,6 @@
    kind="reset"
    version="19.1"
    start="clk_125.clk_reset"
-   end="master_0.clk_reset" />
- <connection
-   kind="reset"
-   version="19.1"
-   start="clk_125.clk_reset"
    end="ddr3_mem.global_reset" />
  <connection
    kind="reset"
@@ -1865,7 +1910,7 @@
    kind="reset"
    version="19.1"
    start="clk_125.clk_reset"
-   end="pio_0.reset" />
+   end="pio_led.reset" />
  <connection
    kind="reset"
    version="19.1"
@@ -1896,6 +1941,11 @@
    version="19.1"
    start="clk_125.clk_reset"
    end="pcie_status_amm_0.reset" />
+ <connection
+   kind="reset"
+   version="19.1"
+   start="clk_125.clk_reset"
+   end="pio_pcie_npor.reset" />
  <connection
    kind="reset"
    version="19.1"
@@ -1951,6 +2001,11 @@
    version="19.1"
    start="pcie1.nreset_status"
    end="pio_pcie.reset" />
+ <connection
+   kind="reset"
+   version="19.1"
+   start="pcie1.nreset_status"
+   end="sysid_qsys_1.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableInstrumentation" value="FALSE" />
