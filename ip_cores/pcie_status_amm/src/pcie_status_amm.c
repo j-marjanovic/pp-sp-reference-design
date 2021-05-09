@@ -20,27 +20,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-#pragma once
+#include "io.h"
 
-#include <stdint.h>
+#include "pcie_status_amm.h"
 
-typedef void (*cli_func_ptr)(char *, char *, char *);
+void pcie_status_id_version(uint32_t base, uint32_t *id_reg,
+                            uint32_t *version) {
+  if (id_reg) {
+    *id_reg = IORD_32DIRECT(base, 0);
+  }
 
-struct cmd {
-  const char *cmd;
-  const char *help;
-  cli_func_ptr func;
-};
+  if (version) {
+    *version = IORD_32DIRECT(base, 4);
+  }
+}
 
-extern struct cmd cmds[];
-extern size_t cmds_len;
+struct pcie_status pcie_status_get(uint32_t base) {
+  struct pcie_status status;
+  *(uint32_t *)&status = IORD_32DIRECT(base, 0x10);
 
-void cmd_clks(char *cmd, char *arg1, char *arg2);
-void cmd_eeprom(char *cmd, char *arg1, char *arg2);
-void cmd_hello(char *cmd, char *arg1, char *arg2);
-void cmd_help(char *cmd, char *arg1, char *arg2);
-void cmd_i2cdetect(char *cmd, char *arg1, char *arg2);
-void cmd_idt(char *cmd, char *arg1, char *arg2);
-void cmd_mem_test(char *cmd, char *arg1, char *arg2);
-void cmd_pcie(char *cmd, char *arg1, char *arg2);
-void cmd_sys_id(char *cmd, char *arg1, char *arg2);
+  return status;
+}

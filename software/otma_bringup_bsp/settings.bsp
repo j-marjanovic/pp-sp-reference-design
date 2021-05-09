@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>19.1</BspVersion>
-        <BspGeneratedTimeStamp>May 2, 2021 10:54:41 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1619945681493</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>May 8, 2021 8:56:15 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1620500175680</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jan/Projects/FPGA/otma-fpga-bringup_DDR3/software/otma_bringup_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../qsys/system.sopcinfo</SopcDesignFile>
@@ -955,6 +955,12 @@
         <MemoryMap>
                 <slaveDescriptor>i2c_mon</slaveDescriptor>
                 <addressRange>0x4000C000 - 0x4000C03F</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pcie_status_amm_0</slaveDescriptor>
+                <addressRange>0x4000D000 - 0x4000D03F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>

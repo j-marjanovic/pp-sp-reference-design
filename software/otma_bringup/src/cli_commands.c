@@ -33,6 +33,7 @@ SOFTWARE.
 #include "mem_checker.h"
 #include "mem_sw_check.h"
 #include "mini_i2cdetect.h"
+#include "pcie_status_amm.h"
 
 struct cmd cmds[] = {
     {"clks", "Print clock frequencies", cmd_clks},
@@ -42,6 +43,7 @@ struct cmd cmds[] = {
     {"i2cdetect", "Scans I2C bus", cmd_i2cdetect},
     {"idt", "Manage IDT oscillator", cmd_idt},
     {"mem_test", "Performs the DDR3 memory test", cmd_mem_test},
+    {"pcie", "Report PCIe state", cmd_pcie},
     {"sys_id", "Shows system ID", cmd_sys_id},
 };
 
@@ -208,6 +210,21 @@ void cmd_mem_test(char *cmd, char *arg1, char *arg2) {
   } else {
     alt_printf("mem_test: unknown command (%s)\n", arg1);
   }
+}
+
+void cmd_pcie(char *cmd, char *arg1, char *arg2) {
+  uint32_t id_reg, version;
+  pcie_status_id_version(PCIE_STATUS_AMM_0_BASE, &id_reg, &version);
+
+  struct pcie_status status = pcie_status_get(PCIE_STATUS_AMM_0_BASE);
+
+  alt_printf("pcie:\n");
+  alt_printf("  id = %x\n", id_reg);
+  alt_printf("  version = %x\n", version);
+  alt_printf("  status.cur speed   = %x\n", status.currentspeed);
+  alt_printf("  status.LTTSM state = %x\n", status.ltssmstate);
+  alt_printf("  status.lane act    = %x\n", status.lane_act);
+  alt_printf("  status.DL up       = %x\n", status.dlup);
 }
 
 void cmd_sys_id(char *cmd, char *arg1, char *arg2) {

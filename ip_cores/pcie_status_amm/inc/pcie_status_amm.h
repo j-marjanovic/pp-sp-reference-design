@@ -24,23 +24,17 @@ SOFTWARE.
 
 #include <stdint.h>
 
-typedef void (*cli_func_ptr)(char *, char *, char *);
-
-struct cmd {
-  const char *cmd;
-  const char *help;
-  cli_func_ptr func;
+struct pcie_status {
+  uint32_t currentspeed : 2;
+  uint32_t rsvd2 : 6;
+  uint32_t ltssmstate : 5;
+  uint32_t rsvd13 : 3;
+  uint32_t lane_act : 4;
+  uint32_t rsvd20 : 4;
+  uint32_t dlup : 1;
+  uint32_t rsvd25 : 7;
 };
 
-extern struct cmd cmds[];
-extern size_t cmds_len;
+void pcie_status_id_version(uint32_t base, uint32_t *id_reg, uint32_t *version);
 
-void cmd_clks(char *cmd, char *arg1, char *arg2);
-void cmd_eeprom(char *cmd, char *arg1, char *arg2);
-void cmd_hello(char *cmd, char *arg1, char *arg2);
-void cmd_help(char *cmd, char *arg1, char *arg2);
-void cmd_i2cdetect(char *cmd, char *arg1, char *arg2);
-void cmd_idt(char *cmd, char *arg1, char *arg2);
-void cmd_mem_test(char *cmd, char *arg1, char *arg2);
-void cmd_pcie(char *cmd, char *arg1, char *arg2);
-void cmd_sys_id(char *cmd, char *arg1, char *arg2);
+struct pcie_status pcie_status_get(uint32_t base);

@@ -354,6 +354,13 @@ mem_checker_driver_SRCS_ROOT := drivers
 mem_checker_driver_C_LIB_SRCS := \
 	$(mem_checker_driver_SRCS_ROOT)/src/mem_checker.c
 
+# pcie_status_amm_driver sources root 
+pcie_status_amm_driver_SRCS_ROOT := drivers
+
+# pcie_status_amm_driver sources 
+pcie_status_amm_driver_C_LIB_SRCS := \
+	$(pcie_status_amm_driver_SRCS_ROOT)/src/pcie_status_amm.c
+
 
 # Assemble all component C source files 
 COMPONENT_C_LIB_SRCS += \
@@ -364,7 +371,8 @@ COMPONENT_C_LIB_SRCS += \
 	$(altera_nios2_gen2_hal_driver_C_LIB_SRCS) \
 	$(clock_counter_driver_C_LIB_SRCS) \
 	$(hal_C_LIB_SRCS) \
-	$(mem_checker_driver_C_LIB_SRCS)
+	$(mem_checker_driver_C_LIB_SRCS) \
+	$(pcie_status_amm_driver_C_LIB_SRCS)
 
 # Assemble all component assembly source files 
 COMPONENT_ASM_LIB_SRCS += \
