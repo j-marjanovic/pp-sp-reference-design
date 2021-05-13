@@ -208,6 +208,7 @@ set_location_assignment PIN_AT39 -to "PCIE1_SERIAL_RX[1](n)"
 set_location_assignment PIN_AP39 -to "PCIE1_SERIAL_RX[2](n)"
 set_location_assignment PIN_AM39 -to "PCIE1_SERIAL_RX[3](n)"
 set_location_assignment PIN_AH39 -to "PCIE1_SERIAL_RX[4](n)"
+set_location_assignment PIN_AF39 -to "PCIE1_SERIAL_RX[5](n)"
 set_location_assignment PIN_AD39 -to "PCIE1_SERIAL_RX[6](n)"
 set_location_assignment PIN_AB39 -to "PCIE1_SERIAL_RX[7](n)"
 
