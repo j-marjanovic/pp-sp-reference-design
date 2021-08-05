@@ -1,11 +1,4 @@
-# Bring-up project for Stratix V on OTMA board
-
-## Recompiling the project
-
-### Regenerating the IP variations
-
-Run `generate_ips.sh` script in `scripts` folder to regenerate all IP
-variations.
+# Unofficial Pikes Peak/Storey Peak reference design
 
 ## Software generation
 
