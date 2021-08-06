@@ -15,6 +15,7 @@ set_false_path -to {system:inst_system|clock_counter:clock_counter_0|reg_clk_mea
 set_false_path -to {system:inst_system|clock_counter:clock_counter_0|pulse_1hz_p[*]}
 set_false_path -to {system:inst_system|clock_counter:clock_counter_0|avs_ctrl_readdata[*]}
 
-set_false_path -to {inst_system|pcie_status_amm_0|status_reg[*]}
+set_false_path -to {inst_system|pcie1_status_amm|status_reg[*]}
+set_false_path -to {inst_system|pcie2_status_amm|status_reg[*]}
 
 set_false_path -from {system:inst_system|system_pio_pcie_npor:pio_pcie_npor|data_out}

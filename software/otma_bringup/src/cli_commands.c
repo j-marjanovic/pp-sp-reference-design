@@ -217,18 +217,28 @@ void cmd_mem_test(char *cmd, char *arg1, char *arg2) {
 void cmd_pcie(char *cmd, char *arg1, char *arg2) {
   if (strcmp("status", arg1) == 0) {
 
-    uint32_t id_reg, version;
-    pcie_status_id_version(PCIE_STATUS_AMM_0_BASE, &id_reg, &version);
+    uint32_t pcie_status_bases[] = {
+        PCIE1_STATUS_AMM_BASE,
+        PCIE2_STATUS_AMM_BASE,
+    };
 
-    struct pcie_status status = pcie_status_get(PCIE_STATUS_AMM_0_BASE);
+    for (unsigned int i = 0;
+         i < sizeof(pcie_status_bases) / sizeof(*pcie_status_bases); i++) {
 
-    alt_printf("pcie:\n");
-    alt_printf("  id = %x\n", id_reg);
-    alt_printf("  version = %x\n", version);
-    alt_printf("  status.cur speed   = %x\n", status.currentspeed);
-    alt_printf("  status.LTTSM state = %x\n", status.ltssmstate);
-    alt_printf("  status.lane act    = %x\n", status.lane_act);
-    alt_printf("  status.DL up       = %x\n", status.dlup);
+      uint32_t pcie_status_base = pcie_status_bases[i];
+      uint32_t id_reg, version;
+      pcie_status_id_version(pcie_status_base, &id_reg, &version);
+
+      struct pcie_status status = pcie_status_get(pcie_status_base);
+
+      alt_printf("pcie %x:\n", i);
+      alt_printf("  id = %x\n", id_reg);
+      alt_printf("  version = %x\n", version);
+      alt_printf("  status.cur speed   = %x\n", status.currentspeed);
+      alt_printf("  status.LTTSM state = %x\n", status.ltssmstate);
+      alt_printf("  status.lane act    = %x\n", status.lane_act);
+      alt_printf("  status.DL up       = %x\n", status.dlup);
+    }
   } else if (strcmp("reset", arg1) == 0) {
     alt_printf("pcie: asserting reset...\n");
     IOWR_ALTERA_AVALON_PIO_DATA(PIO_PCIE_NPOR_BASE, 0);

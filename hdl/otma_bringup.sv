@@ -52,6 +52,11 @@ module otma_bringup (
     input  [ 7:0]   PCIE1_SERIAL_RX,
     output [ 7:0]   PCIE1_SERIAL_TX,
 
+    // PCIe 2
+    input           PCIE2_PERSTN,
+    input  [ 7:0]   PCIE2_SERIAL_RX,
+    output [ 7:0]   PCIE2_SERIAL_TX,
+
     // LED
     output [7:0]    LEDS
 );
@@ -117,18 +122,18 @@ wire ddr3_mem_status_local_cal_fail;
 
 assign LEDS[6] = ddr3_mem_status_local_init_done;
 assign LEDS[5] = ddr3_mem_status_local_cal_success;
-assign LEDS[4] = ddr3_mem_status_local_cal_fail;
+// assign LEDS[4] = ddr3_mem_status_local_cal_fail;
 
 //==============================================================================
 // PCIe
 
-wire [31:0] pcie1_test_in;
-assign pcie1_test_in[0] = 1'b0;
-assign pcie1_test_in[4:1] = 4'b1000;
-assign pcie1_test_in[5] = 1'b0;
-assign pcie1_test_in[31:6] = 26'h2;
+wire [31:0] pcie_test_in;
+assign pcie_test_in[0] = 1'b0;
+assign pcie_test_in[4:1] = 4'b1000;
+assign pcie_test_in[5] = 1'b0;
+assign pcie_test_in[31:6] = 26'h2;
 
-wire pcie1_cpu_npor;
+wire pcie_cpu_npor;
 
 //==============================================================================
 // qsys
@@ -140,8 +145,7 @@ system inst_system (
     .clk_cntr_led_dbg                   ( LEDS[2]                               ),
     .clk_125_clk                        ( clk_125_int                           ),
     .led_dbg_export                     ( LEDS[1:0]                             ),
-    .led_pcie_dbg_export                ( LEDS[3]                               ),
-    .cpu_pcie_npor_export               ( pcie1_cpu_npor                        ),
+    .cpu_pcie_npor_export               ( pcie_cpu_npor                         ),
     .i2c_idt_osc_sda_in                 ( I2C_IDT_SDA                           ),
     .i2c_idt_osc_scl_in                 ( I2C_IDT_SCL                           ),
     .i2c_idt_osc_sda_oe                 ( i2c_idt_osc_sda_oe                    ),
@@ -177,7 +181,7 @@ system inst_system (
     .memory_mem_dqs_n                   ( memory_mem_dqs_n                      ),
     .memory_mem_odt                     ( memory_mem_odt                        ),
     .oct_rzqin                          ( oct_rzqin                             ),
-    .pcie1_hip_ctrl_test_in             ( pcie1_test_in                         ),
+    .pcie1_hip_ctrl_test_in             ( pcie_test_in                          ),
     .pcie1_hip_ctrl_simu_mode_pipe      (                                       ),
     .pcie1_hip_serial_rx_in0            ( PCIE1_SERIAL_RX[0]                    ),
     .pcie1_hip_serial_rx_in1            ( PCIE1_SERIAL_RX[1]                    ),
@@ -195,9 +199,32 @@ system inst_system (
     .pcie1_hip_serial_tx_out5           ( PCIE1_SERIAL_TX[5]                    ),
     .pcie1_hip_serial_tx_out6           ( PCIE1_SERIAL_TX[6]                    ),
     .pcie1_hip_serial_tx_out7           ( PCIE1_SERIAL_TX[7]                    ),
-    .pcie1_npor_npor                    ( pcie1_cpu_npor                        ),
+    .pcie1_led_dbg_export               ( LEDS[3]                               ),
+    .pcie1_npor_npor                    ( pcie_cpu_npor                         ),
     .pcie1_npor_pin_perst               ( PCIE1_PERSTN                          ),
     .pcie1_refclk_clk                   ( CLK_PCIE1                             ),
+    .pcie2_hip_ctrl_test_in             ( pcie_test_in                          ),
+    .pcie2_hip_ctrl_simu_mode_pipe      (                                       ),
+    .pcie2_hip_serial_rx_in0            ( PCIE2_SERIAL_RX[0]                    ),
+    .pcie2_hip_serial_rx_in1            ( PCIE2_SERIAL_RX[1]                    ),
+    .pcie2_hip_serial_rx_in2            ( PCIE2_SERIAL_RX[2]                    ),
+    .pcie2_hip_serial_rx_in3            ( PCIE2_SERIAL_RX[3]                    ),
+    .pcie2_hip_serial_rx_in4            ( PCIE2_SERIAL_RX[4]                    ),
+    .pcie2_hip_serial_rx_in5            ( PCIE2_SERIAL_RX[5]                    ),
+    .pcie2_hip_serial_rx_in6            ( PCIE2_SERIAL_RX[6]                    ),
+    .pcie2_hip_serial_rx_in7            ( PCIE2_SERIAL_RX[7]                    ),
+    .pcie2_hip_serial_tx_out0           ( PCIE2_SERIAL_TX[0]                    ),
+    .pcie2_hip_serial_tx_out1           ( PCIE2_SERIAL_TX[1]                    ),
+    .pcie2_hip_serial_tx_out2           ( PCIE2_SERIAL_TX[2]                    ),
+    .pcie2_hip_serial_tx_out3           ( PCIE2_SERIAL_TX[3]                    ),
+    .pcie2_hip_serial_tx_out4           ( PCIE2_SERIAL_TX[4]                    ),
+    .pcie2_hip_serial_tx_out5           ( PCIE2_SERIAL_TX[5]                    ),
+    .pcie2_hip_serial_tx_out6           ( PCIE2_SERIAL_TX[6]                    ),
+    .pcie2_hip_serial_tx_out7           ( PCIE2_SERIAL_TX[7]                    ),
+    .pcie2_led_dbg_export               ( LEDS[4]                               ),
+    .pcie2_npor_npor                    ( pcie_cpu_npor                         ),
+    .pcie2_npor_pin_perst               ( PCIE2_PERSTN                          ),
+    .pcie2_refclk_clk                   ( CLK_PCIE2                             ),
 );
 
 endmodule
