@@ -1696,7 +1696,7 @@
   <parameter name="pcie_inspector_hwtcl" value="0" />
   <parameter name="pcie_qsys" value="1" />
   <parameter name="pll_refclk_freq_hwtcl" value="100 MHz" />
-  <parameter name="port_link_number_hwtcl" value="1" />
+  <parameter name="port_link_number_hwtcl" value="2" />
   <parameter name="port_type_hwtcl" value="Native endpoint" />
   <parameter name="prefetchable_mem_window_addr_width_hwtcl" value="0" />
   <parameter name="revision_id_hwtcl" value="1" />
@@ -1717,7 +1717,7 @@
   <parameter name="slot_power_limit_hwtcl" value="0" />
   <parameter name="slot_power_scale_hwtcl" value="0" />
   <parameter name="slotclkcfg_hwtcl" value="1" />
-  <parameter name="subsystem_device_id_hwtcl" value="1" />
+  <parameter name="subsystem_device_id_hwtcl" value="2" />
   <parameter name="subsystem_vendor_id_hwtcl" value="418" />
   <parameter name="surprise_down_error_support_hwtcl" value="0" />
   <parameter name="tlp_insp_trg_dw0_hwtcl" value="2049" />
