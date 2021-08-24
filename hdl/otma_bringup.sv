@@ -53,9 +53,9 @@ module otma_bringup (
     output [ 7:0]   PCIE1_SERIAL_TX,
 
     // PCIe 2
-    input           PCIE2_PERSTN,
-    input  [ 7:0]   PCIE2_SERIAL_RX,
-    output [ 7:0]   PCIE2_SERIAL_TX,
+    //input           PCIE2_PERSTN,
+    //input  [ 7:0]   PCIE2_SERIAL_RX,
+    //output [ 7:0]   PCIE2_SERIAL_TX,
 
     // LED
     output [7:0]    LEDS
@@ -199,10 +199,11 @@ system inst_system (
     .pcie1_hip_serial_tx_out5           ( PCIE1_SERIAL_TX[5]                    ),
     .pcie1_hip_serial_tx_out6           ( PCIE1_SERIAL_TX[6]                    ),
     .pcie1_hip_serial_tx_out7           ( PCIE1_SERIAL_TX[7]                    ),
-    .pcie1_led_dbg_export               ( LEDS[3]                               ),
+//    .pcie1_led_dbg_export               ( LEDS[3]                               ),
     .pcie1_npor_npor                    ( pcie_cpu_npor                         ),
     .pcie1_npor_pin_perst               ( PCIE1_PERSTN                          ),
     .pcie1_refclk_clk                   ( CLK_PCIE1                             ),
+/*
     .pcie2_hip_ctrl_test_in             ( pcie_test_in                          ),
     .pcie2_hip_ctrl_simu_mode_pipe      (                                       ),
     .pcie2_hip_serial_rx_in0            ( PCIE2_SERIAL_RX[0]                    ),
@@ -225,6 +226,7 @@ system inst_system (
     .pcie2_npor_npor                    ( pcie_cpu_npor                         ),
     .pcie2_npor_pin_perst               ( PCIE2_PERSTN                          ),
     .pcie2_refclk_clk                   ( CLK_PCIE2                             ),
+*/
 );
 
 endmodule
