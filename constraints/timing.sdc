@@ -19,3 +19,6 @@ set_false_path -to {inst_system|pcie1_status_amm|status_reg[*]}
 set_false_path -to {inst_system|pcie2_status_amm|status_reg[*]}
 
 set_false_path -from {system:inst_system|system_pio_pcie_npor:pio_pcie_npor|data_out}
+
+# PCIe
+set_false_path -from [get_pins -compatibility_mode *hip_ctrl*]
