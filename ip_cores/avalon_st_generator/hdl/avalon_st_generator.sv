@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-module avalon_st_checker (
+module avalon_st_generator (
     // Clock and reset
     input csi_clk_clk,
     input rsi_reset_reset,
@@ -32,9 +32,10 @@ module avalon_st_checker (
     output reg [31:0] avs_ctrl_readdata,
     input      [31:0] avs_ctrl_writedata,
 
-    // Avalon stream
-    input [255:0] asi_data_data,
-    input         asi_data_valid
+    // Avalon source
+    output [255:0] aso_data_data,
+    output         aso_data_valid,
+    input          aso_data_ready
 );
 
   //============================================================================
@@ -45,19 +46,19 @@ module avalon_st_checker (
   //============================================================================
   // Avalon interface
 
+  logic reg_ctrl_en;
   logic [31:0] reg_scratch;
   logic [31:0] reg_cntr_samples;
-  logic [31:0] reg_cntr_ok;
   logic reg_cntr_clear;
 
   always_ff @(posedge clk) begin : proc_avs_ctrl_readdata
     case (avs_ctrl_address)
-      0: avs_ctrl_readdata <= 32'ha5157c8c;
+      0: avs_ctrl_readdata <= 32'ha51579e2;
       1: avs_ctrl_readdata <= 32'h00000100;
       2: avs_ctrl_readdata <= 32'h00000000;
       3: avs_ctrl_readdata <= reg_scratch;
-      4: avs_ctrl_readdata <= reg_cntr_samples;
-      5: avs_ctrl_readdata <= reg_cntr_ok;
+      5: avs_ctrl_readdata <= reg_ctrl_en;
+      8: avs_ctrl_readdata <= reg_cntr_samples;
       default: avs_ctrl_readdata <= 32'hdeadbeef;
     endcase
   end
@@ -67,7 +68,10 @@ module avalon_st_checker (
     if (avs_ctrl_write && (avs_ctrl_address == 3)) begin
       reg_scratch <= avs_ctrl_writedata;
     end
-    if (avs_ctrl_write && (avs_ctrl_address == 4)) begin
+    if (avs_ctrl_write && (avs_ctrl_address == 5)) begin
+      reg_ctrl_en <= avs_ctrl_writedata[0];
+    end
+    if (avs_ctrl_write && (avs_ctrl_address == 8)) begin
       reg_cntr_clear <= avs_ctrl_writedata[0];
     end
   end
@@ -76,7 +80,6 @@ module avalon_st_checker (
   // reference data
 
   logic [15:0][15:0] ref_data;
-  wire data_ok = ref_data == asi_data_data;
 
   always_ff @(posedge clk) begin : proc_ref_data
     if (reg_cntr_clear || rsi_reset_reset) begin
@@ -85,7 +88,7 @@ module avalon_st_checker (
       end
 
     end else begin
-      if (asi_data_valid) begin
+      if (aso_data_ready && aso_data_valid) begin
         for (int i = 0; i < 16; i++) begin
           ref_data[i] <= ref_data[i] + 16;
         end
@@ -93,28 +96,19 @@ module avalon_st_checker (
     end
   end
 
+  assign aso_data_data  = ref_data;
+  assign aso_data_valid = reg_ctrl_en;
 
   //============================================================================
   // counters
 
-  logic data_ok_p;
-  logic data_valid_p;
-
-  always_ff @(posedge clk) begin : proc_data
-    data_ok_p <= data_ok && asi_data_valid;
-    data_valid_p <= asi_data_valid;
-  end
-
   always_ff @(posedge clk) begin : proc_cntr
     if (reg_cntr_clear || rsi_reset_reset) begin
       reg_cntr_samples <= 0;
-      reg_cntr_ok <= 0;
-
     end else begin
-
-      if (data_ok_p) reg_cntr_ok <= reg_cntr_ok + 1;
-      if (data_valid_p) reg_cntr_samples <= reg_cntr_samples + 1;
-
+      if (aso_data_valid && aso_data_ready) begin
+        reg_cntr_samples <= reg_cntr_samples + 1;
+      end
     end
   end
 
