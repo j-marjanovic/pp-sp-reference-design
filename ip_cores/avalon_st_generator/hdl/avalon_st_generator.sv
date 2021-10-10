@@ -46,10 +46,9 @@ module avalon_st_generator (
   //============================================================================
   // Avalon interface
 
-  logic reg_ctrl_en;
+  logic reg_ctrl_start;
   logic [31:0] reg_scratch;
   logic [31:0] reg_cntr_samples;
-  logic reg_cntr_clear;
 
   always_ff @(posedge clk) begin : proc_avs_ctrl_readdata
     case (avs_ctrl_address)
@@ -57,22 +56,23 @@ module avalon_st_generator (
       1: avs_ctrl_readdata <= 32'h00000100;
       2: avs_ctrl_readdata <= 32'h00000000;
       3: avs_ctrl_readdata <= reg_scratch;
-      5: avs_ctrl_readdata <= reg_ctrl_en;
+      5: avs_ctrl_readdata <= reg_ctrl_start;
       8: avs_ctrl_readdata <= reg_cntr_samples;
       default: avs_ctrl_readdata <= 32'hdeadbeef;
     endcase
   end
 
   always_ff @(posedge clk) begin : proc_reg_scratch
-    reg_cntr_clear <= 0;
+    reg_ctrl_start <= 0;
+
     if (avs_ctrl_write && (avs_ctrl_address == 3)) begin
       reg_scratch <= avs_ctrl_writedata;
     end
     if (avs_ctrl_write && (avs_ctrl_address == 5)) begin
-      reg_ctrl_en <= avs_ctrl_writedata[0];
+      reg_ctrl_start <= avs_ctrl_writedata[0];
     end
     if (avs_ctrl_write && (avs_ctrl_address == 8)) begin
-      reg_cntr_clear <= avs_ctrl_writedata[0];
+      reg_cntr_samples <= avs_ctrl_writedata;
     end
   end
 
@@ -82,7 +82,7 @@ module avalon_st_generator (
   logic [15:0][15:0] ref_data;
 
   always_ff @(posedge clk) begin : proc_ref_data
-    if (reg_cntr_clear || rsi_reset_reset) begin
+    if (reg_ctrl_start || rsi_reset_reset) begin
       for (int i = 0; i < 16; i++) begin
         ref_data[i] <= i;
       end
@@ -96,20 +96,27 @@ module avalon_st_generator (
     end
   end
 
-  assign aso_data_data  = ref_data;
-  assign aso_data_valid = reg_ctrl_en;
+  logic [31:0] cntr_cur;
+  logic state;
 
-  //============================================================================
-  // counters
+  always_ff @(posedge clk) begin : proc_state
+    if (rsi_reset_reset) state <= 1'b0;
+    else if (reg_ctrl_start) state <= 1'b1;
+    else if (cntr_cur >= reg_cntr_samples - 1) state <= 1'b0;
+  end
 
   always_ff @(posedge clk) begin : proc_cntr
-    if (reg_cntr_clear || rsi_reset_reset) begin
-      reg_cntr_samples <= 0;
+    if (reg_ctrl_start || rsi_reset_reset) begin
+      cntr_cur <= 0;
     end else begin
       if (aso_data_valid && aso_data_ready) begin
-        reg_cntr_samples <= reg_cntr_samples + 1;
+        cntr_cur <= cntr_cur + 1;
       end
     end
   end
+
+
+  assign aso_data_data  = ref_data;
+  assign aso_data_valid = state;
 
 endmodule
