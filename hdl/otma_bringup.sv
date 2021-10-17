@@ -22,6 +22,8 @@ module otma_bringup (
     inout           I2C_MON_SDA,
 
     // DDR3
+// TODO: only temp, for PCIe test
+/*
     output [15:0]   memory_mem_a,
     output [ 2:0]   memory_mem_ba,
     output [ 0:0]   memory_mem_ck,
@@ -38,6 +40,7 @@ module otma_bringup (
     inout  [ 8:0]   memory_mem_dqs_n,
     output [ 0:0]   memory_mem_odt,
     input           oct_rzqin,
+*/
 
     // QSFP0
     // input  [3:0]    XCVR_QSFP0_RX,
@@ -158,6 +161,8 @@ system inst_system (
     .i2c_qsfp_1_scl_in                  ( I2C_QSFP1_SCL                         ),
     .i2c_qsfp_1_sda_oe                  ( i2c_qsfp1_sda_oe                      ),
     .i2c_qsfp_1_scl_oe                  ( i2c_qsfp1_scl_oe                      ),
+// TODO: only temp, for PCIe test
+/*
     .i2c_mon_sda_in                     ( I2C_MON_SDA                           ),
     .i2c_mon_scl_in                     ( I2C_MON_SCL                           ),
     .i2c_mon_sda_oe                     ( i2c_mon_sda_oe                        ),
@@ -181,6 +186,7 @@ system inst_system (
     .memory_mem_dqs_n                   ( memory_mem_dqs_n                      ),
     .memory_mem_odt                     ( memory_mem_odt                        ),
     .oct_rzqin                          ( oct_rzqin                             ),
+*/
     .pcie1_hip_ctrl_test_in             ( pcie_test_in                          ),
     .pcie1_hip_ctrl_simu_mode_pipe      (                                       ),
     .pcie1_hip_serial_rx_in0            ( PCIE1_SERIAL_RX[0]                    ),

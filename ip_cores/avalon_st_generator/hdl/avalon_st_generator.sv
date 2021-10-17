@@ -49,15 +49,19 @@ module avalon_st_generator (
   logic reg_ctrl_start;
   logic [31:0] reg_scratch;
   logic [31:0] reg_cntr_samples;
+  logic [31:0] cntr_cur;
+  logic state;
 
   always_ff @(posedge clk) begin : proc_avs_ctrl_readdata
     case (avs_ctrl_address)
       0: avs_ctrl_readdata <= 32'ha51579e2;
-      1: avs_ctrl_readdata <= 32'h00000100;
+      1: avs_ctrl_readdata <= 32'h00000200;
       2: avs_ctrl_readdata <= 32'h00000000;
       3: avs_ctrl_readdata <= reg_scratch;
+      4: avs_ctrl_readdata <= state;
       5: avs_ctrl_readdata <= reg_ctrl_start;
       8: avs_ctrl_readdata <= reg_cntr_samples;
+      9: avs_ctrl_readdata <= cntr_cur;
       default: avs_ctrl_readdata <= 32'hdeadbeef;
     endcase
   end
@@ -95,9 +99,6 @@ module avalon_st_generator (
       end
     end
   end
-
-  logic [31:0] cntr_cur;
-  logic state;
 
   always_ff @(posedge clk) begin : proc_state
     if (rsi_reset_reset) state <= 1'b0;
