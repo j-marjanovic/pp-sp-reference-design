@@ -20,7 +20,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-module avalon_st_generator (
+module avalon_st_generator #(
+    parameter DATA_W = 256
+) (
     // Clock and reset
     input csi_clk_clk,
     input rsi_reset_reset,
@@ -33,9 +35,9 @@ module avalon_st_generator (
     input      [31:0] avs_ctrl_writedata,
 
     // Avalon source
-    output [255:0] aso_data_data,
-    output         aso_data_valid,
-    input          aso_data_ready
+    output [DATA_W-1:0] aso_data_data,
+    output              aso_data_valid,
+    input               aso_data_ready
 );
 
   //============================================================================
@@ -83,18 +85,20 @@ module avalon_st_generator (
   //============================================================================
   // reference data
 
-  logic [15:0][15:0] ref_data;
+  localparam SAMP_W = 16;
+
+  logic [DATA_W/SAMP_W-1:0][SAMP_W-1:0] ref_data;
 
   always_ff @(posedge clk) begin : proc_ref_data
     if (reg_ctrl_start || rsi_reset_reset) begin
-      for (int i = 0; i < 16; i++) begin
+      for (int i = 0; i < DATA_W / SAMP_W; i++) begin
         ref_data[i] <= i;
       end
 
     end else begin
       if (aso_data_ready && aso_data_valid) begin
-        for (int i = 0; i < 16; i++) begin
-          ref_data[i] <= ref_data[i] + 16;
+        for (int i = 0; i < DATA_W / SAMP_W; i++) begin
+          ref_data[i] <= ref_data[i] + DATA_W / SAMP_W;
         end
       end
     end
