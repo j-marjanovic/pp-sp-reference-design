@@ -28,27 +28,33 @@ module avalon_st_checker_tb;
   import avalon_mm_pkg::*;
 
   //============================================================================
+  // parameters
+  localparam DATA_W = 256;
+
+  //============================================================================
   // wires
 
   // Clock and reset
-  wire         csi_clk_clk;
-  wire         rsi_reset_reset;
+  wire              csi_clk_clk;
+  wire              rsi_reset_reset;
 
   // Control interface
-  wire [  3:0] avs_ctrl_address;
-  wire         avs_ctrl_read;
-  wire         avs_ctrl_write;
-  wire [ 31:0] avs_ctrl_readdata;
-  wire [ 31:0] avs_ctrl_writedata;
+  wire [       3:0] avs_ctrl_address;
+  wire              avs_ctrl_read;
+  wire              avs_ctrl_write;
+  wire [      31:0] avs_ctrl_readdata;
+  wire [      31:0] avs_ctrl_writedata;
 
   // Avalon stream
-  wire [255:0] asi_data_data;
-  wire         asi_data_valid;
+  wire [DATA_W-1:0] asi_data_data;
+  wire              asi_data_valid;
 
   //============================================================================
   // module
 
-  avalon_st_checker DUT (
+  avalon_st_checker #(
+      .DATA_W(DATA_W)
+  ) DUT (
       .csi_clk_clk,
       .rsi_reset_reset,
       .avs_ctrl_address,
@@ -124,7 +130,7 @@ module avalon_st_checker_tb;
 
   altera_avalon_st_source_bfm #(
       .ST_SYMBOL_W     (8),
-      .ST_NUMSYMBOLS   (256 / 8),
+      .ST_NUMSYMBOLS   (DATA_W / 8),
       .ST_CHANNEL_W    (1),
       .ST_ERROR_W      (1),
       .ST_EMPTY_W      (1),
@@ -209,11 +215,11 @@ module avalon_st_checker_tb;
 
     read_control('h10, tmp);
     $display("%t cntr samples = %x", $time, tmp);
-    assert (tmp == 4);
+    assert (tmp == 4 * DATA_W / 8);
 
     read_control('h14, tmp);
     $display("%t cntr OK      = %x", $time, tmp);
-    assert (tmp == 4);
+    assert (tmp == 4 * DATA_W / 8);
 
 
     write_control('h10, 1);
@@ -235,11 +241,11 @@ module avalon_st_checker_tb;
 
     read_control('h10, tmp);
     $display("%t cntr samples = %x", $time, tmp);
-    assert (tmp == 4);
+    assert (tmp == 4 * DATA_W / 8);
 
     read_control('h14, tmp);
     $display("%t cntr OK      = %x", $time, tmp);
-    assert (tmp == 3);
+    assert (tmp == 3 * DATA_W / 8);
 
     #(100ns);
     $finish;

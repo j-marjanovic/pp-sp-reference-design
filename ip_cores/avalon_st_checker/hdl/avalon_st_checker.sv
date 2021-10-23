@@ -20,7 +20,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-module avalon_st_checker (
+module avalon_st_checker #(
+    parameter DATA_W = 256
+) (
     // Clock and reset
     input csi_clk_clk,
     input rsi_reset_reset,
@@ -33,8 +35,8 @@ module avalon_st_checker (
     input      [31:0] avs_ctrl_writedata,
 
     // Avalon stream
-    input [255:0] asi_data_data,
-    input         asi_data_valid
+    input [DATA_W-1:0] asi_data_data,
+    input              asi_data_valid
 );
 
   //============================================================================
@@ -75,19 +77,21 @@ module avalon_st_checker (
   //============================================================================
   // reference data
 
-  logic [15:0][15:0] ref_data;
+  localparam SAMP_W = 16;
+
+  logic [DATA_W/SAMP_W-1:0][SAMP_W-1:0] ref_data;
   wire data_ok = ref_data == asi_data_data;
 
   always_ff @(posedge clk) begin : proc_ref_data
     if (reg_cntr_clear || rsi_reset_reset) begin
-      for (int i = 0; i < 16; i++) begin
+      for (int i = 0; i < DATA_W / SAMP_W; i++) begin
         ref_data[i] <= i;
       end
 
     end else begin
       if (asi_data_valid) begin
-        for (int i = 0; i < 16; i++) begin
-          ref_data[i] <= ref_data[i] + 16;
+        for (int i = 0; i < DATA_W / SAMP_W; i++) begin
+          ref_data[i] <= ref_data[i] + DATA_W / SAMP_W;
         end
       end
     end
@@ -96,6 +100,8 @@ module avalon_st_checker (
 
   //============================================================================
   // counters
+
+  localparam NR_SYMS = DATA_W / 8;
 
   logic data_ok_p;
   logic data_valid_p;
@@ -112,8 +118,8 @@ module avalon_st_checker (
 
     end else begin
 
-      if (data_ok_p) reg_cntr_ok <= reg_cntr_ok + 1;
-      if (data_valid_p) reg_cntr_samples <= reg_cntr_samples + 1;
+      if (data_ok_p) reg_cntr_ok <= reg_cntr_ok + NR_SYMS;
+      if (data_valid_p) reg_cntr_samples <= reg_cntr_samples + NR_SYMS;
 
     end
   end
