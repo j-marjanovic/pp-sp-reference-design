@@ -209,7 +209,7 @@ module avalon_st_generator_tb #(
 
 
     //--------------------------------------------------------------------------
-    write_control('h20, 'h20);
+    write_control('h20, 'h20 * DATA_W / 8);
     write_control('h14, 'h1);
     #(1000ns);
 
@@ -221,7 +221,7 @@ module avalon_st_generator_tb #(
     end
 
     //--------------------------------------------------------------------------
-    write_control('h20, 'h10);
+    write_control('h20, 'h10 * DATA_W / 8);
     write_control('h14, 'h1);
     #(1000ns);
 

@@ -85,6 +85,7 @@ module avalon_st_generator #(
   //============================================================================
   // reference data
 
+  localparam NR_SYMS = DATA_W / 8;
   localparam SAMP_W = 16;
 
   logic [DATA_W/SAMP_W-1:0][SAMP_W-1:0] ref_data;
@@ -107,7 +108,7 @@ module avalon_st_generator #(
   always_ff @(posedge clk) begin : proc_state
     if (rsi_reset_reset) state <= 1'b0;
     else if (reg_ctrl_start) state <= 1'b1;
-    else if (cntr_cur >= reg_cntr_samples - 1) state <= 1'b0;
+    else if (cntr_cur >= reg_cntr_samples - NR_SYMS) state <= 1'b0;
   end
 
   always_ff @(posedge clk) begin : proc_cntr
@@ -115,7 +116,7 @@ module avalon_st_generator #(
       cntr_cur <= 0;
     end else begin
       if (aso_data_valid && aso_data_ready) begin
-        cntr_cur <= cntr_cur + 1;
+        cntr_cur <= cntr_cur + NR_SYMS;
       end
     end
   end
