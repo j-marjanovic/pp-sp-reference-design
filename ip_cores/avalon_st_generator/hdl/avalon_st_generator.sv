@@ -108,7 +108,7 @@ module avalon_st_generator #(
   always_ff @(posedge clk) begin : proc_state
     if (rsi_reset_reset) state <= 1'b0;
     else if (reg_ctrl_start) state <= 1'b1;
-    else if (cntr_cur >= reg_cntr_samples - NR_SYMS) state <= 1'b0;
+    else if ((cntr_cur >= reg_cntr_samples - NR_SYMS) && aso_data_ready) state <= 1'b0;
   end
 
   always_ff @(posedge clk) begin : proc_cntr
