@@ -57,7 +57,7 @@ module avalon_st_generator #(
   always_ff @(posedge clk) begin : proc_avs_ctrl_readdata
     case (avs_ctrl_address)
       0: avs_ctrl_readdata <= 32'ha51579e2;
-      1: avs_ctrl_readdata <= 32'h00000200;
+      1: avs_ctrl_readdata <= 32'h00000300;
       2: avs_ctrl_readdata <= 32'h00000000;
       3: avs_ctrl_readdata <= reg_scratch;
       4: avs_ctrl_readdata <= state;
@@ -91,7 +91,7 @@ module avalon_st_generator #(
   logic [DATA_W/SAMP_W-1:0][SAMP_W-1:0] ref_data;
 
   always_ff @(posedge clk) begin : proc_ref_data
-    if (reg_ctrl_start || rsi_reset_reset) begin
+    if ((reg_ctrl_start && !state) || rsi_reset_reset) begin
       for (int i = 0; i < DATA_W / SAMP_W; i++) begin
         ref_data[i] <= i;
       end
@@ -112,7 +112,7 @@ module avalon_st_generator #(
   end
 
   always_ff @(posedge clk) begin : proc_cntr
-    if (reg_ctrl_start || rsi_reset_reset) begin
+    if ((reg_ctrl_start && !state) || rsi_reset_reset) begin
       cntr_cur <= 0;
     end else begin
       if (aso_data_valid && aso_data_ready) begin
