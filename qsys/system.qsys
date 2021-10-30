@@ -1769,7 +1769,7 @@
   <parameter name="slot_power_limit_hwtcl" value="0" />
   <parameter name="slot_power_scale_hwtcl" value="0" />
   <parameter name="slotclkcfg_hwtcl" value="1" />
-  <parameter name="subsystem_device_id_hwtcl" value="1" />
+  <parameter name="subsystem_device_id_hwtcl" value="2" />
   <parameter name="subsystem_vendor_id_hwtcl" value="418" />
   <parameter name="surprise_down_error_support_hwtcl" value="0" />
   <parameter name="tlp_insp_trg_dw0_hwtcl" value="2049" />
@@ -2330,6 +2330,17 @@
    version="20.1"
    start="pcie2.hip_status"
    end="pcie2_status_amm.hip_status">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="20.1"
+   start="pcie1.hip_status"
+   end="pcie1_status_amm.hip_status">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
   <parameter name="startPort" value="" />
